@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>在线商城</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/swiper.css" />
+<link rel="stylesheet" href="css/index.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="js/nav.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+<a href="search.html" class="search">请输入关键词搜索宝贝</a>
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide"><a href=""><img src="images/index/banner.jpg" alt="" class="post" /></a></div>
+		<div class="swiper-slide"><a href=""><img src="images/index/banner.jpg" alt="" class="post" /></a></div>
+		<div class="swiper-slide"><a href=""><img src="images/index/banner.jpg" alt="" class="post" /></a></div>
+	</div>
+	<div class="swiper-pagination"></div>
+</div>
+<div class="index">
+	<ul class="icon">
+		<li><a href="listMobile.html"><img src="images/index/mobile.png" alt="" /><br />手机</a></li>
+		<li><a href="listFlat.html"><img src="images/index/flat.png" alt="" /><br />平板</a></li>
+		<li><a href="listIntelligent.html"><img src="images/index/intelligent.png" alt="" /><br />智能终端</a></li>
+		<li><a href="listParts.html"><img src="images/index/parts.png" alt="" /><br />配件</a></li>
+	</ul>
+	<div class="main">
+		<h2><p></p><span>微信/精选</span></h2>
+		<ul>
+			<li><a href="goods.html">
+				<img src="images/index/goods1.jpg" alt="" />
+				<h3>华为荣耀双卡双待手机...</h3>
+				<div><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></div>
+			</a></li>
+			<li><a href="goods.html">
+				<img src="images/index/goods2.jpg" alt="" />
+				<h3>华为荣耀双卡双待手机...</h3>
+				<div><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></div>
+			</a></li>
+			<li><a href="goods.html">
+				<img src="images/index/goods1.jpg" alt="" />
+				<h3>华为荣耀双卡双待手机...</h3>
+				<div><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></div>
+			</a></li>
+			<li><a href="goods.html">
+				<img src="images/index/goods2.jpg" alt="" />
+				<h3>华为荣耀双卡双待手机...</h3>
+				<div><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></div>
+			</a></li>
+		</ul>
+	</div>
+</div>
+<div class="float">
+	<a href="tel:400-777-888" class="service"><img src="images/service.png" alt="" /><br /><span>在线客服</span></a>
+	<a class="toTop"><img src="images/toTop.png" alt="" /><br /><span>返回顶部</span></a>
+</div>
+<ul class="nav">
+	<li id="index"><a href="index.html" class="current"><p></p><span>首页</span></a></li>
+	<li id="sale"><a href="sale.html"><p></p><span>活动</span></a></li>
+	<li id="stock"><a href="stock.html"><p></p><span>进货单</span></a></li>
+	<li id="my"><a href="my.html"><p></p><span>我的</span></a></li>
+</ul>
+</body>
+</html>
+<script type="text/javascript" src="plug-in/swiper.jquery.js"></script>
+<script type="text/javascript">
+	var mySwiper = new Swiper('.swiper-container', {
+		pagination : '.swiper-pagination',
+		autoplay: 5000,                                   //可选选项，自动滑动
+	});
+</script>

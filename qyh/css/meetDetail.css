@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+.tip{width: 100%;line-height: 50px;color: #999;text-align: center;}
+.wrap{width: 100%;overflow: hidden;display: none;}
+.info{padding: 0 10px;overflow: hidden;background: #fff;margin-bottom: 70px;}
+.info li{width: 100%;height: auto;line-height: 40px;font-size: 15px;border-top: 1px solid #e0e0e0;position: relative;}
+.info li:first-child{border: none;}
+.info li p{color: #555;position: absolute;left: 0;top: 0;}
+.info .name p i{letter-spacing: 7.5px;}
+.info .file p i{letter-spacing: 30px;}
+.info li div{height: auto;padding: 10px 0 10px 85px;color: #333;line-height: 20px;overflow: hidden;}
+.info li .content{padding-bottom: 0;}
+.info li #detail{display: block;font-size: 14px;line-height: 14px;height: 14px;color: #21becc;padding-left: 85px;margin-top: 5px;}
+.info .file div{padding-right: 60px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.info .address div{color: #f14545;padding: 10px 70px 10px 85px;}
+.info li a{font-size: 12px;width: 60px;line-height: 26px;background: #21becc;color: #fff;border-radius: 3px;position: absolute;top: 50%;right: 0;text-align: center;margin-top: -13px;}
+.info li h4{font-size: 15px;color: #555;background: url(../images/arrow.png) no-repeat right center;background-size: 8px auto;}
+.info li ol{width: 100%;overflow: hidden;color: #555;}
+.info li li{width: auto;border: none;padding-right: 70px;font-size: 14px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+
+.start,.end{width: 100%;height: 36px;padding: 8px 0;position: fixed;left: 0;bottom: 0;background: #fff;border-top: 1px solid #e0e0e0;}
+.btn{width: 100%;overflow: hidden;text-align: center;}
+.btn p{width: 25%;height: 36px;line-height: 36px;border-radius: 5px;margin: 0 5px;display: inline-block;font-size: 14px;color: #fff;background: #f14545;}
+.btn .others{width: 35%;}
+.btn a{margin: 0 10px;height: 36px;line-height: 36px;border-radius: 5px;background: #f14545;font-size: 16px;color: #fff;display: block;}
+
+.mask1,.mask2,.mask3{width: 100%;position: fixed;left: 0;top: 0;bottom: 0;background: rgba(0,0,0,0.5);z-index: 888;display: none;}
+.mask .box{padding: 5px 0 10px;overflow: hidden;position: absolute;left: 0;bottom: 0;right: 0;}
+.mask .box h3{line-height: 40px;font-size: 16px;text-align: center;color: #555;background: #fff;border-bottom: 1px solid #e0e0e0;}
+.mask .box p{width: 100%;line-height: 40px;font-size: 16px;color: #555;background: #fff;text-align: center;}
+#actSure,#leaveSure,#send{color: #f46868;margin-bottom: 10px;}
+.mask3 .box div{padding: 5px 10px 0;height: 120px;background: #fff;}
+.mask3 .box div textarea{width: 100%;line-height: 30px;height: 120px;font-size: 14px;}
+.mask3 .box #tips{height: 30px;line-height: 30px;font-size: 14px;color: #f00;border-bottom: 1px solid #e0e0e0;}
+.mask3 .box #tips span{display: none;}
+.mask4{width: 100%;background: #fff;position: fixed;left: 0;top: 0;bottom: 0;z-index: 999;}
+.mask4 .content1{line-height: 20px;text-indent: 10px;overflow-x: hidden;overflow-y: scroll;position: absolute;left: 10px;top: 10px;right: 10px;bottom: 60px;text-align: justify;}
+.mask4 .close{position: absolute;left: 50%;bottom: 15px;width: 30px;margin-left: -15px;}
+
+@media (min-width: 375px){
+.actor div p{margin: 0 10px}
+}

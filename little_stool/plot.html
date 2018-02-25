@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>无间道</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/comment.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/comment.js"></script>
+</head>
+<body>
+	<div class="wrap plot">
+        <h1><span>无间道</span>.《剧情》</h1>
+        <p class="pub_time">
+            发布时间<span class="time">2015.08.26</span>
+            <span class="reply_all"></span>
+            <span class="praise_all">36</span>
+        </p>
+        <div class="content">
+            <span id="content">1991年，18岁的三合会会员刘建明（刘德华饰）听从大哥韩琛（曾志伟饰）的指示进入警校学习，成为警方卧底。而同时警校中的另一名学生陈永仁（梁朝伟饰），受警方安排表面上将其强迫退学，实际上则是让他进入三合会当卧底。刘建明从警校毕业后顺利的进入警</span>
+            <i id="slide">展开</i>
+        </div>
+        <div class="comment_wrap">
+            <h2>评论</h2>
+            <div class="item">
+                <h3><b>卡布奇诺</b><span class="praise_count">36</span></h3>
+                <p class="message">羡慕珍妮，不管他多么叛逆，落魄，堕落，永远有阿甘在等他回来</p>
+                <div class="comment_more">
+                    <span>1小时</span>前
+                    <div class="reply_pic"><img src="images/reply.png" alt="" /></div>
+                    <div class="comment_box">
+                        <p class="praise"><img src="images/hart.png" alt=""><i>赞</i></p>
+                        <p class="comment"><img src="images/comment1.png" alt=""><i>评论</i></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <h3><b>卡布奇诺</b><span class="praise_count">36</span></h3>
+                <p class="message">羡慕珍妮，不管他多么叛逆，落魄，堕落，永远有阿甘在等他回来</p>
+                <div class="comment_more">
+                    <span>1小时</span>前
+                    <div class="reply_pic"><img src="images/reply.png" alt="" /></div>
+                    <div class="comment_box">
+                        <p class="praise"><img src="images/hart.png" alt=""><i>赞</i></p>
+                        <p class="comment"><img src="images/comment1.png" alt=""><i>评论</i></p>
+                    </div>
+                </div>
+                <div class="reply">
+                    <img src="images/delta1.png" alt="" />
+                    <p><span>金兰</span>：<i>剧本蛮好的</i></p>
+                    <p>
+                        <span>卡布奇诺</span> 回复 <span>金兰</span>：<i>今天带着小孩子去西湖边逛了一圈!</i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom bottom1">
+    	<div class="bot_wrap">
+            <img src="images/hand1.png" alt="" class="hand" />
+            <input type="text" placeholder="说说你的看法" class="leave_message" id="leave_message1" />
+            <p class="send send1">发送</p>
+        </div>
+    </div>
+    <div class="bottom bottom2">
+            <input type="text" placeholder="评论：" class="leave_message" id="leave_message2" />
+            <p class="send send2">发送</p>
+    </div>
+    <div class="defeat">发布失败！</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	var pingkuan=$(window).width();
+	function buju(){
+		$('.bot_wrap').css({
+			width:pingkuan+68+'px'
+		});
+		$('#leave_message1').css({
+			width:pingkuan-68+'px'
+		});
+		$('#leave_message2').css({
+			width:pingkuan-90+'px'
+		});
+	}
+	buju();
+	var text=$('#content').text();
+	var leng=$('#content').text().length;
+	var i=0;
+	if(leng>100){
+		var frontWord=$('#content').text().substring(0,100);
+		$('#content').text(frontWord+'...');
+		$('#slide').bind('click',function(){
+			if(i%2==0){
+				$('#content').text(text);
+				$('#slide').text('收起');
+				i++;
+			}else{
+				$('#content').text(frontWord+'...');
+				$('#slide').text('展开');
+				i++;
+			}
+		});
+	}else{
+		$('#slide').hide();
+	}
+})
+</script>

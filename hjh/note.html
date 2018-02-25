@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>我的帖子</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/community.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript" src="js/note.js"></script>
+<script type="text/javascript">
+loadOver=false;
+$(function(){
+	loadContent();
+})
+</script>
+</head>
+<body>
+<div class="note sqt" id="wrapper">
+	<div id="scroll" style="transition-property: transform; transform-origin: 0px 0px 0px; transform: translate(0px, 0px) translateZ(0px);">
+        <ul id="list">
+            <li>
+                <img src="images/arrow2.png" alt="" class="arrow" />
+                <div class="title"><img src="images/yidong.png" alt="" /><span class="name">张三</span><span class="time">18:08</span><span class="date">2015-11-06</span></div>
+                <p class="content">最近楼下施工太吵了，能不能协商一下，让他们晚上不要施工，下午5点以后就不要再工作了</p>
+                <div class="process"><p>处理进展：<span>已处理</span></p><a href="noteDetail.html">查看详情</a></div>
+            </li>
+            <li>
+                <img src="images/arrow2.png" alt="" class="arrow" />
+                <div class="title"><img src="images/yidong.png" alt="" /><span class="name">张三</span><span class="time">18:08</span><span class="date">2015-11-06</span></div>
+                <p class="content">最近楼下施工太吵了，能不能协商一下，让他们晚上不要施工，下午5点以后就不要再工作了</p>
+                <div class="process"><p>处理进展：<span>已处理</span></p><a href="noteDetail.html">查看详情</a></div>
+            </li>
+        </ul>
+        <div id="pullUp">上拉加载更多...</div>
+        <div class="delete"><p id="delete">删除</p><p id="cancel">取消</p></div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	(function(){
+		var pk=$(window).width();
+		var pg=$(window).height();
+		$('.delete').css('height',pg);
+		$('#delete,#cancel').css('width',pk-20+'px');
+	})();
+	$('.arrow').on('click',function(){
+		$('#delete,#cancel').unbind('click')
+		var that=$(this).parent();
+		$('.delete').show();
+		$('#delete').bind('click',function(){
+			that.remove();
+			$('.delete').hide();
+		});
+		$('#cancel').bind('click',function(){
+			$('.delete').hide();
+		});
+	});
+	$('.delete').on('touchstart',function(event){
+		if($(event.target).closest('#delete,#cancel').length==0){
+			event.preventDefault();
+		}
+	});
+})
+</script>

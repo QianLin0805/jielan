@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>问卷详情</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<style type="text/css">
+.wrap{width: 100%;overflow: hidden;display: none;}
+.wrap h2{height: 45px;line-height: 45px;background: #2695d0;color: #fff;font-size: 16px;text-align: center;}
+.wrap .content{padding: 10px;margin: 0 10px;line-height: 20px;color: #555;border-bottom: 1px dotted #666;}
+.wrap .deadtime{line-height: 30px;color: #fc532a;background: #fff;font-size: 13px;margin: 10px;text-indent: 10px;}
+.wrap .ask{width: 100%;overflow: hidden;}
+.ask .item{padding: 0 10px;overflow: hidden;}
+.item h3{font-size: 15px;line-height: 20px;margin-bottom: 10px;}
+.item h3 .multiple{color: #0066ff;}
+.item ul{width: 100%;overflow: hidden;border: 1px solid #bbb;border-radius: 5px;margin-left: -1px;background: #fff;margin-bottom: 15px;}
+.item li{width: 100%;line-height: 40px;border-bottom: 1px solid #ececec;font-size: 15px;color: #333;}
+.item li .danxuan{width: 18px;height: 18px;background: url(images/box3.png) no-repeat center center;background-size: 18px auto;float: left;margin: 11px 5px 0 10px;}
+.item li .danxuan:checked{background-image: url(images/box4.png);}
+.item li .duoxuan{width: 18px;height: 18px;background: url(images/box1.png) no-repeat center center;background-size: 18px auto;float: left;margin: 11px 5px 0 10px;}
+.item li .duoxuan:checked{background-image: url(images/box2.png);}
+.item div{height: 120px;padding: 0 10px;border: 1px solid #bbb;border-radius: 5px;margin-left: -1px;background: #fff;}
+.item div textarea{font-size: 14px;width: 100%;height: 100%;}
+#sub{margin: 30px 10px 20px;height: 40px;line-height: 40px;background: #ef5252;color: #fff;border-radius: 5px;text-align: center;font-size: 15px;position: relative;}
+</style>
+</head>
+<body>
+<p class="tip">数据加载中...</p>
+<div class="wrap" ng-app="myApp" ng-controller="dataCtrl">
+	<h2>{{data.theme}}</h2>
+	<p class="content">{{data.content}}</p>
+	<p class="deadtime">截至时间：<span>{{data.endTime}}</span></p>
+	<div class="ask"></div>
+	<div id="sub" ng-click="sub()">提交</div>
+</div>
+<p class="tishi"></p>
+</body>
+</html>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+var code=getQueryString('code');
+var sCorpID=getQueryString('sCoreID');
+var userId=getQueryString('userId');
+var survey_id=getQueryString('survey_id');
+var type=getQueryString('type');
+var userName=getQueryString('userName');
+
+if(userId == null){
+	$.ajax({
+		type:"POST",
+		url:link+"getOAuth.do",
+		async:false,
+		data:{
+			"coreId":sCorpID,
+			"code":code
+		},
+		success:function(response){
+			userId=response.resultContent.UserId;
+			$.ajax({
+				type:"POST",
+				url:link+"findUser.do",
+				async:false,
+				data:{
+					"sCorpID": sCorpID,
+					"userId": userId
+				},
+				success:function(response){
+					userName=response.resultContent.name;
+				}
+			});
+		}
+	});
+}
+
+
+angular.module('myApp',[]).controller('dataCtrl',function($scope,$http){
+	$http({
+		url: link+"surveyDetails.do",
+		data: {
+			"userId":userId,
+			"sCorpID":sCorpID,
+			"isfrom":'isMeeting',
+			"survey_id":survey_id
+		},
+	    method: 'POST',
+	    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+	    transformRequest: function(obj) {
+	        var str = [];
+	        for(var p in obj)
+	        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	        return str.join("&");
+	    }
+	}).success(function(response){
+		if(response.resultCode!=200){
+			$('.tishi').text( response.resultMsg ).show();
+			tishi();
+			$('.tip').hide();
+			return;
+		}
+		$('.tip').hide();
+		$('.wrap').show();
+		$scope.data = response.resultContent;
+		var data = response.resultContent.issueList;
+
+		for(var i=0;i<data.length;i++){
+			var num=i+1;
+			var issue=data[i].issue;
+			var dataType=data[i].type;
+			var id1=data[i].id;
+			if(dataType==0){
+				$('.ask').append('<div class="item"><h3><b class="num">'+num+'</b>.'+issue+'<span>(单选)</span></h3><ul id="'+id1+'"></ul></div>');
+				for(var j=0;j<data[i].answerList.length;j++){
+					var id2=data[i].answerList[j].id;
+					var selection=data[i].answerList[j].answer;
+					$('#'+id1).append('<li id="'+id2+'"><input type="radio" class="danxuan" name="'+i+'" id="'+id2+'" /><span>'+selection+'</span></li>');
+				}
+			}else if(dataType==1){
+				$('.ask').append('<div class="item"><h3><b class="num">'+num+'</b>.'+issue+'[<span class="multiple">多选</span>]</h3><ul id="'+id1+'"></ul></div>');
+				for(var j=0;j<data[i].answerList.length;j++){
+					var id2=data[i].answerList[j].id;
+					var selection=data[i].answerList[j].answer;
+					$('#'+id1).append('<li id="'+id2+'"><input type="checkbox" class="duoxuan" name="'+i+'" id="'+id2+'" /><span>'+selection+'</span></li>');
+				}
+			}else if(dataType==2){
+				$('.ask').append('<div class="item"><h3><b class="num">'+num+'</b>.'+issue+'<span>(填空)</span></h3><div><textarea name="" id="'+id1+'" maxLength="100" class="answer'+num+'"></textarea></div></div>');
+			}
+		}
+	}).error(function(response,status){
+		$('.tip').text('请求异常');
+	});
+	$scope.sub = function(){
+		if($scope.data.timeOut==1){
+			$('.tishi').text('问卷已过期').show();
+			tishi();
+			return;
+		}
+		var answers;
+		if($('ul')){
+			for(var i=0;i<$('ul').length;i++){
+				var answer1=[];
+				var issueId=$('ul').eq(i).attr('id');
+				if($('ul').eq(i).children().children('input:checked').length<=0){
+					return;
+				}
+				for(var j=0;j<$('ul').eq(i).children().length;j++){
+					var selectItem=$('ul').eq(i).children().eq(j);
+					if(selectItem.children('input').is(':checked')){
+						answer1.push(selectItem.children(':checked').attr('id'));
+					}
+				}
+				if(answers){
+					answers+=',['+issueId+':'+answer1+']';
+				}else{
+					answers='['+issueId+':'+answer1+']';
+				}
+			}
+		}
+		for(var i=0;i<$('textarea').length;i++){
+			var issueId=$('textarea').eq(i).attr('id');
+			if($('textarea').eq(i).val()==''){
+				return;
+			}
+			if($('ul').length<=0){
+				if(answers){
+					answers+=',['+issueId+':'+$('textarea').val()+']';
+				}else{
+					answers='['+issueId+':'+$('textarea').val()+']';
+				}
+			}else{
+				answers+=',['+issueId+':'+$('textarea').val()+']';
+			}
+		}
+		$.ajax({
+			type:"POST",
+			url:link+"usedSurvey.do",
+			async:true,
+			data:{
+				"sCorpID":sCorpID,
+				"userId":userId,
+				"userName":userName,
+				"survey_id":survey_id,
+				"answers":answers
+			},
+			success:function(response){
+				if(response.resultCode==400){
+					$('.tishi').text( response.resultMsg ).show();
+					tishi();
+					return;
+				}else if(response.resultCode!=400&&response.resultCode!=200){
+					$('.tishi').text( response.resultMsg ).show();
+					tishi();
+					return;
+				}
+				if(type>0){
+					$('.tishi').text('问卷调查已结束').show();
+					tishi();
+					return;
+				}
+				$('.tishi').text('提交成功，谢谢您的参与！').show();
+				tishi();
+				setTimeout(function(){
+					window.history.back();
+				},1500);
+			},
+			error:function(){
+				$('.tishi').text('提交失败').show();
+				tishi();
+			}
+		});
+	}
+});
+</script>

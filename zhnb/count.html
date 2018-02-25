@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>记账</title>
+<link rel="stylesheet" href="css/css1.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<!--<script type="text/javascript" src="js/popselect.js"></script>-->
+<style type="text/css">
+body{background:#efefef;}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	function buju(){
+		var pingkuan=$(window).width();
+		var pinggao=$(window).height();
+		var bili=pingkuan/720;
+		$('dd').css({
+			width:pingkuan+50+'px'
+		});
+		$('dd p').css({
+			width:pingkuan
+		});
+		$('.count_add').css({
+			height:pinggao
+		});
+		$('form p').children('input').css({
+			width:(0.68)*pingkuan-55+'px'
+		});
+		$('.add_box div').css({
+			paddingRight:(0.08)*pingkuan
+		});
+		$('.settime').css({
+			height:pinggao
+		});
+	};
+	$(window).load(function(){
+		buju();
+		var curYear=parseInt($('#year').text());
+		var minYear=parseInt($('.set_box select:eq(0)').find('option:eq(0)').text());
+		var index=year-minYear;
+		var month=parseInt($('#month').text());
+		$('.set_box select:eq(0)').get(0).selectedIndex=index;//初始化年份
+		$('.set_box select:eq(1)').get(0).selectedIndex=month-1;//初始化月份
+	});
+	//弹出添加窗口
+	$('.add_icon').bind('click',function(){
+		$('.count_add').show();
+		$('.count_add').on('touchmove',function(){
+			event.preventDefault();
+		});
+	});
+	//关闭添加窗口
+	$('.add_box div').children().bind('click',function(e){
+		e.preventDefault();
+		$('.count_add').hide();
+	});
+	//保存重置表单
+	$('.add_box div').children().first().bind('click',function(){
+		$('form').children().first().get(0).checked=true;//收入支出
+		$('form p').children('input').val('');
+	});
+	//划动显示隐藏删除
+	var startX;
+	var startY;
+	$('dd').on('touchstart',function(){
+		startX=event.touches[0].pageX;
+		startY=event.touches[0].pageY;
+	});
+	$('dd').on('touchmove',function(){
+		var y=Math.abs(event.changedTouches[0].pageY-startY);
+		if(y<10){
+			event.preventDefault();
+		}
+	});
+	$('dd').on('touchend',function(){
+		var x=event.changedTouches[0].pageX-startX;
+		if(x<0){
+			$(this).animate({left:'-50px'},100);
+		}else if(x>0){
+			$(this).animate({left:0},100);
+		}
+	});
+	//删除
+	$('dd div').bind('click',function(){
+		var dlItem=$(this).parent().parent().children().length;
+		if(dlItem>2){
+			$(this).parent().remove();
+		}else{
+			$(this).parent().parent().remove();
+		}
+	});
+	
+	//选择年月
+	$('.count_top div').bind('click',function(){
+		$('.settime').show().on('touchmove',function(){
+			event.preventDefault();
+		});
+		$('.set_box').children('p').bind('click',function(){
+			var year=$('.set_box select:eq(0)').find('option:selected').text();
+			var month=$('.set_box select:eq(1)').find('option:selected').text();
+			$('#year').text(year);
+			$('#month').text(month);
+			$('.settime').hide();
+		});
+	});
+})
+</script>
+</head>
+<body>
+<div class="head count_head">
+    <a href="mynote.html"><img src="images/arrow.png" alt="" />
+    <h1>记账</h1></a>
+    <img src="images/my/add.png" alt="" class="add_icon" />
+</div>
+<div class="main count_main">
+	<div class="count_top">
+    	<div>
+        	<b id="year">2015</b>年<br /><span id="month">06</span>月
+            <img src="images/my/arrow.png" alt="" />
+        </div>
+        <p>收入（元）<br /><span>123</span></p>
+        <p>支出（元）<br /><span>123</span></p>
+    </div>
+    <div class="count_box">
+        <dl>
+            <dt>12日-周五</dt>
+            <dd><p><b>火车票</b><span>-13.50</span></p><div></div></dd>
+            <dd><p><b>餐饮</b><span>-25.50</span></p><div></div></dd>
+        </dl>
+        <dl>
+            <dt>11日-周四</dt>
+            <dd><p><b>火车票</b><span>-13.50</span></p><div></div></dd>
+        </dl>
+        <dl>
+            <dt>12日-周三</dt>
+            <dd><p><b>火车票</b><span>-13.50</span></p><div></div></dd>
+            <dd><p><b>餐饮</b><span>-25.50</span></p><div></div></dd>
+        </dl>
+        <dl>
+            <dt>11日-周二</dt>
+            <dd><p><b>火车票</b><span>-13.50</span></p><div></div></dd>
+        </dl>
+    </div>
+    <div class="settime">
+    	<div class="set_box">
+        	<h3>请选择您想查看的日期</h3>
+            <select name="" id="">
+            	<option index="2014">2014</option>
+            	<option index="2015">2015</option>
+            	<option index="2016">2016</option>
+            	<option index="2017">2017</option>
+            	<option index="2018">2018</option>
+            </select>
+            <select name="" id="">
+            	<option value="">01</option>
+            	<option value="">02</option>
+            	<option value="">03</option>
+            	<option value="">04</option>
+            	<option value="">05</option>
+            	<option value="">06</option>
+            	<option value="">07</option>
+            	<option value="">08</option>
+            	<option value="">09</option>
+            	<option value="">10</option>
+            	<option value="">11</option>
+            	<option value="">12</option>
+            </select>
+            <p>确定</p>
+        </div>
+    </div>
+    <div class="count_add">
+    	<div class="add_box">
+        	<h3>记一笔</h3>
+            <form action="">
+            	<input type="radio" name="count" id="earn" class="radio" checked value="支出">
+                <label for="earn">支出</label>
+                <input type="radio" name="count" id="expend" class="radio" value="收入">
+                <label for="expend">收入</label><br />
+            	<p><span>名 称</span><input type="text"></p>
+                <p>
+                	<span>价 格</span>
+                	<input type="number" style="position:relative;left:-3px;" onKeyUp="this.value=this.value.replace(/[^\.\d]/g,'');if(this.value.split('.').length>2){this.value=this.value.split('.')[0]+'.'+this.value.split('.')[1]}">
+                </p>
+                <p><span>时 间</span><input type="date" value="2016-07-10" class="time" readonly></p>
+            </form>
+            <div><button>保存</button><button style="color:#999;">取消</button></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

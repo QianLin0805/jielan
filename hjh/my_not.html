@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>我的</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/my.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+</head>
+<body>
+<div class="my_wrap">
+    <div class="top top_not">
+    	<p class="portrait"><img src="images/my/portrait.png" alt="" /></p>
+        <div>
+            <h3>您还没有登录</h3>
+            <a href="login.html">登录/注册</a>
+        </div>
+    </div>
+    <ul class="mylist">
+    	<li><a href="order.html"><img src="images/my/order.png" alt="" /><span>我的订单</span></a></li>
+    	<li><a href="myCard.html"><img src="images/my/bank.png" alt="" /><span>银行卡管理</span></a></li>
+    	<li><a href="note.html"><img src="images/my/note.png" alt="" /><span>我的帖子</span></a></li>
+    	<li style="text-indent:10px;" id="share"><img src="images/my/share.png" alt="" /><span>分享好友</span></li>
+    </ul>
+    <a href="about.html" class="about"><img src="images/my/about.png" alt="" /><span>关于</span></a>
+    <nav>
+    	<a href="index.html" class="index">首页</a>
+    	<a href="community.html" class="community">社区</a>
+    	<a href="family.html" class="family">家庭</a>
+    	<a href="my.html" class="my">我的</a>
+    </nav>
+    <div class="share">
+    	<img src="images/my/share_pic.png" alt="" />
+        <p>点击右上角，分享好友~</p>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('.my').addClass('current');   //导航
+})
+</script>

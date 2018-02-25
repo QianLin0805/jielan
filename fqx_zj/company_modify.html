@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>个人信息</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#ebebeb;}
+.company input{width:60%;height:50px;margin-left:20px;vertical-align:top;}
+#modify{width:90%;line-height:40px;font-size:16px;color:#fff;background:#06bf04;text-align:center;margin:30px 0 0 5%;display:inline-block;border-radius:5px;}
+</style>
+</head>
+<body>
+<div class="modify">
+	<ul style="padding-top:10px;">
+    	<li style="height:80px;line-height:80px;">
+        	<span>头像</span>
+            <div id="file"><img src="images/portrait.jpg" alt="" /><input type="file" disabled /></div>
+        </li>
+    	<li style="border:none;"><span>姓名</span><p>易发强</p></li>
+    </ul>
+	<ul>
+    	<li><span>手机号</span><p>15896325489</p></li>
+    	<li class="card">
+            <span>银行卡</span>
+            <p><span id="card">621226*********2913</span><i>请绑定银行卡</i></p>
+        </li>
+    	<li class="company">
+            <span>公司名称</span><input type="text" value="我爱我家" id="company" />
+        </li>
+    	<li style="border:none;">
+            <span>服务区域</span>
+            <p><i id="province">浙江省</i>/<i class="city">杭州市</i>/<i id="section">滨江区</i></p>
+        </li>
+    </ul>
+    <a id="modify">修改</a>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function(){
+	var company=true;
+	$('#company').on('keyup',function(){
+		var nameVal=$(this).val();
+		if(nameVal==''){
+			return company=false;
+		}
+	});
+	$('#modify').on('click',function(){
+		if(company){
+			window.location.href='inform.html';
+		}
+	});
+});
+$(window).load(function(){
+	$('#company').trigger('focus');
+	var card=$('#card').text();
+	if(card==''){
+		$('#card').hide();
+	}else{
+		$('#card').next().hide();
+	}
+});
+</script>

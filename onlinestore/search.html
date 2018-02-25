@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>在线商城</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/list.css" />
+<style type="text/css">
+body{background: #fff;}
+</style>
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="plug-in/waterfall.js"></script>
+</head>
+<body>
+<div class="wrap search">
+	<div class="top"><p><img src="images/search.png" alt="" /><input type="text" placeholder="请输入关键词搜索宝贝" /></p><span id="search">搜索</span></div>
+	<p class="no">没有找到你想要的商品</p>
+	<div class="wrapper">
+		<ul class="list" id="main">
+			<li class="item" id="first"><p class="active">综合排序</p><p>按销量</p><p>按人气</p><p>按价格</p></li>
+			<li class="item"><a href="goods.html">
+				<img src="images/index/goods1.jpg" alt="">
+				<h3>华为荣耀双卡双待手机...</h3>
+				<p><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></p>
+			</a></li>
+			<li class="item"><a href="goods.html">
+				<img src="images/index/goods1.jpg" alt="">
+				<h3>华为荣耀双卡双待手机...</h3>
+				<p><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></p>
+			</a></li>
+			<li class="item"><a href="goods.html">
+				<img src="images/index/goods1.jpg" alt="">
+				<h3>华为荣耀双卡双待手机...</h3>
+				<p><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></p>
+			</a></li>
+			<li class="item"><a href="goods.html">
+				<img src="images/index/goods1.jpg" alt="">
+				<h3>华为荣耀双卡双待手机...</h3>
+				<p><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></p>
+			</a></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	(function buju(){
+		var bili=pk/750;
+		if(pk>640){
+			$('.list li').css('width',316+'px');
+		}else{
+			$('.list li').css('width',0.5*pk-4+'px');
+			$('#toTop').css('width',0.4*pk+'px');
+		}
+	})();
+
+	var result=true;
+	$('#search').on('click',function(){
+		if($('input').val()=='') return;
+		if(!result){
+			$('.no').show();
+			$('.wrapper').hide();
+		}else{
+			$('.no').hide();
+			$('.wrapper').show();
+			createWaterFall();     //创建瀑布流
+		}
+	});
+});
+</script>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>加入盈澜</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/css.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+<div class="nav">
+	<div class="nav_box">
+        <img src="images/logo.png" alt="" />
+        <p><a href="index.html">首页</a>|<a href="about.html">关于盈澜</a>|<a href="news.html">盈澜新闻</a>|<a href="product.html">产品信息</a>|<a href="join.html" class="current">加入盈澜</a>|<a href="contact.html">联系我们</a></p>
+    </div>
+</div>
+<div class="join about main">
+	<ul class="icon">
+    	<li>
+        	<img src="images/join_product.png" alt="" id="product" />
+        	<p>Product</p>
+        </li>
+    	<li>
+        	<img src="images/recruit.png" alt="" id="recruit" />
+        	<p>Recruitment</p>
+        </li>
+    </ul>
+    <div class="content">
+    	<div class="unit unit1">
+            <h1>PRODUCT</h1>
+            <h4><span>盈澜合伙人制度</span></h4>
+            <p>盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度<br />盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度盈澜合伙人制度</p>
+        </div>
+        <div class="unit unit2">
+            <h1>加入盈澜合伙人</h1>
+            <form action="">
+            	<input type="" placeholder="公司名称：" /><input type="" placeholder="姓名：" /><input type="" placeholder="联系方式：" /><input type="" placeholder="邮箱：" />
+                <div>
+                	<textarea name=""></textarea>
+                    <p>加入理由</p>
+                </div>
+                <button type="submit">提交申请</button>
+            </form>
+        </div>
+    </div>
+</div>
+<p class="post"><img src="images/pic.jpg" alt="" /></p>
+<div class="foot">
+    <img src="images/logo.png" alt="" /><br />
+    <span>Copyright @ 2006 - 2014 All Right Reserved</span><br />
+    <span>版权所有@浙江盈澜信息科技有限公司（增值电信业务许可证编号 浙B2-2009.157）</span>
+    <div></div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('#product').on('click',function(){
+		var productTop=$('.unit1').offset().top;
+		$('html,body').animate({'scrollTop':productTop},'fast');
+	});
+	$('#recruit').on('click',function(){
+		var recruitTop=$('.unit2').offset().top;
+		$('html,body').animate({'scrollTop':recruitTop},'fast');
+	});
+	$('textarea').on('focus',function(){
+		$(this).next().hide();
+	});
+	$('textarea').on('blur',function(){
+		if($(this).val()==''){
+			$(this).next().show();
+		}
+	});
+})
+</script>

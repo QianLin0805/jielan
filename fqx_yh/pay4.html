@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>信用卡全额付</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+	body{background:#e1e1e1;}
+</style>
+</head>
+<body>
+    <div class="pay pay4">
+    	<div class="top">
+        	<h3>信用卡全额付款只需四步</h3>
+            <div class="pay_step">
+            	<p></p>
+                <div style="left:-20px;">
+                    <span class="after"></span><br />
+                    <i>1.收款人</i>
+            	</div>
+                <div style="left:33.3%;margin-left:-32px;">
+                    <span class="after"></span><br />
+                    <i>2.付款人</i>
+                </div>
+                <div style="left:66.6%;margin-left:-32px;">
+                	<span class="after"></span><br />
+                    <i>3.确认</i>
+                </div>
+                <div style="right:-20px;">
+                	<span class="write"></span><br />
+                    <i>4.验证</i>
+                </div>
+            </div>
+        </div>
+    	<h2>已发送短信效验码到手机<span>188****5404</span></h2>
+        <div class="code">
+        	<input type="tel" id="test" placeholder="短信验证码" />
+            <i id="getCode">获取验证码</i>
+        </div>
+    	<a href="pay_success.html" id="step3">验证提交</a>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function(){
+	//60s发送验证码
+	$('#getCode').bind('click',function(){
+		$(this).unbind('click');
+		sendcode();
+	});
+	function sendcode(){
+		$('#getCode').css({
+			color:'#ccc',
+			borderColor:'#ccc'
+		}).html('<span id="time" style="font-size:15px;">60</span><b style="font-size:16px;">s</b>后再次获取');
+		var timer=setInterval(function(){
+			var i=60;
+			if(i>0){
+				var time=parseInt($('#time').text());
+				$('#time').text(time-1);
+				i--;
+			}
+		},1000);
+		setTimeout(function(){
+			$('#getCode').bind('click',function(){sendcode()}).css({
+				color:'#111',
+				borderColor:'#111'
+			}).html('获取验证码');
+			clearInterval(timer);
+		},60000);
+	}
+	//限制验证码只能输入数字
+	$('#test').on('keyup',function(){
+		var testVal=$(this).val();
+		var ptnTest=/^\d+$/g;
+		if(!ptnTest.test(testVal)){
+			$(this).val(testVal.replace(/\D/g,''));
+		}
+		if(testVal.length>8){
+			$(this).val($(this).val().substr(0,8));
+		}
+		if(testVal==''){
+			$('#step3').css({
+				background:'#fff',
+				color:'#ccc'
+			}).attr('disabled',true);
+		}else{
+			$('#step3').css({
+				background:'#06bf04',
+				color:'#fff'
+			}).attr('disabled',false);
+		}
+	});
+	$('#step3').on('click',function(){
+		window.location.href='mycard.html';
+	});
+})
+</script>

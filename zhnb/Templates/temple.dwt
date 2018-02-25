@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link rel="stylesheet" href="../css/css.css" type="text/css" />
+<script type="text/javascript" src="../js/jquery.js"></script>
+<!-- TemplateBeginEditable name="doctitle" -->
+<title></title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+</head>
+<body>
+<!-- TemplateBeginEditable name="edit" -->
+<div class="head">
+
+</div>
+<div class="main">
+
+</div>
+<!-- TemplateEndEditable -->
+<ul class="nav">
+    <li>
+        <a href="index.html" class="index">首页</a>
+    </li>
+    <li>
+        <a href="city.html" class="city">城市</a>
+    </li>
+    <li>
+        <a href="topic.html" class="topic">主题</a>
+    </li>
+    <li>
+        <a href="my.html" class="my">我的</a>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>登录</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/login.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="js/limit.js"></script>
+</head>
+<body>
+<div class="wrap">
+	<ul class="login">
+		<li><div><span>手机</span><input type="tel" id="tel" placeholder="例: 18857445424" maxlength="11" /></div></li>
+		<li><div><span>密码</span><input type="password" id="psd" placeholder="设置登录密码" maxlength="18" /></div></li>
+	</ul>
+	<span id="login" class="btn"><p class="tips"></p>登录</span>
+	<p class="link"><a href="regist.html">没有账号去注册</a></p>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('#login').on('click',function(){
+		if($('#tel').val()==''){
+			$('.tips').text('请输入手机号').show();
+			tips();
+			return;
+		}
+		if($('#tel').val().length<11){
+			$('.tips').text('手机格式不正确').show();
+			tips();
+			return;
+		}
+		if($('#psd').val()==''){
+			$('.tips').text('请输入密码').show();
+			tips();
+			return;
+		}
+		if($('#psd').val().length<6){
+			$('.tips').text('请输入6-18位密码').show();
+			tips();
+			return;
+		}
+		window.location.href='';
+	});
+})
+</script>

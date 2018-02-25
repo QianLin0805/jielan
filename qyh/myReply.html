@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>我的回复</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<style type="text/css">
+	ul{padding-bottom: 40px;}
+	.questions,.reply{ width: 90%; margin: 0 auto;}
+	.questions h4,.reply h4{ color: #333; font-size: 12px; line-height: 3em; text-align: center;}
+	.questions .content{ width: 100%; color: #fff; background-color: #21becc; border-radius: 4px;}
+	.content h3{ font-size: 15px; text-align: center; line-height: 2em;}
+	.questions .content p{ padding: 0 10px 10px; }
+	.reply .content{ border: 1px solid #21becc; color: #3e3f3f; border-radius: 4px;}
+	.reply .content p{ padding: 10px;}
+</style>
+</head>
+<body>
+	<p class="tip">数据加载中...</p>
+	<ul ng-app="myApp" ng-controller="myReply" infinite-scroll="loadMore()" infinite-scroll-distance="1">
+		<li ng-repeat="x in data | orderBy:'-creTime'">
+			<div class="questions">
+				<h4>我{{ x.creTime }}</h4>
+				<div class="content">
+					<h3>{{ x.title }}</h3>
+					<p>{{ x.msg }}</p>
+				</div>
+			</div>
+			<div class="reply" ng-if="x.state=='1'">
+				<h4>管理员{{ x.replyTime }}</h4>
+				<div class="content">
+					<p>{{ x.replyMsg }}</p>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<p class="tips">已全部加载</p>
+	<p class="tishi"></p>
+</body>
+</html>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/ngscroll.js"></script>
+<script type="text/javascript">
+var code=getQueryString('code');
+var sCorpID=getQueryString('sCoreID');
+var pageNum=1;
+var userId,userName;
+if(window.name){
+	var info = (new Function("return "+ window.name))();
+	userId = info.user;
+}else{
+	$.ajax({
+		type:"POST",
+		url:link+"getOAuth.do",
+		async:false,
+		data:{
+			"coreId":sCorpID,
+			"code":code
+		},
+		success:function(response){
+			userId=response.resultContent.UserId;
+		}
+	});
+}
+angular.module('myApp',['infinite-scroll']).controller('myReply',function($scope,$http){
+	$scope.data = [];
+	$scope.userId = userId;
+	$scope.sCorpID = sCorpID;
+	$scope.pageEnd = false;
+	$scope.busy = false;
+	$http({
+		url: link+"myFeedBack.do",
+		data: {
+			"sCorpID":sCorpID,
+			"userId":userId,
+			"pageNum":pageNum,
+			"numPerPage":8
+		},
+	    method: 'POST',
+	    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+	    transformRequest: function(obj) {
+	        var str = [];
+	        for(var p in obj)
+	        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	        return str.join("&");
+	    }
+	}).success(function(response){
+		pageNum++;
+		if(response.resultCode!=200){
+			$('.tishi').text('加载失败').show();
+			tishi();
+			$('.tip').hide();
+			return;
+		}
+		$('.tip').hide();
+		$('ul').show();
+		var count=response.resultContent.length;
+		if(count<8){
+			$('.tips').show();
+			$scope.pageEnd = true;
+		}
+		for(var i=0;i<count;i++){
+			$scope.data.push(response.resultContent[i]);
+		}
+		$scope.loadMore = function() {
+			if ($scope.pageEnd){
+				return;
+			}
+			if($scope.busy) return;
+			$scope.busy = true;
+			$http({
+				url: link+"voteList.do",
+				data: {
+					"sCorpID":sCorpID,
+					"userId":userId,
+					"pageNum":pageNum,
+					"numPerPage":8
+				},
+			    method: 'POST',
+			    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			    transformRequest: function(obj) {
+			        var str = [];
+			        for(var p in obj)
+			        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+			        return str.join("&");
+			    }
+			}).success(function(response){
+				pageNum++;
+				$scope.busy = false;
+				if(response.resultCode!=200){
+					$('.tishi').text('加载失败').show();
+					tishi();
+					return;
+				}
+				var count=response.resultContent.length;
+				if(count<8){
+					$('.tips').show();
+					$scope.pageEnd = true;
+				}
+				for(var i=0;i<count;i++){
+					$scope.data.push(response.resultContent[i]);
+				}
+				pageNum++;
+			});
+		}
+	}).error(function(response,status){
+		$('.tip').text('请求异常');
+	});
+});
+window.onunload = function(){  
+	var user = userId;
+	window.name  = '{user:"'+user+'"}';
+} 
+</script>

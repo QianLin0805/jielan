@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>快递查询</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/index.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">body{background:#fff;}</style>
+</head>
+<body>
+<div class="lottery_wrap deliver_wrap">
+    <div class="check">
+        <select name="" id="">
+        	<option value="">EMS快递</option>
+        	<option value="">圆通快递</option>
+        	<option value="">顺丰快递</option>
+        	<option value="">申通快递</option>
+        	<option value="">中通快递</option>
+        	<option value="">韵达快递</option>
+        	<option value="">天天快递</option>
+        	<option value="">汇通快递</option>
+        	<option value="">宅急送快递</option>
+        	<option value="">全峰快递</option>
+        	<option value="">德邦快递</option>
+        	<option value="">中国邮政</option>
+        	<option value="">AAE快递</option>
+        	<option value="">安信达快递</option>
+        	<option value="">安捷快递</option>
+        	<option value="">Aramex</option>
+        </select>
+        <input type="tel" />
+    </div>
+    <p id="check">查询</p>
+    <ul class="result">
+    	<li class="title"><p class="times">时间</p><p class="follow">地点和跟踪进度</p></li>
+    	<li><p class="times"><span class="date">2015-11-16</span><br><span class="time">22:26:34</span></p><p class="follow">快件离开 杭州中转部 已发往 滨江</p></li>
+    	<li><p class="times"><span class="date">2015-11-16</span><br><span class="time">21:31:43</span></p><p class="follow">快件已经到达 杭州中转部 上一站是 海宁许村</p></li>
+    	<li><p class="times"><span class="date">2015-11-16</span><br><span class="time">16:17:13</span></p><p class="follow">快件离开 海宁许村 已发往 杭州中转部</p></li>
+    	<li><p class="times"><span class="date">2015-11-15</span><br><span class="time">19:30:42</span></p><p class="follow">海宁许村 的 八目网络 已收件</p></li>
+    </ul>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('#check').on('click',function(){
+		if($('input').val()!=''){
+			$('.result').show();
+		}
+	});
+})
+</script>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>无间道</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/comment.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/comment.js"></script>
+</head>
+<body>
+	<div class="wrap sound">
+        <h1><span>无间道</span>.《台词》</h1>
+        <p class="pub_time">
+            发布时间<b>2015-08-26</b>
+            <span class="reply_all" id="reply_all"></span>
+            <span class="praise_all" id="praise_all">36</span>
+        </p>
+        <ul class="music">
+        	<li>
+            	<div class="control pause"></div>
+                <audio class="music" src="music/mymusic1.mp3"></audio>
+                <div class="musicName">
+                	<h3>我最新的是你《电影原声》</h3>
+                	<p>360</p>
+                </div>
+                <p class="process"></p>
+            </li>
+        	<li>
+            	<div class="control pause"></div>
+                <audio class="music" src="music/mymusic2.mp3"></audio>
+                <div class="musicName">
+                	<h3>再见...警察...再见《电影原声》</h3>
+                	<p>30</p>
+                </div>
+                <p class="process"></p>
+            </li>
+        	<li>
+            	<div class="control pause"></div>
+                <audio class="music" src="music/mymusic3.mp3"></audio>
+                <div class="musicName">
+                	<h3>我在梦中见过你《电影原声》</h3>
+                	<p>1000</p>
+                </div>
+                <p class="process"></p>
+            </li>
+        </ul>
+        <div class="comment_wrap">
+            <h2>评论</h2>
+            <div class="item">
+                <h3><b>卡布奇诺</b><span class="praise_count">36</span></h3>
+                <p class="message">羡慕珍妮，不管他多么叛逆，落魄，堕落，永远有阿甘在等他回来</p>
+                <div class="comment_more">
+                    <span>1小时</span>前
+                    <div class="reply_pic"><img src="images/reply.png" alt="" /></div>
+                    <div class="comment_box">
+                        <p class="praise"><img src="images/hart.png" alt=""><i>赞</i></p>
+                        <p class="comment"><img src="images/comment1.png" alt=""><i>评论</i></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <h3><b>卡布奇诺</b><span class="praise_count">36</span></h3>
+                <p class="message">羡慕珍妮，不管他多么叛逆，落魄，堕落，永远有阿甘在等他回来</p>
+                <div class="comment_more">
+                    <span>1小时</span>前
+                    <div class="reply_pic"><img src="images/reply.png" alt="" /></div>
+                    <div class="comment_box">
+                        <p class="praise"><img src="images/hart.png" alt=""><i>赞</i></p>
+                        <p class="comment"><img src="images/comment1.png" alt=""><i>评论</i></p>
+                    </div>
+                </div>
+                <div class="reply">
+                    <img src="images/delta1.png" alt="" />
+                    <p><span>金兰</span>：<i>剧本蛮好的</i></p>
+                    <p>
+                        <span>卡布奇诺</span> 回复 <span>金兰</span>：<i>今天带着小孩子去西湖边逛了一圈!</i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom bottom1">
+    	<div class="bot_wrap">
+            <img src="images/hand1.png" alt="" class="hand" />
+            <input type="text" placeholder="说说你的看法" class="leave_message" id="leave_message1" />
+            <p class="send send1">发送</p>
+        </div>
+    </div>
+    <div class="bottom bottom2">
+            <input type="text" placeholder="评论：" class="leave_message" id="leave_message2" />
+            <p class="send send2">发送</p>
+    </div>
+    <div class="defeat">发布失败！</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	var pingkuan=$(window).width();
+	function buju(){
+		$('.bot_wrap').css({
+			width:pingkuan+68+'px'
+		});
+		$('#leave_message1').css({
+			width:pingkuan-68+'px'
+		});
+		$('#leave_message2').css({
+			width:pingkuan-90+'px'
+		});
+	}
+	buju();
+	
+	var deg,that;
+	var degree=0;
+	function play(audioIndex){
+		var music=document.getElementsByTagName("audio");
+		var musicPic=$('.control').eq(audioIndex);
+		var musicName=$('.musicName').eq(audioIndex).children('h3');
+		var line=$('.process').eq(audioIndex);
+		var process;
+		var timer=music.duration;                    //音频播放时
+		line.parent().siblings().children('.process').css('width',0);
+		for(var i=0;i<music.length;i++){
+			var control=document.getElementsByClassName('control').item(i)
+			if(i==audioIndex){
+				continue;
+			}else{
+				control.style.transform='rotate('+0+')';
+				clearInterval(deg);
+				music[i].load();                    //重载音频
+			}
+		}
+		musicPic.parent().siblings().children('.control').removeClass('play').addClass('pause');
+		musicName.parent().parent().siblings().children('.musicName').children('h3').removeClass('play');
+		if(musicPic.is('.pause')){
+			music[audioIndex].play();
+			musicPic.removeClass('pause').addClass('play');
+			musicName.addClass('play');
+			deg=setInterval(function(){
+				degree=degree+3;
+				that.style.transform='rotate('+degree+'deg)';
+			},50);
+		}else if(musicPic.is('.play')){
+			music[audioIndex].pause();
+			musicPic.removeClass('play').addClass('pause');
+			clearInterval(deg);
+		}
+		process=setInterval(function(){
+			line.css({width:(music[audioIndex].currentTime/music[audioIndex].duration)*100+'%'});
+		},300);
+		music[audioIndex].addEventListener('ended',function(){
+			setTimeout(function(){
+				clearInterval(process);
+				musicPic.removeClass('play').addClass('pause');
+				musicName.removeClass('play');
+				line.css('width',0);
+				clearInterval(deg);
+				that.style.transform='rotate('+0+')';
+			},100);
+		});
+	}
+	$('.music li').on('click',function(){
+		that=this.children[0];
+		var aIndex=$(this).index();
+		play(aIndex);
+	});
+})
+</script>

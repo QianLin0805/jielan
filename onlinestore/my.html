@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>在线商城</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/my.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="js/nav.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+</head>
+<body>
+<div class="my">
+	<div class="top">
+		<div><img src="images/my/portrait.png" alt="" /><input type="file" id="files" /></div>
+		<p id="user">18857445404</p>
+	</div>
+	<div class="my_order">
+		<h2><a href="order.html"><img src="images/my/order.png" alt="" />我的订单<span>全部订单</span></a></h2>
+		<ul>
+			<li><a href="order1.html" class="order_num1">待付款</a></li>
+			<li><a href="order2.html" class="order_num2">待发货</a></li>
+			<li><a href="order3.html" class="order_num3">待收货</a></li>
+			<li><a href="order4.html" class="order_num4">待评价</a></li>
+		</ul>
+	</div>
+	<ul class="my_list">
+		<li><a href="favorite.html"><img src="images/my/icon1.png" alt="" />收藏夹</a></li>
+		<li><a href="record.html"><img src="images/my/icon2.png" alt="" />浏览记录<p></p></a></li>
+		<li style="margin-top:10px;"><a href="myCard.html" style="border:none;"><img src="images/my/icon3.png" alt="" />我的卡片<span>银行卡管理</span></a></li>
+		<li><a href="address.html"><img src="images/my/icon4.png" alt="" />收货地址<span>收货地址管理</span></a></li>
+		<li><a class="psdModify"><img src="images/my/icon5.png" alt="" />密码设置<span>登录密码管理</span></a></li>
+		<li><a href="service.html"><img src="images/my/icon6.png" alt="" />售后服务</a></li>
+	</ul>
+</div>
+<div class="tips"><img src="images/success.png" alt="" /><p>注册成功</p></div>
+<ul class="nav">
+	<li id="index"><a href="index.html"><p></p><span>首页</span></a></li>
+	<li id="sale"><a href="sale.html"><p></p><span>活动</span></a></li>
+	<li id="stock"><a href="stock.html"><p></p><span>进货单</span></a></li>
+	<li id="my"><a href="my.html" class="current"><p></p><span>我的</span></a></li>
+</ul>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	var user=$('#user').text();
+	$('.psdModify').attr('href','psdModify.html?user='+user);
+
+	//更换头像
+	$("#files").change(function(){
+		var value = getObjectURL(this.files[0]);
+		$(this).prev().attr('src',value);
+	});
+});
+</script>

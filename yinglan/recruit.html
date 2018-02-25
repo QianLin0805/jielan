@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>加入盈澜</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/product.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+</head>
+<body>
+<div class="nav">
+	<div class="nav_box">
+        <img src="images/logo.png" alt="" />
+        <p><a href="index.html">首页</a>|<a href="about.html">关于盈澜</a>|<a href="news.html">盈澜新闻</a>|<a href="product.html">产品信息</a>|<a href="join.html" class="current">加入盈澜</a>|<a href="contact.html">联系我们</a></p>
+    </div>
+</div>
+<div class="ban_wrap">
+    <div class="banner">
+        <ul class="ban_slide">
+            <li><img src="images/banner1.jpg" alt="" /></li>
+            <li><img src="images/banner2.jpg" alt="" /></li>
+            <li><img src="images/banner1.jpg" alt="" /></li>
+            <li><img src="images/banner2.jpg" alt="" /></li>
+        </ul>
+        <div class="ban_dot"></div>
+    </div>
+</div>
+<div class="recruit friend main">
+	<div class="title">
+    	<img src="images/recruit.png" alt="" id="recruit" />
+        <h2>RECRULTMENT</h2>
+        <span>合作伙伴</span>
+    </div>
+    <div class="recruit_list"><a href="">人事专员</a><a href="">行政专员</a><a href="">人事专员</a><a href="">行政专员</a><a href="">文案策划</a><a href="">平面设计</a><a href="">文案策划</a><a href="">平面设计</a><a href="">技术专员</a><a href="">客服代表</a><a href="">技术专员</a><a href="">客服代表</a></div>
+</div>
+<p class="post"><img src="images/pic.jpg" alt="" /></p>
+<div class="foot">
+    <img src="images/logo.png" alt="" /><br />
+    <span>Copyright @ 2006 - 2014 All Right Reserved</span><br />
+    <span>版权所有@浙江盈澜信息科技有限公司（增值电信业务许可证编号 浙B2-2009.157）</span>
+    <div></div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('#recruit').on('click',function(){
+		var recruitTop=$('.recruit_list').offset().top;
+		$('html,body').animate({'scrollTop':recruitTop},'fast');
+	});
+})
+</script>

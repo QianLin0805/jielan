@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>物业缴费</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/family.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/family.js"></script>
+</head>
+<body>
+<div class="wy_pay">
+    <h2>您所查询的住户共计需要交纳: <br /><span id="year">2014</span><b id="money">0.01</b>RMB</h2>
+    <p class="inform">请核对信息进行缴费：<br />小区：<span>下吕浦小区</span><br />楼栋：<span>4栋</span><br />房号：<span>404</span><br />缴费类型：<span>物业费</span><br />以上信息如有疑问请联系：<i>110</i></p>
+    <div class="pay_box">
+    	<h3>请选择缴费类型</h3>
+        <ul>
+        	<li class="paytype"><img src="images/pay_unionpay.png" alt="" style="height:25px;margin-right:17px;" />银联支付<input type="radio" name="paytype" /></li>
+        	<li class="paytype"><img src="images/pay_weixin.png" alt="" />微信支付<input type="radio" name="paytype" /></li>
+        	<li class="paytype"><img src="images/pay_zhifubao.png" alt="" />支付宝支付<input type="radio" name="paytype" /></li>
+        </ul>
+    </div>
+    <span class="sure">确定</span>
+    <div class="tip">敬请期待...</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('.paytype').on('click',function(){
+		$('.sure').unbind('click');
+		$(this).children('input').get(0).checked=true;
+		$('.sure').css('background','#fa5050');
+		if($('input').get(0).checked){
+			$('.sure').bind('click',function(){
+				window.location.href='myCard.html';
+			});
+		}else{
+			$('.sure').bind('click',function(){
+				$('.tip').fadeIn(200);
+				setTimeout(function(){
+					$('.tip').fadeOut(200);
+				},1000);
+			});
+		}
+	});
+})
+</script>

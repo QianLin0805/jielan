@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>我的小区</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/index.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#fff;}
+</style>
+</head>
+<body>
+<div class="changeVillage">
+	<p class="search"><input type="text" placeholder="请输入小区名查找" /><img src="images/seach.png" alt="" id="search" /></p>
+	<ul>
+    	<li>
+        	<h4>黄龙康城小区</h4>
+            <p id="address">浙江省温州市鹿城区双屿街道瓯浦垟村</p>
+            <span id="distance">248081m</span><span id="direction">东南方向</span>
+        </li>
+    	<li>
+        	<h4>上陡门小区</h4>
+            <p id="address">浙江省温州市鹿城区双屿街道瓯浦垟村</p>
+            <span id="distance">248081m</span><span id="direction">东南方向</span>
+        </li>
+    	<li>
+        	<h4>新田园小区</h4>
+            <p id="address">浙江省温州市鹿城区双屿街道瓯浦垟村</p>
+            <span id="distance">248081m</span><span id="direction">东南方向</span>
+        </li>
+    	<li>
+        	<h4>下吕浦小区</h4>
+            <p id="address">浙江省温州市鹿城区双屿街道瓯浦垟村</p>
+            <span id="distance">248081m</span><span id="direction">东南方向</span>
+        </li>
+    	<li>
+        	<h4>大自然小区</h4>
+            <p id="address">浙江省温州市鹿城区双屿街道瓯浦垟村</p>
+            <span id="distance">248081m</span><span id="direction">东南方向</span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('li').on('click',function(){
+		var chooseVillage=$(this).children('h4').text();
+		window.location.href='village.html';
+	});
+})
+</script>

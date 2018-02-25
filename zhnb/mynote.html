@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>我的记事</title>
+<link rel="stylesheet" href="css/css1.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#efefef;}
+.main{padding:48px 0 50px;}
+.main ul{margin:20px 0 0 15px;}
+.main li{margin:0 15px 20px 0;background:#fff;float:left;border:2px solid #fff;}
+.main li a{width:100%;height:100%;display:block;position:relative;}
+.main li a div{font-size:18px;width:100%;text-align:center;color:#353535;position:absolute;left:0;top:50%;margin-top:-43px;}
+.main li a img{width:auto;height:55px;margin-bottom:8px;}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	var pingkuan=$(window).width();
+	var pinggao=$(window).height();
+	function buju(){
+		$('.main ul').css({
+			width:pingkuan-15,
+			height:pinggao-119
+		});
+		$('.main ul').children().css({
+			width:(pingkuan-45)/2-4,
+			height:(pinggao-109)/2-4
+		});
+	}
+	$(window).load(function(){
+		buju();
+	});
+})
+</script>
+</head>
+<body>
+    <div class="head">
+        <a href="my.html"><img src="images/arrow.png" alt="" />
+    	<h1>我的记事</h1></a>
+    </div>
+    <div class="main">
+        <ul>
+            <li style="background:#fff8eb;">
+                <a href="note.html"><div><img src="images/my/note.png" alt="" /><br />记事本</div></a>
+            </li>
+            <li style="background:#ffebea;">
+                <a href="count.html">
+                <div><img src="images/my/account.png" alt="" /><br />记账</div>
+                </a>
+            </li>
+            <li style="background:#efe5fe;">
+                <a href="shoplist.html"><div><img src="images/my/shoplist.png" alt="" /><br />购物清单</div></a>
+            </li>
+            <li style="background:#e6f7ff;">
+                <a href="medicine.html"><div><img src="images/my/medicine.png" alt="" /><br />用药提醒</div></a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

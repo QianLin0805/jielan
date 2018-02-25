@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0;padding:0;font:14px "Microsoft YaHei",Arial;background: #f0f0f0;color:#000;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+header,div,h1,h2,h3,h4,ul,ol,li,p,form,input,button,select,textarea,label,img,span,a,b,i{margin:0;padding:0;}
+h1,h2,h3,h4{font-weight:normal;}
+ul,ol,li{list-style:none;}
+img{border:none;background:none;vertical-align:top;}
+input,button,select,label,textarea{border:none;background:none;border-radius:0;font:16px "Microsoft YaHei",Arial;-moz-appearance:none;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+textarea{resize:none;}
+input:-webkit-autofill{ -webkit-box-shadow: 0 0 0 1000px white inset;}
+textarea:-webkit-autofill{ -webkit-box-shadow: 0 0 0 1000px white inset;}
+p{word-wrap:break-word;}
+a{text-decoration:none;color:#000;}
+strong,b,i{font-weight:normal;font-style:normal;}
+.tip{width: 100%;line-height: 50px;color: #999;text-align: center;}
+.tips{width: 100%;line-height: 40px;position: fixed;left: 0;bottom: 0;right: 0;color: #aaa;text-align: center;display: none;}
+.tishi{position: fixed;left: 10%;right: 10%;top: 35%;line-height: 40px;border-radius: 5px;background: rgba(0,0,0,0.5);font-size: 15px;color: #fff;text-align: center;z-index: 999;display: none;}
+
+@media (min-width: 640px){ body { width: 640px; margin-left: auto; margin-right: auto; }}

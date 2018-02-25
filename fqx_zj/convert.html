@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>积分兑换</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/animate.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/convert.js"></script>
+<style type="text/css">
+body{background:#ebebeb;}
+.title{width:100%;height:90px;background:#fff;}
+.title p{font-size:16px;line-height:21px;text-align:center;float:left;margin:24px 0 0 20px;}
+.title p span{color:#f00;}
+.title a{height:42px;padding:0 20px;line-height:42px;background:#ae5da1;color:#fff;border-radius:5px;float:right;margin:24px 15px 0 0;}
+h2{font-size:16px;line-height:40px;color:#454448;text-indent:4%;}
+ul{width:92%;padding:0 4%;overflow:hidden;background:#fff;margin-bottom:20px;}
+li{width:100%;border-bottom:1px solid #dcdcdc;line-height:41px;font-size:16px;color:#454448;}
+li b{width:45%;text-align:center;display:inline-block;}
+li i{float:right;color:#e60012;margin-right:2%;}
+li.con_after i{color:#02df40;}
+.wrap{width:100%;position:absolute;left:0;top:0;z-index:11;display:none;}
+.wrap .wrap_bg{width:100%;height:100%;background:rgba(0,0,0,0.4)!important;background:#000;filter:Alpha(opacity=40);}
+.box{width:90%;height:230px;border-radius:6px;background:#fff;position:absolute;left:5%;top:50%;text-align:center;margin-top:-145px;z-index:11;display:none;}
+.box.animate1{animation:myanimate1 0.3s linear 1;-webkit-animation:myanimate1 0.3s linear 1;-moz-animation:myanimate1 0.3s linear 1;}
+.box.animate2{animation:myanimate2 0.2s linear 1;-webkit-animation:myanimate2 0.2s linear 1;-moz-animation:myanimate2 0.2s linear 1;}
+.box div{width:120px;height:120px;border-radius:50%;background:#fff;position:absolute;left:50%;top:-60px;margin-left:-60px;text-align:center;}
+.box div img{width:95px;margin-top:1px;}
+.box input{width:100%;height:50px;line-height:20px;background:#eee;text-align:center;margin-top:70px;font-size:18px;}
+.box p{width:100%;height:59px;line-height:59px;border-top:1px solid #d2d2d2;position:absolute;bottom:0;font-weight:bold;color:#0b9fbf;font-size:18px;}
+.box span{font-size:12px;color:#f00;line-height:30px;display:none;}
+.hongbao{width:100%;position:absolute;left:0;top:0;display:none;}
+.hongbao.animate3{animation:myanimate3 0.1s linear 1;-webkit-animation:myanimate3 0.1s linear 1;-moz-animation:myanimate3 0.1s linear 1;}
+.hongbao .hbbg{width:100%;height:100%;background:rgba(0,0,0,0.75)!important;background:#000;filter:Alpha(opacity=75);}
+.hongbao img{width:100%;position:absolute;left:0;top:48%;}
+.hongbao a{width:230px;height:50px;line-height:47px;background:url(images/btn.png) no-repeat;background-size:230px 50px;color:#fff;box-shadow:0 1px 1px rgba(0,0,0,0.2);text-shadow:0 1px 1px rgba(0,0,0,0.75);font-size:18px;text-align:center;display:block;position:absolute;left:50%;bottom:30px;margin-left:-115px;}
+.hongbao p{width:100%;font-size:18px;color:#ff1000;text-align:center;line-height:36px;position:absolute;left:0;margin-top:-60px;}
+.hongbao p span{font-size:36px;line-height:40px;font-weight:500;}
+</style>
+</head>
+<body>
+	<div class="title">
+    	<p><span id="myCent">500</span><br />我的积分</p>
+        <a id="convert">积分兑换</a>
+    </div>
+    <h2>积分明细</h2>
+    <ul>
+    	<li><span>2015-07-27</span><b>获得积分</b><i>+50</i></li>
+    	<li><span>2015-07-27</span><b>获得积分</b><i>+50</i></li>
+    	<li class="con_after"><span>2015-07-27</span><b>已兑换</b><i>-50</i></li>
+    	<li class="con_after" style="border:none;"><span>2015-07-27</span><b>已兑换</b><i>-50</i></li>
+    </ul>
+    <div class="wrap">
+    	<div class="wrap_bg"></div>
+    	<div class="box">
+        	<div><img src="images/gift.png" alt="" /></div>
+            <input type="tel" placeholder="请输入你要兑换的积分" id="count" />
+            <span class="tishi"></span>
+            <p id="lj_convert">立即兑换</p>
+        </div>
+    </div>
+    <div class="hongbao">
+    	<div class="hbbg"></div>
+        <img src="images/hongbao.png" alt="" />
+        <a>立即领取红包</a>
+        <p class="money"></p>
+    </div>
+</body>
+</html>

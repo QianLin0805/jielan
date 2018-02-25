@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>我的帖子</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/community.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript" src="js/note.js"></script>
+<script type="text/javascript">
+loadOver=true;
+$(function(){
+	loadContent();
+})
+</script>
+</head>
+<body>
+<div class="detail" id="wrapper">
+	<div id="scroll" style="transition-property: transform; transform-origin: 0px 0px 0px; transform: translate(0px, 0px) translateZ(0px);">
+        <div class="main">
+            <div class="left"><img src="images/yidong.png" alt="" /><br />张三</div>
+            <div class="right">
+                <span class="date">2015-11-02</span><span class="time">18:08</span>
+                <p>最近楼下施工太吵了，能不能协商一下，让他们晚上不要施工，下午5点以后就不要再工作了</p>
+            </div>
+            <img src="images/index/pic1.png" alt="" class="pics" />
+        </div>
+        <h4>管理员评论</h4>
+        <ul id="list">
+            <li>
+                <div class="left">社区管理员</div>
+                <div class="right">
+                <span class="date">2015-11-02</span><span class="time">18:08</span>
+                    <p>最近楼下施工太吵了，能不能协商一下，让他们晚上不要施工，下午5点以后就不要再工作了</p>
+                </div>
+            </li>
+            <li>
+                <div class="left">社区管理员</div>
+                <div class="right">
+                <span class="date">2015-11-02</span><span class="time">18:08</span>
+                    <p>最近楼下施工太吵了，能不能协商一下，让他们晚上不要施工，下午5点以后就不要再工作了</p>
+                </div>
+            </li>
+            <li>
+                <div class="left">社区管理员</div>
+                <div class="right">
+                <span class="date">2015-11-02</span><span class="time">18:08</span>
+                    <p>最近楼下施工太吵了，能不能协商一下，让他们晚上不要施工，下午5点以后就不要再工作了</p>
+                </div>
+            </li>
+        </ul>
+        <div id="pullUp">上拉加载更多...</div>
+    </div>
+</div>
+</body>
+</html>

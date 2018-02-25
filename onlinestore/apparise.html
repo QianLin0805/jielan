@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>评价中心</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/order.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+</head>
+<body>
+<div class="apparise">
+    <div class="main">
+        <div class="text"><img src="images/my/my_pic2.jpg" alt="" /><textarea name="" id="text" maxlength="100" placeholder="请写下对产品的感受吧，对他人帮助很大哦"></textarea></div>
+        <div class="photos">
+            <p class="upload"><input type="file" id="upload" /></p>
+        </div>
+    </div>
+    <div class="tally">
+        <span>描述相符</span><p class="stars light"></p><p class="stars"></p><p class="stars"></p><p class="stars"></p><p class="stars"></p>
+    </div>
+    <div class="score">
+        <h3>店铺评分</h3>
+        <div class="speed"><span>发货速度</span><p class="stars light"></p><p class="stars"></p><p class="stars"></p><p class="stars"></p><p class="stars"></p></div>
+        <div class="attitude"><span>服务态度</span><p class="stars light"></p><p class="stars"></p><p class="stars"></p><p class="stars"></p><p class="stars"></p></div>
+    </div>
+    <ul class="score2">
+        <li><label for="good"><input type="radio" id="good" name="score" />好评</label></li>
+        <li><label for="normal"><input type="radio" id="normal" name="score" />中评</label></li>
+        <li><label for="bad"><input type="radio" id="bad" name="score" />差评</label></li>
+    </ul>
+    <div class="bottom"><label class="anonymous"><input type="checkbox" name="anonymous" id="anonymous" checked />匿名评价</label><span id="sub">发表评价</span></div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+    var pg=$(window).height();
+    var wrapHeight=$('.apparise').innerHeight();
+    var topValue=wrapHeight-48;
+    var resize=null;
+    $('#text').on('focus',function(){
+    	if(navigator.platform=='iPhone'||/Linux/g.test(navigator.platform)){
+	        if(!resize){
+	            resize=setInterval(function(){
+	                if(document.activeElement.nodeName=='TEXTAREA'){
+	                    if(wrapHeight<=pg){
+                            $('.bottom').css({
+                                position:'absolute',
+                                bottom:'',
+                                top:pg-48+'px'
+                            });
+                        }else{
+                            $('.bottom').css({
+                                position:'absolute',
+                                bottom:'',
+                                top:topValue
+                            });
+                        }
+	                }else{
+                        if(resize){
+                            clearInterval(resize);
+                            resize=null;
+                        }
+	                    $('.bottom').css({
+	                        position:'fixed',
+	                        top:'',
+	                        bottom:0
+	                    });
+	                }
+	            },100);
+	        }
+    	}
+    });
+
+    //上传图片
+    $("#upload").change(function(){
+        var value = getObjectURL(this.files[0]);
+        $(this).parent().before('<div><img src="'+value+'" alt="" /><p class="delete"><span></span></p></div>');
+        $(this).val('');
+        var num=$('.photos').children('div').length;
+
+        //删除上传图片
+        $('.photos').children('div').last().children('.delete').bind('click',function(){
+            $(this).parent().remove();
+            if(num>=5){
+                $('.upload').show();
+            }
+        });
+        if(num>=5){
+            $('.upload').hide();
+            return;
+        }
+    });
+	
+    //评分
+    $('.stars').on('click',function(){
+        var index=$(this).index();
+        $(this).parent().children('p:lt('+index+')').addClass('light');
+        $(this).parent().children('p:gt('+(index-1)+')').removeClass('light');
+    });
+
+    //发表评价
+    $('#sub').on('click',function(){
+        var tallyScore=$('.tally').children('.light').length;            //相符
+        var speedScore=$('.speed').children('.light').length;            //速度
+        var attitudeScore=$('.attitude').children('.light').length;      //态度
+        window.history.back();
+    });
+
+});
+</script>

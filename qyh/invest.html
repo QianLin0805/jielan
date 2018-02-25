@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>全部问卷</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<style type="text/css">
+ul{width: 100%;overflow: hidden;margin-bottom: 10px;display: none;background: #f0f0f0;position: relative;z-index: 1;margin-bottom: 40px;}
+li{padding: 10px;height: 90px;overflow: hidden;position: relative;background: #fff;margin-bottom: 10px;}
+li a{width: 100%;height: 100%;display: inline-block;}
+li h3{height: 47px;line-height: 24px;font-size: 16px;color: #333;margin-top: 3px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+li p{margin-top: 20px;line-height: 20px;color: #808080;}
+li p .actor{float: right;}
+</style>
+</head>
+<body>
+	<p class="tip">数据加载中...</p>
+	<ul ng-app="myApp" ng-controller="dataCtrl" infinite-scroll="loadMore()" infinite-scroll-distance="1">
+		<li ng-repeat="x in data"><a href="investDetail.html?survey_id={{x.id}}&type={{x.timeOut}}&sCoreID={{sCorpID}}&userId={{userId}}&userName={{userName}}">
+			<h3>{{x.theme}}</h3>
+			<p><span class="deadtime" ng-hide={{x.timeOut}}>{{x.endTime}}截止</span><span class="over" ng-show={{x.timeOut}}>已结束</span><span class="actor"><i>{{x.joinNum}}</i>人参与</span></p>
+		</a></li>
+	</ul>
+	<p class="tips">已全部加载</p>
+	<p class="tishi"></p>
+</body>
+</html>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/ngscroll.js"></script>
+<script type="text/javascript">
+var code = getQueryString('code');
+var sCorpID=getQueryString('state');
+var pageNum=1;
+var userId;
+if(window.name){
+	var info = (new Function("return "+ window.name))();
+	userId = info.user;
+}else{
+	$.ajax({
+		type:"POST",
+		url:link+"getOAuth.do",
+		async:false,
+		data:{
+			"coreId":sCorpID,
+			"code":code
+		},
+		success:function(response){
+			userId=response.resultContent.UserId;
+		}
+	});
+}
+
+$.ajax({
+	type:"POST",
+	url:link+"findUser.do",
+	async:false,
+	data:{
+		"sCorpID":sCorpID,
+		"userId":userId
+	},
+	success:function(response){
+		userName=encodeURIComponent(response.resultContent.name);
+	}
+});
+
+angular.module('myApp',['infinite-scroll']).controller('dataCtrl',function($scope,$http){
+	$scope.data = [];
+	$scope.sCorpID = sCorpID;
+	$scope.userId = userId;
+	$scope.userName = userName;
+	$scope.pageEnd = false;
+	$scope.busy = false;
+	$http({
+		url: link+"surveyList.do",
+		data: {
+			"sCorpID":sCorpID,
+			"userId":userId,
+			"pageNum":pageNum,
+			"numPerPage":8
+		},
+	    method: 'POST',
+	    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+	    transformRequest: function(obj) {
+	        var str = [];
+	        for(var p in obj)
+	        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	        return str.join("&");
+	    }
+	}).success(function(response){
+		pageNum++;
+		if(response.resultCode!=200){
+			$('.tishi').text( response.resultMsg ).show();
+			tishi();
+			$('.tip').hide();
+			return;
+		}
+		$('.tip').hide();
+		$('ul').show();
+		var count=response.resultContent.length;
+		if(count<8){
+			$('.tips').show();
+			$scope.pageEnd = true;
+		}
+		for(var i=0;i<count;i++){
+			$scope.data.push(response.resultContent[i]);
+		}
+		$scope.loadMore = function() {
+			if ($scope.pageEnd){
+				return;
+			}
+			if($scope.busy) return;
+			$scope.busy = true;
+			$http({
+				url: link+"voteList.do",
+				data: {
+					"sCorpID":sCorpID,
+					"userId":userId,
+					"pageNum":pageNum,
+					"numPerPage":8
+				},
+			    method: 'POST',
+			    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			    transformRequest: function(obj) {
+			        var str = [];
+			        for(var p in obj)
+			        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+			        return str.join("&");
+			    }
+			}).success(function(response){
+				pageNum++;
+				$scope.busy = false;
+				if(response.resultCode!=200){
+					$('.tishi').text('加载失败').show();
+					tishi();
+					return;
+				}
+				var count=response.resultContent.length;
+				if(count<8){
+					$('.tips').show();
+					$scope.pageEnd = true;
+				}
+				for(var i=0;i<count;i++){
+					$scope.data.push(response.resultContent[i]);
+				}
+			});
+		}
+	}).error(function(response,status){
+		$('.tip').text('请求异常');
+	});
+});
+window.onunload = function(){  
+	var user = userId;
+	window.name  = '{user:"'+user+'"}';
+} 
+</script>

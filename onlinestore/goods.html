@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>商品详情</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/swiper.css" />
+<link rel="stylesheet" href="css/goods.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="plug-in/iscroll.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="js/goods.js"></script>
+</head>
+<body>
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide"><img src="images/index/goods.jpg" alt="" class="post" /></div>
+		<div class="swiper-slide"><img src="images/index/goods.jpg" alt="" class="post" /></div>
+		<div class="swiper-slide"><img src="images/index/goods.jpg" alt="" class="post" /></div>
+	</div>
+	<div class="swiper-pagination"></div>
+</div>
+<div class="goods">
+	<div class="main">
+		<h2 class="title">国行【送壳+钢化膜】Apple/苹果 iPhone 6s Plus 5.5英寸全网通</h2>
+		<ul class="price">
+			<li><span>1台起批</span><p>￥<strong>1099</strong></p></li>
+			<li><span>2-10台</span><p>￥<strong>1000</strong></p></li>
+			<li><span>11-100台</span><p>￥<strong>800</strong></p></li>
+		</ul>
+		<div class="info"><p class="deliver">快递 <span>￥5</span></p><p>成交 <span>1.02</span>万台</p><p class="address">发货 <span>浙江杭州</span></p></div>
+	</div>
+	<p class="select"><b>选择</b><img src="images/arrow.png" alt="" /></p>
+	<div class="apparise"><a href="assess.html">
+		<h4>商品评价</h4>
+		<p>好评度<b>95%</b></p>
+		<span><i>125</i>人评论</span>
+	</a></div>
+	<div class="picInfo">
+		<h3>图文详情</h3>
+		<img src="images/index/detail.jpg" alt="" />
+	</div>
+</div>
+<div class="bottom">
+	<p class="collect">收藏</p>
+	<p class="add">加入进货单</p>
+	<p class="buy">立即购买</p>
+</div>
+<div class="mask">
+	<div class="box">
+		<div class="top">
+			<img src="images/index/goods.jpg" alt="" class="minPic" />
+			<h2>国行【送壳+钢化膜】Apple/苹果iPhone 6s Plus 5.5英寸</h2>
+			<p class="price">￥888.00-1099.00</p>
+			<p class="close"></p>
+		</div>
+		<div id="wrapper">
+			<div id="scroller">
+				<div class="wrap">
+					<h3>机身颜色</h3>
+					<div class="option"><p>银色</p><p>金色</p><p>深空灰色</p><p>玫瑰金色</p></div>
+					<h3>网络类型</h3>
+					<div class="option"><p>FDD-LTE/TD-LTE</p><p>FDD-LTE/TD-LTE</p><p>无需合约版</p><p>FDD-LTE/TD-LTE</p></div>
+				</div>
+			</div>
+		</div>
+		<div class="num">
+			<h3>购买数量</h3>
+			<p class="store">库存:<span>1000</span></p>
+			<p class="add" id="addNum">+</p>
+			<input type="number" value="1" id="num" />
+			<p class="minus" id="minusNum">-</p>
+		</div>
+		<p class="btn sure" id="sure1">确定</p>
+		<p class="btn sure" id="sure2">确定</p>
+		<p class="btn add" id="add">加入进货单</p>
+		<p class="btn buy" id="buy">立即购买</p>
+	</div>
+</div>
+<div class="tips"><img src="" alt="" /><p></p></div>
+</body>
+</html>
+<script type="text/javascript" src="plug-in/swiper.jquery.js"></script>
+<script type="text/javascript">
+	var mySwiper = new Swiper('.swiper-container', {
+		pagination : '.swiper-pagination',
+	});
+
+	function loaded(){
+		myScroll = new iScroll('wrapper', {
+			scrollbarClass: 'myScrollbar',
+			useTransition: false
+		});
+		setTimeout(function (){ document.getElementById('wrapper').style.left = '0'; }, 800);
+	}
+	document.addEventListener('DOMContentLoaded', loaded, false);
+	$('.mask').on('touchmove',function(){
+		event.preventDefault();
+	});
+
+	//页面加载后执行
+	var selItem='';
+	for(var i=0;i<$('.wrap').children('h3').length;i++){
+		var selItem=selItem+$('.wrap').children('h3').eq(i).text()+' ';
+	}
+	$('.select').append('<span>'+selItem+'</span>');    //要选择的类型
+</script>

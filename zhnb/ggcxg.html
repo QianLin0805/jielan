@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>公共出行馆</title>
+<link rel="stylesheet" href="css/css1.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	function buju(){
+		var pingkuan=$(window).width();
+		var bili=pingkuan/720;
+		$('.flight').css({
+			left:'41%',
+			top:bili*168+'px'
+		});
+		$('.pub_tran').css({
+			left:'77.5%',
+			top:bili*294+'px'
+		});
+		$('.railway').css({
+			left:'18.1%',
+			top:bili*453+'px'
+		});
+		$('.trans').css({
+			left:'65.1%',
+			top:bili*650+'px'
+		});
+		$('.mobile').css({
+			left:'22.6%',
+			top:bili*935+'px'
+		});
+		$('.bike').css({
+			left:'70.4%',
+			top:bili*977+'px'
+		});
+	};
+	$(window).load(function(){
+		buju();
+	});
+})
+</script>
+</head>
+<body>
+    <div class="head ggcx_head">
+    	<a href="city.html"><img src="images/arrow.png" alt="" />
+        <h1>公共出行馆</h1></a>
+    </div>
+    <div class="city_warn">消息提醒栏消息提醒栏消息提醒栏消息提醒栏</div>
+    <div class="main ggcx_main">
+        <img src="images/city/ggcx_bg.jpg" alt="" class="ggcx_bg" />
+        <a href=""><img src="images/city/flight.png" alt="" class="flight" /></a>
+        <a href=""><img src="images/city/pub_tran.png" alt="" class="pub_tran" /></a>
+        <a href=""><img src="images/city/railway.png" alt="" class="railway" /></a>
+        <a href=""><img src="images/city/trans.png" alt="" class="trans" /></a>
+        <a href=""><img src="images/city/mobile.png" alt="" class="mobile" /></a>
+        <a href=""><img src="images/city/bike.png" alt="" class="bike" /></a>
+    </div>
+</body>
+</html>

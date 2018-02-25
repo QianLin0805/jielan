@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>老槐树</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/lhs.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#ececec;}
+</style>
+</head>
+<body>
+	<div class="qlist">
+        <h1><b>无间道</b><br /><i>爱情</i> / <i>悬疑</i><span id="mind" class="">关注</span></h1>
+        <div class="content">
+            <span id="content">一名没有多少人气的夜间电台节目主持人张震，发现自己平时像患了老年痴呆症一样的爷爷竟然是道士。在一个夜晚，张震的人生被彻底改变：短暂清醒的爷爷重新打开了张震原本出生后的就拥有的先天阴阳眼，并且将“祖传圣物”内的道家传承全部授一名没有多少人气的夜间电台节目主持人张震，发现自己平时像患了老年痴呆症一样的爷爷竟然是道士。在一个夜晚，张震的人生被彻底改变：短暂清醒的爷爷重新打开了张震原本出生后的就拥有的先天阴阳眼，并且将“祖传圣物”内的道家传承全部授</span><i id="slide">展开</i>
+        </div>
+        <a href=""><p class="rule">规则公告</p></a>
+        <ul class="question">
+            <a href="qdetail.html"><li>1: 关于午夜讲诡故事的特效问题</li></a>
+            <a href="qdetail.html"><li>2: 关于午夜讲诡故事的特效问题</li></a>
+            <a href="qdetail.html"><li>3: 关于午夜讲诡故事的特效问题</li></a>
+        </ul>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('#mind').bind('click',function(){
+		if($(this).is('.mind')){
+			$(this).removeClass('mind');
+		}else{
+			$(this).addClass('mind');
+		}
+	});
+	var text=$('#content').text();
+	var leng=$('#content').text().length;
+	var i=0;
+	if(leng>100){
+		var frontWord=$('#content').text().substring(0,100);
+		$('#content').text(frontWord+'...');
+		$('#slide').bind('click',function(){
+			if(i%2==0){
+				$('#content').text(text);
+				$('#slide').text('收起');
+				i++;
+			}else{
+				$('#content').text(frontWord+'...');
+				$('#slide').text('展开');
+				i++;
+			}
+		});
+	}else{
+		$('#slide').hide();
+	}
+})
+</script>

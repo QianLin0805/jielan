@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>在线商城</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/index.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="js/nav.js"></script>
+<script type="text/javascript" src="js/stock.js"></script>
+</head>
+<body>
+<div class="stock">
+	<img src="images/line.jpg" alt="" class="line" />
+	<p class="no">您的暂时没有进货单<br />前往在线商城<a href="">首页</a>选购</p>
+	<ul class="list">
+		<li>
+			<h2><input type="checkbox" id="1" class="selectAll" /><span class="shop">三星官方旗舰店</span><span class="destruction">进货说明</span></h2>
+			<div class="item">
+				<a href="goods.html">
+					<input type="checkbox" class="select" name="1" />
+					<img src="images/index/goods.jpg" alt="" />
+					<h3>国行【送壳+钢化膜】Apple/苹果 iPhone 6s Plus 5.5英寸</h3>
+					<span class="price">￥<b>600</b><br /><i>x1</i></span>
+					<p>网络类型:无需合约版 机身颜色: 金色 机身内存:64GB</p>
+				</a>
+				<div><p class="minus">-</p><input type="tel" class="num" value="1" id="abc" /><p class="add">+</p></div>
+			</div>
+			<div class="item">
+				<a href="goods.html">
+					<input type="checkbox" class="select" name="1" />
+					<img src="images/index/goods.jpg" alt="" />
+					<h3>国行【送壳+钢化膜】Apple/苹果 iPhone 6s Plus 5.5英寸</h3>
+					<span class="price">￥<b>320</b><br /><i>x1</i></span>
+					<p>网络类型:无需合约版 机身颜色: 金色 机身内存:64GB</p>
+				</a>
+				<div><p class="minus">-</p><input type="tel" class="num" value="1" /><p class="add">+</p></div>
+			</div>
+			<p class="count">小计：<span>￥<i>0.00</i></span></p>
+		</li>
+		<li>
+			<h2><input type="checkbox" id="2" class="selectAll" /><span class="shop">三星官方旗舰店</span><span class="destruction">进货说明</span></h2>
+			<div class="item">
+				<a href="goods.html">
+					<input type="checkbox" class="select" name="2" />
+					<img src="images/index/goods.jpg" alt="" />
+					<h3>国行【送壳+钢化膜】Apple/苹果 iPhone 6s Plus 5.5英寸</h3>
+					<span class="price">￥<b>120</b><br /><i>x1</i></span>
+					<p>网络类型:无需合约版 机身颜色: 金色 机身内存:64GB</p>
+				</a>
+				<div><p class="minus">-</p><input type="tel" class="num" value="1" /><p class="add">+</p></div>
+			</div>
+			<p class="count">小计：<span>￥<i>0.00</i></span></p>
+		</li>
+	</ul>
+	<div class="mask">
+		<div class="box">
+			<h3>进货说明<img src="images/index/close.png" alt="" class="close" /></h3>
+			<ul>
+				<li><p>1台起批</p><span>￥1099</span></li>
+				<li><p>2-10台</p><span>￥1000</span></li>
+				<li><p>11-100台</p><span>￥800</span></li>
+			</ul>
+		</div>
+	</div>
+	<div class="stockBot"><label for=""><input type="checkbox" id="selectAll" />全选</label><p>合计:￥<b id="count">0.00</b><br /><span>不含运费</span></p><div class="account">结算</div></div>
+	<ul class="nav">
+		<li id="index"><a href="index.html"><p></p><span>首页</span></a></li>
+		<li id="sale"><a href="sale.html"><p></p><span>活动</span></a></li>
+		<li id="stock"><a href="stock.html" class="current"><p></p><span>进货单</span></a></li>
+		<li id="my"><a href="my.html"><p></p><span>我的</span></a></li>
+	</ul>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+//以下要页面加载完成后执行
+if($('.list').children().length>0){       //是否有数据
+	$('.list,.stockBot').show();
+}else{
+	$('.no').show();
+}
+var pg=$(window).height();
+var wrapHeight=$('.stock').height();
+var topValue=$('.list').height()+3;         //页面加载后需要获取列表的高度
+var resize=null;
+$('.num').on('focus',function(){
+	if(navigator.platform=='iPhone'||/Linux/g.test(navigator.platform)){
+        if(!resize){
+            resize=setInterval(function(){
+                if(document.activeElement.nodeName=='INPUT'){
+                	$('.nav,.stockBot').css({
+                		position:'absolute',
+		                bottom:''
+                	});
+                	if(wrapHeight<=pg-95){
+                		$('.nav').css('top',pg-50+'px');
+	                	$('.stockBot').css('top',pg-95+'px');
+                	}else{
+                		$('.nav').css('top',topValue+55+'px');
+	                	$('.stockBot').css('top',topValue+10+'px');
+            		}
+                }else{
+                    if(resize){
+                        clearInterval(resize);
+                        resize=null;
+                    }
+                    $('.stockBot').css({
+                        position:'fixed',
+                        top:'',
+                        bottom:'50px'
+                    });
+                    $('.nav').css({
+                        position:'fixed',
+                        top:'',
+                        bottom:0
+                    });
+                }
+            },200);
+        }
+	}
+});
+</script>

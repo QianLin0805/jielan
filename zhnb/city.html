@@ -1,0 +1,84 @@
+<!doctype html><html><!-- InstanceBegin template="/Templates/temple.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link rel="stylesheet" href="css/css.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>虚拟城市</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.city').addClass('nav_current');
+	function buju(){
+		var pingkuan=$(window).width();
+		var bili=pingkuan/720;
+		$('.czsh').css({
+			left:'54%',
+			top:bili*150+'px'
+		});
+		$('.yljk').css({
+			left:'5.1%',
+			top:bili*369+'px'
+		});
+		$('.bmsh').css({
+			left:'52.5%',
+			top:bili*487+'px'
+		});
+		$('.ggcx').css({
+			left:'30.1%',
+			top:bili*684+'px'
+		});
+		$('.ydyw').css({
+			left:'70.5%',
+			top:bili*894+'px'
+		});
+		$('.person').css({
+			left:'28.9%',
+			top:bili*846+'px'
+		});
+	};
+	$(window).load(function(){
+		buju();
+	});
+})
+</script>
+<!-- InstanceEndEditable -->
+</head>
+<body>
+<!-- InstanceBeginEditable name="edit" -->
+<div class="head city_head">
+    <h1>虚拟城市</h1>
+</div>
+<div class="main city_main">
+	<img src="images/city/city_bg.jpg" alt="" class="city_bg" />
+    <a href="czshg.html"><img src="images/city/czsh.png" alt="" class="czsh" /></a>
+    <a href="yljkg.html"><img src="images/city/yljk.png" alt="" class="yljk" /></a>
+    <a href="bmshg.html"><img src="images/city/bmsh.png" alt="" class="bmsh" /></a>
+    <a href="ggcxg.html"><img src="images/city/ggcx.png" alt="" class="ggcx" /></a>
+    <a href="ydywg.html"><img src="images/city/ydyw.png" alt="" class="ydyw" /></a>
+    <img src="images/city/person.png" alt="" class="person" />
+</div>
+<!-- InstanceEndEditable -->
+<ul class="nav">
+    <li>
+        <a href="index.html" class="index">首页</a>
+    </li>
+    <li>
+        <a href="city.html" class="city">城市</a>
+    </li>
+    <li>
+        <a href="topic.html" class="topic">主题</a>
+    </li>
+    <li>
+        <a href="my.html" class="my">我的</a>
+    </li>
+</ul>
+</body>
+<!-- InstanceEnd --></html>
+<script type="text/javascript">
+	
+</script>

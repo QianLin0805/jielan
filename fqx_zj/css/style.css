@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0;padding:0;font:14px "Microsoft YaHei",Arial;background:#fff;color:#000;-webkit-text-size-adjust:100%;}
+header,div,h1,h2,h3,ul,li,p,form,input,button,select,textarea,label,img,span,a,b,i{margin:0;padding:0;}
+h1,h2,h3{font-weight:normal;}
+ul,li{list-style:none;}
+img,input,button,select,label{border:none;background:none;vertical-align:middle;}
+input,button,select,textarea{font:16px "Microsoft YaHei",Arial;-moz-appearance:none;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+p{word-wrap:break-word;}
+a{text-decoration:none;color:#000;}
+strong,b{font-weight:normal;}
+i{font-style:normal;}
+
+.step{width:100%;overflow:hidden;padding-top:5px;}
+.step h2{font-size:16px;line-height:50px;color:#666;text-indent:5%;}
+.step div{width:90%;padding:0 5%;background:#fff;overflow:hidden;position:relative;}
+.step p{width:100%;height:50px;line-height:50px;font-size:15px;}
+.step p.first{border-bottom:1px solid #dcdcdc;color:#111;}
+.step p span{width:72px;display:inline-block;text-indent:5px;float:left;}
+.step p input{width:70%;height:50px;line-height:20px;vertical-align:top;float:left;}
+.step button{width:90%;height:45px;line-height:45px;text-align:center;font-size:16px;color:#ccc;background:#fff;display:block;margin:30px auto 0;border-radius:5px;}
+.step2 p span{width:85px;}
+.step2 p b{font-size:16px;color:#062772;}
+.step2 p input{width:70%;}
+.step3 div input{width:50%;height:50px;line-height:20px;vertical-align:top;}
+.step3 div i{width:125px;line-height:30px;color:#111;text-align:center;border-left:1px solid #666;display:inline-block;position:absolute;right:0;top:10px;}
+
+.detail{width:88%;padding:12px 0 20px;margin:20px auto 0;border:1px solid #dcdcdc;border-radius:6px;background:#eee;overflow:hidden;}
+.detail p{padding-left:15px;font-size:16px;line-height:24px;}
+.detail p i{letter-spacing:8px}
+.detail .process{width:100%;overflow:hidden;margin-top:20px;}
+.process .bar{width:70%;height:30px;position:relative;margin:0 auto;}
+.process .bar div{width:50%;float:left;height:4px;margin-top:13px;background:#22ac38;}
+.process .bar p{width:12px;height:12px;background:#22ac38;border-radius:50%;padding:0;position:absolute;top:9px;z-index:1;}
+.process .bar img{width:30px;position:absolute;top:0;z-index:2;}
+.process span{width:30%;line-height:18px;color:#22ac38;display:inline-block;text-align:center;float:left;margin-top:10px;}
+.process span i{font-size:13px;color:#999;}
+
+
+.modify ul{width:100%;overflow:hidden;background:#fff;margin-bottom:10px;}
+.modify li{width:90%;margin:0 3%;padding:0 2%;height:50px;line-height:50px;border-bottom:1px solid #dcdcdc;font-size:16px;}
+.modify li #file{width:80px;height:60px;margin-top:5px;position:relative;float:right;}
+.modify li #file img{width:60px;vertical-align:top;}
+.modify li #file input{width:70px;height:60px;position:absolute;left:0;top:0;z-index:11;opacity:0;filter:Alpha(opacity=0);}
+.modify li #name{width:50%;height:50px;line-height:20px;vertical-align:top;margin-left:50px;}
+.modify li p{width:70%;text-align:right;padding-right:20px;float:right;color:#9e9e9e;}
+
+@media (min-width: 640px){
+body{width: 640px; margin-left: auto; margin-right: auto;}
+}

@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>用药提醒1</title>
+<link rel="stylesheet" href="css/css1.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#efefef;}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	function buju(){
+		var pingkuan=$(window).width();
+		var pinggao=$(window).height();
+		var bili=pingkuan/720;
+		$('textarea').css({
+			backgroundSize:0.92*pingkuan,
+			lineHeight:bili*80+'px'
+		});
+		$('.medic_add').css({
+			height:pinggao
+		});
+		$('.reset').css({
+			height:pinggao
+		});
+		$('.settimes').css({
+			height:pinggao
+		});
+		$('.times_box').children('input').css({
+			width:0.7*pingkuan-2+'px'
+		});
+		$('.period').children().eq(1).children('select').css({
+			width:0.92*pingkuan-10+'px'
+		});
+	};
+	$(window).load(function(){
+		buju();
+	});
+	//添加药物
+	var addItem='<li><input type="checkbox" /><p></p><span><b>饭后</b><b>1</b><b>包</b></span></li>';
+	$('.add').bind('click',function(){
+		$('.medic_add').show();
+		$('.add_box div').eq(0).children('input').val('');
+		$('.add_box div').eq(1).children('input').val('1');
+		$('.add_box div').children('select').get(0).selectedIndex=0;
+		$('.add_box p').children('input').eq(1).get(0).checked=true;
+		$('.medic_add').on('touchmove',function(){
+			event.preventDefault();
+		});
+		$('#new_save').bind('click',function(){
+			$(this).unbind('click');
+			var addContent=$('.add_box').children('div').eq(0).children('input').val();
+			var medJl=$('.add_jl').children('input').val();
+			var medTime=$('.add_box p').children('input:checked').val();
+			var danwei=$('.add_jl').children('select').find('option:selected').val();
+			if(addContent!==''&&medJl!==''){
+				$('.medic_add').hide();
+				$('ul').prepend(addItem).children().first().children('p').text(addContent);
+				$('ul').children().first().children('span').children().eq(1).text(medJl);
+				$('ul').children().first().children('span').children().eq(0).text(medTime);
+				$('ul').children().first().children('span').children().eq(2).text(danwei);
+				$('ul').children().first().children('input').get(0).checked=true;
+			}
+		});
+		$('.save').children().first().bind('click',function(){
+			$('.medic_add').hide();
+		});
+	});
+	//设置用药周期
+	$('.per_last').bind('click',function(){
+		$('.settimes').show();
+		$('.settimes').on('touchmove',function(){
+			event.preventDefault();
+		});
+	});
+	//设置服药次数
+	$('#set_zq').children('select').change(function(){
+		var zhouqi=$(this).find('option:selected').text();
+		$('.zhouqi p').children('b').text(zhouqi);
+	});
+	var times=parseInt($('#times').text());
+	$('#add').bind('click',function(){
+		times=parseInt($('#times').text());
+		if(times<6){
+			$('#times').text(times+1);
+			$('.times_box').children('input').eq(times).show();
+			var gaodu=$('.times_box').height();
+			$('.times_box').css({
+				marginTop:-(gaodu/2)
+			});
+			$('.per_last').children('span').eq(times).show();
+		}
+	});
+	$('#minus').bind('click',function(){
+		times=parseInt($('#times').text());
+		if(times>1){
+			$('#times').text(times-1);
+			$('.times_box').children('input').eq(times-1).hide();
+			var gaodu=$('.times_box').height();
+			$('.times_box').css({
+				marginTop:-(gaodu/2)
+			});
+			$('.per_last').children('span').eq(times-1).hide().text('');
+		}
+	});
+	//保存
+	$('.times_box').children('button').bind('click',function(){
+		times=parseInt($('#times').text());
+		$('.settimes').hide();
+		$('.zhouqi p').children('a').text(times);
+		$('.per_last').children('span:eq(0)').text($('.times_box').children('input').eq(0).val());
+		$('.per_last').children('span:eq(1)').text($('.times_box').children('input').eq(1).val());
+		$('.per_last').children('span:eq(2)').text($('.times_box').children('input').eq(2).val());
+		$('.per_last').children('span:eq(3)').text($('.times_box').children('input').eq(3).val());
+		$('.per_last').children('span:eq(4)').text($('.times_box').children('input').eq(4).val());
+		$('.per_last').children('span:eq(5)').text($('.times_box').children('input').eq(5).val());
+	});
+})
+</script>
+</head>
+<body>
+    <div class="head shop_head">
+        <a href="medicine.html"><img src="images/arrow.png" alt="" />
+    	<h1>用药提醒1</h1></a>
+    </div>
+    <div class="main medic_main">
+        <ul>
+        	<li>
+                <input type="checkbox">
+                <p>阿司匹林</p>
+                <span><b>饭后</b><b>1</b><b>包</b></span>
+            </li>
+        	<li>
+                <input type="checkbox">
+                <p>批把膏</p>
+                <span><b>饭后</b><b>1</b><b>粒</b></span>
+            </li>
+        	<li>
+                <input type="checkbox">
+                <p>快克</p>
+                <span><b>饭后</b><b>1</b><b>粒</b></span>
+            </li>
+        	<li class="add"><div></div><p>添加药品</p></li>
+        </ul>
+        <div class="period">
+        	<div class="zhouqi">
+                用药周期
+                <p><b>每天</b><a>1</a>次</p>
+                <img src="images/my/arrow2.jpg" alt="" />
+            </div>
+            <div id="set_zq">
+            	<span>提醒周期</span>
+                <select name="" id="">
+                	<option value="">每天</option>
+                	<option value="">每2天</option>
+                	<option value="">每3天</option>
+                	<option value="">每4天</option>
+                	<option value="">每5天</option>
+                	<option value="">每6天</option>
+                	<option value="">每7天</option>
+                </select>
+            </div>
+            <div class="per_last">
+                <span style="display:inline;">08:00</span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <img src="images/my/edit.png" alt="" />
+            </div>
+        </div>
+        <textarea name="" id="" rows="3" placeholder="添加备注..."></textarea>
+    </div>
+    <div class="medic_add">
+    	<div class="add_box">
+        	<h4>添加药品</h4>
+            <div>
+            	<span>药物名</span><input type="text">
+            </div>
+            <div class="add_jl">
+            	<span>剂量</span>
+                <input type="number" value="1" onKeyUp="this.value=this.value.replace(/[^\.\d]/g,'');if(this.value.split('.').length>2){this.value=this.value.split('.')[0]+'.'+this.value.split('.')[1]}">
+                <select name="" id="">
+                	<option value="粒">粒</option>
+                	<option value="包">包</option>
+                </select>
+            </div>
+            <p>
+            	<input type="radio" name="time" id="front" value="饭前">
+                <label for="front">饭前</label>
+            	<input type="radio" name="time" id="after" value="饭后" checked>
+                <label for="after">饭后</label>
+            </p>
+            <div class="save"><button>取消</button><button id="new_save" style="color:#f2665f;">保存</button></div>
+        </div>
+    </div>
+    <div class="settimes">
+    	<div class="times_box">
+        	<div>
+                设置服药次数<br />
+                <span><b id="times">1</b>次</span>
+                <p class="control">
+                    <img src="images/my/plus.png" alt="" id="add" />
+                    <img src="images/my/minus.png" alt="" id="minus" />
+                </p>
+            </div>
+            <input type="time" value="08:00">
+            <input type="time" value="12:30" style="display:none;">
+            <input type="time" value="18:00" style="display:none;">
+            <input type="time" value="20:00" style="display:none;">
+            <input type="time" value="20:00" style="display:none;">
+            <input type="time" value="20:00" style="display:none;">
+            <button>保存</button>
+        </div>
+    </div>
+</body>
+</html>

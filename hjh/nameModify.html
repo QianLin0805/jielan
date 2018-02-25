@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>修改昵称</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+form{width:100%;overflow:hidden;text-align:center;}
+form input{height:38px;line-height:20px;font-size:16px;border:1px solid #ddd;border-radius:5px;margin-top:20px;background:#fff;text-indent:10px;}
+form button{width:90%;height:40px;line-height:40px;background:#fa5050;color:#fff;font-size:16px;border-radius:5px;margin-top:35px;}
+</style>
+</head>
+<body>
+<form action="">
+	<input type="text" placeholder="请输入新昵称" />
+    <button type="submit">保存</button>
+</form>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	(function(){
+		var pk=$(window).width();
+		$('input').css('width',0.9*pk-2);
+	})()
+})
+</script>

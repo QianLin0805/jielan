@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* CSS Document */
+.wrap{width: 100%;overflow: hidden;}
+.top{width: 100%;height: 49px;background: #fff;position: fixed;left: 0;top: 0;z-index: 555;box-shadow: 0 1px 1px #bfbfbf;overflow: hidden;}
+.top p{width: 50%;height: 46px;float: left;border-bottom: 3px solid #fff;text-align: center;overflow: hidden;}
+.top p.active{border-color: #21becc;}
+.top p a{width: 100%;height: 100%;display: inline-block;}
+.top p span{width: 100%;height: 30px;line-height: 30px;margin-top: 10px;display: inline-block;border-left: 1px solid #e0e0e0;}
+.top p:first-child span{border: none;}
+.tip{margin-top: 50px;}
+.list{width: 100%;overflow: hidden;margin: 50px 0 40px;background: #f0f0f0;position: relative;z-index: 111;display: none;}
+.list .item{height: 75px;margin: 0 10px;padding: 10px 0;border-bottom: 1px solid #e0e0e0;overflow: hidden;position: relative;}
+.list .item a{width: 100%;height: 100%;display: inline-block;}
+.list .item .date{width: 75px;height: 75px;background: #685a4c;color: #fff;text-align: center;}
+.list .item .date .year{font-size: 12px;line-height: 30px;}
+.list .item .date .day{line-height: 14px;font-size: 16px;}
+.list .item .date .week{line-height: 30px;font-size: 13px;}
+.list .item .main{height: 75px;position: absolute;left: 85px;right: 0;top: 10px;}
+.list .item .main h3{font-size: 16px;color: #333;line-height: 40px;width: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.list .item .main p{font-size: 15px;color: #808080;line-height: 24px;width: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.list .item .main .time{width: 60px;text-align: right;background: url(../images/clock.png) no-repeat left center;background-size: 18px auto;display: inline-block;margin-right: 20px;}
+.list .item .main .address{padding-left: 17px;background: url(../images/position.png) no-repeat left center;background-size: auto 18px;}
+.list .item .main div{width: 51px;line-height: 22px;font-size: 13px;border: 1px solid #ddd;border-radius: 3px;text-align: center;position: absolute;right: 5px;top: 0;color: #ccc;}

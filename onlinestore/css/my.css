@@ -1,0 +1,78 @@
+@charset "utf-8";
+/* CSS Document */
+/*我的*/
+.my{width: 100%;overflow: hidden;}
+.my .top{width: 100%;height: 84px;background: #fd3636;}
+.my .top div{width: 60px;height: 60px;border-radius: 100%;overflow: hidden;background: #fff;float: left;margin: 12px 0 0 30px;position: relative;}
+.my .top div img{width: 50px;height: 50px;border-radius: 100%;margin: 5px 0 0 5px;}
+.my .top div input{width: 60px;height: 60px;position: absolute;left: 0;top: 0;opacity: 0;}
+.my .top p{font-size: 18px;color: #fff;line-height: 84px;float: left;margin-left: 15px;}
+.my_order{width: 100%;overflow: hidden;background: #fff;}
+.my_order h2{padding: 0 10px;height: 50px;line-height: 50px;font-size: 15px;}
+.my_order h2 a{width: 100%;height: 49px;border-bottom: 1px solid #e5e5e5;display: inline-block;background: url(../images/arrow.png) no-repeat right center;background-size: auto 16px;}
+.my_order h2 img{width: 20px;margin: 15px 10px 0 0;}
+.my_order h2 span{float: right;font-size: 14px;color: #c7c7c7;margin-right: 15px;}
+.my_order ul{width: 100%;overflow: hidden;padding: 12px 0 5px;}
+.my_order li{width: 25%;float: left;text-align: center;line-height: 30px;}
+.my_order li a{width: 100%;height: 30px;padding-top: 20px;display: inline-block;background: url(../images/my/order_icon.png) no-repeat;background-size: 25px auto;}
+.my_order li .order_num1{background-position: center 0;}
+.my_order li .order_num2{background-position: center -50px;}
+.my_order li .order_num3{background-position: center -100px;}
+.my_order li .order_num4{background-position: center -150px;}
+.my_list{width: 100%;overflow: hidden;margin: 15px 0 65px;}
+.my_list li{padding: 0 10px;height: 45px;line-height: 45px;background: #fff;}
+.my_list li a{width: 100%;height: 44px;border-top: 1px solid #e5e5e5;display: inline-block;background: url(../images/arrow.png) no-repeat right center;background-size: auto 16px;font-size: 15px;}
+.my_list li:first-child a{border: none;}
+.my_list li img{width: 25px;margin: 10px 8px 0 0;}
+.my_list li span{float: right;font-size: 14px;color: #c7c7c7;margin-right: 15px;}
+.my_list li p{width: 10px;height: 10px;border-radius: 100%;background: #f00;float: right;margin: 17px 17px 0 0;}
+
+.tips{width: 140px;height: 80px;border-radius: 8px;background: rgba(0,0,0,0.9);color: #fff;text-align: center;position: fixed;left: 50%;top: 45%;z-index: 999;margin: -40px 0 0 -70px;display: none;}
+.tips img{width: 25px;margin-top: 15px}
+.tips p{font-size: 13px;line-height: 36px;}
+
+/*售后服务*/
+.service{width: 100%;overflow: hidden;}
+.service .main{padding: 10px;overflow: hidden;background: #fff;border-bottom: 1px solid #ddd;}
+.service .content{width: 100%;overflow: hidden;position: relative;padding-bottom: 20px;}
+.service .content textarea{width: 100%;height: 100px;}
+.service .content p{position: absolute;right: 0;bottom: 0;line-height: 20px;font-size: 13px;color: #999;}
+.service .photos{width: 100%;height: auto;margin-top: -5px;overflow: hidden;}
+.service .photos div{width: 70px;height: 70px;border: 1px solid #a9b7b7;position: relative;float: left;margin: 10px 10px 0 0;}
+.service .photos img{width: 100%;height: 100%;}
+.service .photos .delete{width: 18px;height: 18px;border-radius: 100%;background: #e60012;position: absolute;right: -6px;top: -6px;text-align: center;font-size: 0;}
+.service .photos div span{width: 10px;height: 2px;background: #fff;display: inline-block;margin-top: 8px;}
+.service .upload{width: 70px;height: 70px;border: 1px solid #a9b7b7;float: left;background: url(../images/my/camera.jpg) no-repeat center center;background-size: 40px auto;overflow: hidden;margin-top: 10px;}
+.service .upload input{width: 70px;height: 70px;opacity: 0;}
+.service ul{width: 100%;overflow: hidden;background: #fff;margin-top: 10px;}
+.service li{padding: 0 10px;height: 45px;}
+.service li:first-child{border-bottom: 1px solid #efefef;}
+.service li input{width: 100%;height: 45px;line-height: 20px;font-size: 15px;text-indent: 5px;}
+.service #sub{display: block;height: 40px;line-height: 40px;border: 1px solid #e10303;border-radius: 5px;margin: 30px 10px 0;background: #e3393c;color: #fff;font-size: 16px;text-align: center;}
+
+/*浏览记录，收藏夹*/
+.record{width: 100%;position:absolute;left:0;top:10px;bottom:0;overflow: hidden;}
+.record #wrapper{width:100%;position:absolute;left:0;top:0;bottom:0;}
+.record #scroller{width: 100%;-webkit-tap-highlight-color:rgba(0,0,0,0);float:left;}
+.record ul{width: 100%;overflow: hidden;position: relative;}
+.record li{float: left;background: #fff;margin: 0 1px 4px;overflow: hidden;}
+.record li a{width: 100%;height: 100%;overflow: hidden;display: inline-block;}
+.record li img{width: 100%;}
+.record li h3{font-size: 15px;padding: 0 10px;line-height: 16px;margin-top: 7px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.record li p{padding: 0 10px 3px;font-size: 12px;line-height: 27px;}
+.record li p .price{color: #142935;}
+.record .price i{color: #dd2727;}
+.record .price b{font-size: 15px;}
+.record li p .volume{color: #666;float: right;}
+.record .no{width: 100%;position: absolute;left: 0;top: 50%;margin-top: -24px;text-align: center;line-height: 24px;color: #666;font-size: 16px;display: none;}
+.record .no a{color: #001eff;}
+
+@media (min-width: 375px){
+.my_order h2{font-size: 16px;}
+.my_order h2 img{width: 22px;margin-top: 14px;}
+.my_list li a{font-size: 16px;}
+.my_list li img{width: 27px;margin-top: 9px;}
+}
+@media (min-width: 640px){
+.record{width: 640px;left: 50%;margin-left: -320px;}
+}

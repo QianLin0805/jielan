@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>我的名片</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<style type="text/css">
+.wrap{width: 100%;overflow: hidden;display: none;}
+.top{padding: 10px;height: 65px;background: #fff;position: relative;}
+.top img{width: 65px;height: 65px;margin-right: 12px;}
+.top div{height: 65px;position: absolute;left: 85px;top: 10px;right: 10px;line-height: 65px;}
+.top div p{float: left;font-size: 16px;}
+.top div .sex{width: 12px;height: 65px;margin-left: 5px;background: no-repeat center center;background-size: 12px auto;display: inline-block;}
+.top div #men{background-image: url(images/men.png);display: none;}
+.top div #women{background-image: url(images/women.png);display: none;}
+.info{padding: 0 10px;overflow: hidden;background: #fff;margin-top: 20px;}
+.info li{width: 100%;height: 50px;line-height: 50px;border-top: 1px solid #e0e0e0;position: relative;font-size: 16px;color: #333;  clear: both;}
+.info li:first-child{border: none;}
+.info li span{float: left;width: 75px;display: inline-block;overflow: hidden;}
+.info li p{color: #808080;float: left;font-size: 15px;}
+.info a{line-height: 0;}
+.info #tel,.info #num{float: right;margin: 14px 10px 0 0;}
+.info #tel img,.info #num img{width: 23px;}
+.info #message{float: right;margin: 14px 3px 0 0;}
+.info #message img{width: 22px;}
+</style>
+</head>
+<body>
+<p class="tip">数据加载中...</p>
+<div class="wrap" ng-app="myApp" ng-controller="dataCtrl">
+	<div class="top">
+		<img ng-src={{data.avatar}} alt="" class="portrait" />
+		<div><p>{{data.name}}</p><p id="men" class="sex"></p><p id="women" class="sex"></p></div>
+	</div>
+	<ul class="info">
+		<li ng-repeat="x in data.extattr.attrs | filter:'所在协会'">
+			<span class="left">{{x.name}}</span><p>{{x.value}}</p>
+		</li>
+		<li ng-repeat="x in data.extattr.attrs | filter:'单位名称'">
+			<span class="left">{{x.name}}</span><p>{{x.value}}</p>
+		</li>
+		<li ng-repeat="x in data.extattr.attrs | filter:'单位地址'">
+			<span class="left">{{x.name}}</span><p>{{x.value}}</p>
+		</li>
+		<li ng-show="data.mobile"><span class="left">手机</span><p class="tel">{{data.mobile}}</p><a href="" id="message"><img src="images/message.png" alt="" /></a><a href="tel:{{data.mobile}}" id="tel"><img src="images/phone.png" alt="" /></a></li>
+		<!-- <li ng-show="data.weixinid"><span class="left">微信号</span><p>{{data.weixinid}}</p></li> -->
+		<li ng-show="data.email"><span class="left">邮箱</span><p>{{data.email}}</p></li>
+		<!-- <li><span class="left">职位</span><p>{{data.position}}</p></li> -->
+		<li ng-repeat="x in data.extattr.attrs | filter:'固定电话'">
+			<span class="left">{{x.name}}</span><p>{{x.value}}</p>
+		</li>
+		<li ng-repeat="x in data.extattr.attrs | filter:'传真'">
+			<span class="left">{{x.name}}</span><p>{{x.value}}</p>
+		</li>
+	</ul>
+</div>
+<p class="tishi"></p>
+</body>
+</html>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+var code = getQueryString('code');
+var sCorpID = getQueryString('state');
+var userId,tel;
+if(window.name){
+	var info = (new Function("return "+ window.name))();
+	userId = info.user;
+}else{
+	$.ajax({
+		type:"POST",
+		url:link+"getOAuth.do",
+		async:false,
+		data:{
+			"coreId":sCorpID,
+			"code":code
+		},
+		success:function(response){
+			userId=response.resultContent.UserId;
+		}
+	});
+}
+angular.module('myApp',[]).controller('dataCtrl',function($scope,$http){
+	$http({
+		url: link+"findUser.do",
+		data: {
+			"sCorpID":sCorpID,
+			"userId":userId
+		},
+	    method: 'POST',
+	    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+	    transformRequest: function(obj) {
+	        var str = [];
+	        for(var p in obj)
+	        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	        return str.join("&");
+	    }
+	}).success(function(response){
+		if(response.resultCode!=200){
+			$('.tishi').text('加载失败').show();
+			tishi();
+			return;
+		}
+		$('.tip').hide();
+		$('.wrap').show();
+		$scope.data = response.resultContent;
+		if($scope.data.mobile){
+			tel=$scope.data.mobile;
+		}
+		if($scope.data.gender==1){
+			$('#men').show();
+		}else if($scope.data.gender==2){
+			$('#women').show();
+		}
+		$('#message').attr('href','sms:'+tel);
+		$.ajax({
+			type:'POST',
+			async:true,
+			url:link+'shareUser.do',
+			data:{"url":location.href.split('#')[0]},
+			datatype:'json',
+			success:function(msg){
+				//var msg = eval('(' + msg1 + ')');
+				console.log(msg);
+				wx.config({
+				    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+				    appId: msg.appId, // 必填，公众号的唯一标识
+				    timestamp: msg.timestamp, // 必填，生成签名的时间戳
+				    nonceStr: msg.nonceStr, // 必填，生成签名的随机串
+				    signature: msg.signature,// 必填，签名，见附录1
+				    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','previewImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+				});
+			}
+
+		});
+		wx.error(function(res){
+			$.ajax({
+				type:'POST',
+				async:true,
+				url:link+'shareUser.do',
+				data:{"url":location.href.split('#')[0],"errMsg":res['errMsg']},
+				datatype:'json',
+				success:function(msg){
+					wx.config({
+					    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+					    appId: msg.appId, // 必填，公众号的唯一标识
+					    timestamp: msg.timestamp, // 必填，生成签名的时间戳
+					    nonceStr: msg.nonceStr, // 必填，生成签名的随机串
+					    signature: msg.signature,// 必填，签名，见附录1
+					    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','previewImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+					});
+				}
+			});
+		    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+		});
+		    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+        wx.ready(function(){
+            wx.onMenuShareTimeline({//朋友圈
+			    title: $scope.data.name+'的电子微名片', // 分享标题
+			    link: 'http://static.jielanwx.com/ningbo/qyh/share.html?sCorpID='+sCorpID+'&userId='+userId, // 分享链接
+			    imgUrl: $scope.data.avatar, // 分享图标
+			    success: function () { 
+			        // 用户确认分享后执行的回调函数
+			    },
+			    cancel: function () { 
+			        // 用户取消分享后执行的回调函数
+			    }
+			});
+			wx.onMenuShareAppMessage({//朋友
+			    title: $scope.data.name+'的电子微名片', // 分享标题
+			    desc: $scope.data.name+'的电子微名片，敬请惠存', // 分享描述
+			    link: 'http://static.jielanwx.com/ningbo/qyh/share.html?sCorpID='+sCorpID+'&userId='+userId, // 分享链接
+			    imgUrl: $scope.data.avatar, // 分享图标
+			    type: '', // 分享类型,music、video或link，不填默认为link
+			    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+			    success: function () { 
+			        // 用户确认分享后执行的回调函数
+			    },
+			    cancel: function () { 
+			        // 用户取消分享后执行的回调函数
+			    }
+			});
+        });
+	}).error(function(response,status){
+		$('.tip').text('请求异常');
+	});
+});
+window.onunload = function(){  
+	var user = userId;
+	window.name  = '{user:"'+user+'"}';
+} 
+</script>

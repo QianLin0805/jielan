@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>选择房号</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+ul{width:100%;overflow:hidden;background:#fff;}
+li{width:100%;line-height:40px;border-top:1px solid #ddd;font-size:16px;color:#333;}
+li:first-child{border:none;}
+li span{margin-left:10px;}
+li input{width:18px;height:18px;background:url(images/my/radio1.png) no-repeat center center;background-size:18px auto;float:right;margin:10px 10px 0 0;}
+li input:checked{background-image:url(images/my/radio2.png);}
+</style>
+</head>
+<body>
+    <ul>
+        <li><span>101</span><input type="radio" name="room" checked></li>
+        <li><span>102</span><input type="radio" name="room"></li>
+        <li><span>103</span><input type="radio" name="room"></li>
+        <li><span>104</span><input type="radio" name="room"></li>
+        <li><span>105</span><input type="radio" name="room"></li>
+    </ul>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('li').on('click',function(){
+		var room=$(this).children('span').text();
+		$(this).children('input').get(0).checked=true;
+		window.location.href='';
+	});
+})
+</script>

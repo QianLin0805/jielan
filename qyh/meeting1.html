@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>会议列表</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/meeting.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+</head>
+<body>
+<div class="wrap" ng-app="myApp" ng-controller="dataCtrl">
+	<div class="top">
+		<p class="will active"><a><span>待进行</span></a></p>
+		<p class="end"><a href="meeting2.html?userId={{userId}}&sCorpID={{sCorpID}}"><span>已结束</span></a></p>
+	</div>
+	<p class="tip">数据加载中...</p>
+	<div class="list" infinite-scroll="loadMore()" infinite-scroll-distance="1">
+		<div class="item" ng-repeat="x in data"><a href="meetDetail.html?id={{x.id}}&type={{state}}&userId={{userId}}&sCorpID={{sCorpID}}">
+			<div class="date">
+				<p class="year">{{x.yearAndMonth}}</p>
+				<p class="day">{{x.day}}</p>
+				<p class="week">{{x.week}}</p>
+			</div>
+			<div class="main">
+				<h3>{{x.title}}</h3>
+				<p><span class="time">{{x.time}}</span><span class="address">{{x.addr}}</span></p>
+			</div>
+		</a></div>
+	</div>
+	<p class="tips">已全部加载</p>
+	<p class="tishi"></p>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/ngscroll.js"></script>
+<script type="text/javascript">
+var code=getQueryString('code');
+var type=1,pageNum=1;
+var userId;
+if(getQueryString('sCorpID')){
+	var sCorpID=getQueryString('sCorpID');
+}else{
+	var sCorpID=getQueryString('state');
+}
+if(window.name){
+	var info = (new Function("return "+ window.name))();
+	userId = info.user;
+}else{
+	$.ajax({
+		type:"POST",
+		url:link+"getOAuth.do",
+		async:false,
+		data:{
+			"coreId":sCorpID,
+			"code":code
+		},
+		success:function(response){
+			userId=response.resultContent.UserId;
+		}
+	});
+}
+angular.module('myApp',['infinite-scroll']).controller('dataCtrl',function($scope,$http){
+	$scope.data = [];
+	$scope.state = type;
+	$scope.userId = userId;
+	$scope.sCorpID = sCorpID;
+	$scope.pageEnd = false;
+	$scope.busy = false;
+	$http({
+		url: link+"meetingList.do",
+		data: {
+			"sCorpID":sCorpID,
+			"userId":userId,
+			"type":type,
+			"pageNum":pageNum,
+			"numPerPage":8
+		},
+	    method: 'POST',
+	    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+	    transformRequest: function(obj) {
+	        var str = [];
+	        for(var p in obj)
+	        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	        return str.join("&");
+	    }
+	}).success(function(response){
+		pageNum++;
+		if(response.resultCode!=200){
+			$('.tishi').text('加载失败').show();
+			tishi();
+			return;
+		}
+		$('.tip').hide();
+		$('.list').show();
+		var count=response.resultContent.length;
+		if(count<8){
+			$('.tips').show();
+			$scope.pageEnd = true;
+		}
+		for(var i=0;i<count;i++){
+			$scope.data.push(response.resultContent[i]);
+		}
+		$scope.loadMore = function() {
+			if ($scope.pageEnd){
+				return;
+			}
+			if($scope.busy) return;
+			$scope.busy = true;
+			$http({
+				url: link+"meetingList.do",
+				data: {
+					"sCorpID":sCorpID,
+					"userId":userId,
+					"type":type,
+					"pageNum":pageNum,
+					"numPerPage":8
+				},
+			    method: 'POST',
+			    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			    transformRequest: function(obj) {
+			        var str = [];
+			        for(var p in obj)
+			        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+			        return str.join("&");
+			    }
+			}).success(function(response){
+				pageNum++;
+				$scope.busy = false;
+				if(response.resultCode!=200){
+					$('.tishi').text('加载失败').show();
+					tishi();
+					return;
+				}
+				var count=response.resultContent.length;
+				if(count<8){
+					$('.tips').show();
+					$scope.pageEnd = true;
+				}
+				for(var i=0;i<count;i++){
+					$scope.data.push(response.resultContent[i]);
+				}
+			});
+		};
+	}).error(function(response,status){
+		$('.tip').text('请求异常');
+	});
+});
+window.onunload = function(){  
+	var user = userId;
+	window.name  = '{user:"'+user+'"}';
+} 
+</script>

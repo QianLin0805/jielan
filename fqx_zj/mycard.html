@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>关于我们</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#2e3132;}
+.card{width:100%;padding-bottom:20px;overflow:hidden;}
+.card div{width:84%;height:98px;margin:15px 3% 0;padding:12px 5% 0;border-radius:5px;position:relative;}
+.card div img{width:36px;float:left;}
+.card div h2{font-size:15px;color:#e2e2e2;float:left;margin-left:5px;line-height:15px;}
+.card div h2 span{font-size:13px;line-height:24px;}
+.card div p{height:50px;line-height:50px;color:#fff;clear:both;text-align:right;font-size:20px;}
+.card div p span{font-size:24px;line-height:50px;}
+a:link,a:visited{width:84%;height:16px;line-height:16px;margin:0 3% 20px;padding:15px 5%;background:#202223;border-radius:5px;display:block;font-size:16px;}
+a:active{background:#555;}
+a span{margin-left:5px;color:#999;}
+a img{height:16px;}
+a .arrow{float:right;}
+</style>
+</head>
+<body>
+	<div class="card">
+    	<div style="background:#d61518;">
+        	<img src="images/zsyh.png" alt="" />
+        	<h2><b>招商银行</b><br /><span>信用卡</span></h2>
+            <p>**** **** **** <span>2913</span></p>
+        </div>
+    	<div style="background:#008c77;">
+        	<img src="images/nyyh.png" alt="" />
+        	<h2><b>农业银行</b><br /><span>储蓄卡</span></h2>
+            <p>**** **** **** <span>2913</span></p>
+        </div>
+    </div>
+    <a href="addcard1.html">
+    	<img src="images/add.png" alt="" />
+        <span>添加银行卡</span>
+        <img src="images/arrow1.png" alt="" class="arrow" />
+    </a>
+</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function(){
+	//划动删除
+	var pingkuan=$(window).width();
+	var startX;
+	$('.card').children().on('touchstart',function(){
+		startX=event.touches[0].pageX;
+	});
+	$('.card').children().on('touchmove',function(){
+		event.preventDefault();
+	});
+	$('.card').children().on('touchend',function(){
+		x=event.changedTouches[0].pageX-startX;
+		if(x<-100){
+			$(this).animate({left:-pingkuan},'fast',function(){
+				$(this).remove();
+			});
+		}
+	});
+})
+</script>

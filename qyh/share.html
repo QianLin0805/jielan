@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>我的名片</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<style type="text/css">
+.wrap{width: 100%;overflow: hidden;display: none;}
+.top{padding: 10px;height: 65px;background: #fff;position: relative;}
+.top img{width: 65px;height: 65px;margin-right: 12px;}
+.top div{height: 65px;position: absolute;left: 85px;top: 10px;right: 10px;line-height: 65px;}
+.top div p{float: left;font-size: 16px;}
+.top div .sex{width: 12px;height: 65px;margin-left: 5px;background: no-repeat center center;background-size: 12px auto;display: inline-block;}
+.top div #men{background-image: url(images/men.png);display: none;}
+.top div #women{background-image: url(images/women.png);display: none;}
+.info{padding: 0 10px;overflow: hidden;background: #fff;margin-top: 20px;}
+.info li{width: 100%;height: 50px;line-height: 50px;border-top: 1px solid #e0e0e0;position: relative;font-size: 16px;color: #333;  clear: both;}
+.info li:first-child{border: none;}
+.info li span{float: left;width: 75px;display: inline-block;overflow: hidden;}
+.info li p{color: #808080;float: left;font-size: 15px;}
+.info a{line-height: 0;}
+.info #tel,.info #num{float: right;margin: 14px 10px 0 0;}
+.info #tel img,.info #num img{width: 23px;}
+.info #message{float: right;margin: 14px 3px 0 0;}
+.info #message img{width: 22px;}
+</style>
+</head>
+<body>
+<p class="tip">数据加载中...</p>
+<div class="wrap" ng-app="myApp" ng-controller="dataCtrl">
+	<div class="top">
+		<img ng-src={{data.avatar}} alt="" class="portrait" />
+		<div><p>{{data.name}}</p><p id="men" class="sex"></p><p id="women" class="sex"></p></div>
+	</div>
+	<ul class="info">
+		<li ng-repeat="x in data.extattr.attrs | filter:'所在协会'">
+			<span class="left">{{x.name}}</span><p>{{x.value}}</p>
+		</li>
+		<li ng-repeat="x in data.extattr.attrs | filter:'单位名称'">
+			<span class="left">{{x.name}}</span><p>{{x.value}}</p>
+		</li>
+		<li ng-repeat="x in data.extattr.attrs | filter:'单位地址'">
+			<span class="left">{{x.name}}</span><p>{{x.value}}</p>
+		</li>
+		<li ng-show="data.mobile"><span class="left">手机</span><p class="tel">{{data.mobile}}</p><a href="" id="message"><img src="images/message.png" alt="" /></a><a href="tel:{{data.mobile}}" id="tel"><img src="images/phone.png" alt="" /></a></li>
+		<!-- <li ng-show="data.weixinid"><span class="left">微信号</span><p>{{data.weixinid}}</p></li> -->
+		<li ng-show="data.email"><span class="left">邮箱</span><p>{{data.email}}</p></li>
+		<!-- <li><span class="left">职位</span><p>{{data.position}}</p></li> -->
+		<li ng-repeat="x in data.extattr.attrs | filter:'固定电话'">
+			<span class="left">{{x.name}}</span><p>{{x.value}}</p>
+		</li>
+		<li ng-repeat="x in data.extattr.attrs | filter:'传真'">
+			<span class="left">{{x.name}}</span><p>{{x.value}}</p>
+		</li>
+	</ul>
+</div>
+<p class="tishi"></p>
+</body>
+</html>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+var userId = getQueryString('userId');
+var sCorpID = getQueryString('sCorpID');
+var tel;
+angular.module('myApp',[]).controller('dataCtrl',function($scope,$http){
+	$http({
+		url: link+"findUser.do",
+		data: {
+			"sCorpID":sCorpID,
+			"userId":userId
+		},
+	    method: 'POST',
+	    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+	    transformRequest: function(obj) {
+	        var str = [];
+	        for(var p in obj)
+	        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	        return str.join("&");
+	    }
+	}).success(function(response){
+		if(response.resultCode!=200){
+			$('.tishi').text('加载失败').show();
+			tishi();
+			return;
+		}
+		$('.tip').hide();
+		$('.wrap').show();
+		$scope.data = response.resultContent;
+		if($scope.data.mobile){
+			tel=$scope.data.mobile;
+		}
+		if($scope.data.gender==1){
+			$('#men').show();
+		}else if($scope.data.gender==2){
+			$('#women').show();
+		}
+		$('#message').attr('href','sms:'+tel);
+	}).error(function(response,status){
+		$('.tip').text('请求异常');
+	});
+});
+</script>

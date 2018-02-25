@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>在线商城</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/address.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="plug-in/area.js"></script>
+<script type="text/javascript" src="js/limit.js"></script>
+</head>
+<body>
+<div class="addWrap">
+    <p class="top"><a href="address.html"><img src="images/back1.png" alt="" /></a>添加收货地址</p>
+    <form action="address.html" name="shareip" method="post">
+    	<ul>
+            <li>
+                <p>收货人</p><input type="text" placeholder="姓名" />
+            </li>
+            <li>
+                <p>手机号</p><input type="text" placeholder="手机号码" maxlength="11" id="tel" />
+            </li>
+            <li>
+                <p>省份</p><select name="province" id="s1">
+                    <option value="">--选择省份--</option>
+                </select>
+            </li>
+            <li>
+                <p>市</p><select name="city" id="s2">
+                    <option value="">--选择城市--</option>
+                </select>
+            </li>
+            <li>
+                <p>区/县</p><select name="town" id="s3">
+                    <option value="">--选择区/县--</option>
+                </select>
+            </li>
+            <li>
+                <p>详细地址</p><input type="text" placeholder="详细地址" id="address" />
+            </li>
+            <li class="set"><label for="setDefault"><input type="checkbox" id="setDefault" name="setDefault" checked />设为默认地址<span>(每次购买时会默认使用地址)</span></label></li>
+        </ul>
+        <div><button type="submit">立即添加</button></div>
+    </form>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('.set').on('click',function(){
+        if($('#setDefault').is(':checked')){
+            $('#setDefault').get(0).checked=false;
+        }else{
+            $('#setDefault').get(0).checked=true;
+        }
+    });
+});
+</script>

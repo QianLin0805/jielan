@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+.order{width:100%;overflow:hidden;}
+.order .top{width:100%;height:40px;position:fixed;left:0;top:0;z-index:111;text-align:center;background:#fff;color:#666;}
+.order .top p{width:38%;height:38px;line-height:38px;border-bottom:2px solid #fff;font-size:16px;float:left;}
+.order .top .current{border-color:#fa5050;color:#fa5050;}
+.order .top ul{width:24%;height:40px;line-height:35px;color:#666;float:left;}
+.order .top .wy_select{display:none;}
+.order .top li{height:35px;border-bottom:1px solid #ddd;background:#fff;display:none;}
+.order .top .title{height:39px;line-height:40px;font-size:16px;border-color:#fff;display:block;}
+.order .top .active li{display:block;}
+.order .top .active .title{border-color:#959595;}
+.order .top .title img{width:10px;margin-left:5px;margin-top:16px;}
+.order .wrapper{width:100%;position:absolute;left:0;top:40px;bottom:0;z-index:11;overflow:auto;}
+.order .wrapper #scroll{width:100%;position:relative;-webkit-tap-highlight-color:rgba(0,0,0,0);float:left;}
+.wrapper ul{width:100%;overflow:hidden;}
+.wrapper ul li{width:100%;overflow:hidden;background:#fff;margin-top:10px;}
+.wrapper ul h2{height:40px;line-height:40px;font-size:16px;text-indent:45px;color:#666;}
+.wrapper ul h2 span{color:#fa5050;float:right;margin-right:20px;}
+.list1 .yueshao h2{background:url(../images/family/yueshao.png) no-repeat 10px center;background-size:28px;}
+.list1 .clean h2{background:url(../images/family/clean.png) no-repeat 10px center;background-size:28px;}
+.list1 .nurse h2{background:url(../images/family/nurse.png) no-repeat 10px center;background-size:28px;}
+.list1 .fix h2{background:url(../images/family/fix.png) no-repeat 10px center;background-size:28px;}
+.list1 li .content{padding:10px;height:65px;}
+.list1 li .content img{width:65px;float:left;margin-right:8px;}
+.list1 li .content h3{font-size:15px;color:#333;line-height:30px;}
+.list1 li .content p{font-size:15px;color:#666;line-height:18px;}
+.list1 li .content p a{color:#666;}
+.wrapper ul .bottom{height:40px;line-height:40px;color:#666;text-indent:10px;border-top:1px solid #ddd;}
+.wrapper ul .bottom .delete{width:78px;height:28px;line-height:30px;color:#333;font-size:13px;border:1px solid #999;border-radius:3px;float:right;margin:5px 15px 0 0;display:inline-block;text-align:center;text-indent:0;}
+
+.wrapper .list2{display:none;}
+.list2 .wybx h2{background:url(../images/family/property_fix.png) no-repeat 10px center;background-size:28px;}
+.list2 .wyjf h2{background:url(../images/family/payment.png) no-repeat 10px center;background-size:28px;}
+.list2 li .content{padding:10px;overflow:hidden;}
+.list2 li .content h3{font-size:15px;color:#333;line-height:24px;}
+.list2 li .content p{font-size:15px;color:#666;line-height:24px;}
+.list2 li .content p a{color:#666;}
+.list2 li .content .name{margin-right:10px;}
+
+.wrapper #pullUp{height:50px;line-height:50px;color:#999;text-align:center;}
+.shadow{width:100%;position:fixed;left:0;top:0;bottom:0;background:rgba(0,0,0,0.3);z-index:99;display:none;}
+.del_wrap{width: 100%;position: absolute;left: 0;top: 0;bottom: 0;z-index:999;background: rgba(0,0,0,0.6);display: none;}
+.del_wrap .del_box{width: 80%;overflow: hidden;position: absolute;left: 10%;top: 50%;background: #fff;border-radius: 5px;text-align: center;margin-top: -81px;}
+.del_wrap .del_box h4{width: 100%;height: 40px;line-height: 40px;background: #fa5050;color: #fff;font-size: 15px;}
+.del_wrap .del_box p{width: 100%;line-height: 60px;color: #555;}
+.del_wrap .del_box div{border-top: 1px solid #ddd;margin-top: 10px;padding: 10px 0;}
+.del_wrap .del_box span{width: 100px;height: 30px;line-height: 30px;background: #fa5050;color: #fff;border-radius: 4px;display: inline-block;}

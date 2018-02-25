@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>医疗健康馆</title>
+<link rel="stylesheet" href="css/css1.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#f4f4f4;}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	function buju(){
+		var pingkuan=$(window).width();
+		var bili=pingkuan/720;
+		$('.yljk_box').children('a').css({
+			top:bili*268+'px'
+		});
+	};
+	$(window).load(function(){
+		buju();
+	});
+})
+</script>
+</head>
+<body>
+    <div class="main yljk_main">
+        <div class="yljk_box">
+            <img src="images/city/yljk_bg.png" alt="" />
+            <a href="">立即进入</a>
+        </div>
+        <div class="yljk_left">
+            <div>
+                <img src="images/city/icon2.png" alt="" />
+                <h3>预约挂号</h3>
+                <p>大量名医轻松预约</p>
+            </div>
+            <div>
+                <img src="images/city/icon4.png" alt="" />
+                <h3>医院导航</h3>
+                <p>线路指引轻松到达</p>
+            </div>
+            <div>
+                <img src="images/city/icon6.png" alt="" />
+                <h3>智能导诊</h3>
+                <p>不适症状精确分析</p>
+            </div>
+        </div>
+        <div class="yljk_right">
+            <div>
+                <img src="images/city/icon1.png" alt="" />
+                <h3>取报告单</h3>
+                <p>及时查询检查结果</p>
+            </div>
+            <div>
+                <img src="images/city/icon3.png" alt="" />
+                <h3>医院医生</h3>
+                <p>详细信息一手掌握</p>
+            </div>
+            <div>
+                <img src="images/city/icon5.png" alt="" />
+                <h3>周边商户</h3>
+                <p>酒店银行一网打尽</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

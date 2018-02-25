@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>公交设置提醒</title>
+<link rel="stylesheet" href="css/css1.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#efefef;}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	var pinggao=$(window).height();
+	var pingkuan=$(window).width();
+	function buju(){
+		$('.main').css({
+			height:pinggao-49+'px'
+		});
+		$('.qszd p').css({
+			width:(pingkuan-34)/2
+		});
+		$('.setline ul li').css({
+			width:pingkuan
+		});
+		$('.myset').css({
+			height:pinggao-49+'px'
+		});
+	}
+	buju();
+	//查看我的设置
+	var i=0;
+	$('.dot').bind('click',function(){
+		var setCount=$('.myset ul').children().length;
+		if(i%2==0){
+			$('.search,.setline').animate({left:'-100%'},'normal');
+			$('.myset').animate({left:0},'normal');
+			if(setCount!==0){
+				$('.myset ul').show();
+			}
+			i++;
+		}else{
+			$('.search,.setline').animate({left:0},'normal');
+			$('.myset').animate({left:'100%'},'normal');
+			i++;
+		}
+	});
+	//搜索
+	$('#search').bind('click',function(){
+		var searchVal=$('.enter input').val();
+		if(searchVal!==''){
+			$(this).hide().next().show();
+			setTimeout(function(){
+				$('.enter img').show();
+				$('.search ul').slideDown(300);
+			},300);
+		}
+	});
+	$('#error').bind('click',function(){
+		$(this).hide().prev().show();
+		$('.enter input').val('');
+		$('.search ul').slideUp(300);
+		setTimeout(function(){
+			$('.enter img').hide();
+		},300);
+	});
+	//搜索到路线设置
+	$('.result').bind('click',function(){
+		var searchLine=$(this).children('p').text();
+		var start=$(this).children('span').children().eq(0).text();
+		var end=$(this).children('span').children().eq(1).text();
+		$('.search').fadeOut(500);
+		setTimeout(function(){
+			$('.result').parent().hide();
+			$('.setline').fadeIn(500);
+			$('.setline').children('h3').text(searchLine);
+			$('.start').text(start);
+			$('.end').text(end);
+		},500);
+	});
+	//起始切换
+	$('.qsqh').bind('click',function(){
+		var startStop=$(this).prev().text();
+		var endStop=$(this).next().text();
+		$(this).prev().text(endStop);
+		$(this).next().text(startStop);
+	});
+	$('.stop').bind('click',function(){
+		if($(this).next().is(':hidden')){
+			$(this).next().slideDown();
+			$('.duty').animate({marginTop:0});
+		}else{
+			$(this).next().slideUp();
+			$('.duty').animate({marginTop:'10px'});
+		}
+		$(this).next().children().bind('click',function(){
+			var tacitStop=$(this).text();
+			$('.stop').text(tacitStop).css('color','#555');
+		});
+	});
+	//点击保存取消初始化设置信息
+	$('#cancel,#save').bind('click',function(){
+		$('.setline').children('h3').text('');
+		$('.qsqh').children('p').text('');
+		$('.stop').text('默认站点A');
+		$('.stop').next().hide();
+		$('.duty').css('marginTop','10px');
+		$('#onDuty').get(0).checked=true;
+		$('.setline').hide();
+		$('.search').show();
+		$('#search').show().next().hide();
+		$('.enter input').val('');
+		$('.enter img').hide();
+	});
+	$('.delte').bind('click',function(){
+		var setCount=$('.myset ul').children().length;
+		$(this).parent().remove();
+		if(setCount==1){
+			$('.myset ul').hide();
+		}
+	});
+});
+</script>
+</head>
+<body>
+<div class="head line_head">
+    <a href="mynote.html"><img src="images/arrow.png" alt="" />
+    <h1>公交设置提醒</h1></a>
+    <img src="images/dot.png" alt="" class="dot" />
+</div>
+<div class="main line_main">
+	<div class="search">
+    	<p class="enter"><input type="text" placeholder="请输入路线" /><img src="images/arrow2.jpg" alt="" /></p>
+        <img src="images/search.png" alt="" id="search" />
+        <img src="images/error.png" alt="" id="error" />
+        <ul>
+            <li class="result"><p>12号线（慈溪公交）</p><span><i>庵东车站</i>-<i>水云浦</i></span></li>
+            <li class="result"><p>12号线（慈溪公交）</p><span><i>水云浦</i>-<i>庵东车站</i></span></li>
+            <li class="result"><p>12号线（慈溪公交）</p><span><i>徐家漕</i>-<i>潘火高架桥站</i></span></li>
+            <li class="result"><p>12号线（慈溪公交）</p><span><i>潘火高架桥站</i>-<i>徐家漕</i></span></li>
+            <li class="result"><p>12号线（慈溪公交）</p><span><i>鄞州高教园区</i>-<i>灵桥西（天一广场）</i></span></li>
+        </ul>
+    </div>
+    <div class="setline">
+    	<h3></h3>
+        <div class="qszd">
+        	<p class="start" style="border-left:none;background:url(images/start.png) no-repeat 8px center #fff;background-size:20px;"></p>
+        	<img src="images/index/round.png" alt="" class="qsqh" />
+        	<p class="end" style="border-right:none;background:url(images/end.png) no-repeat 8px center #fff;background-size:20px;"></p>
+        </div>
+        <div class="stop">默认站点A</div>
+        <ul>
+        	<li>站点1</li>
+        	<li>站点2</li>
+        	<li>站点3</li>
+        	<li>站点4</li>
+        	<li>站点5</li>
+        	<li>站点6</li>
+        	<li>站点7</li>
+        	<li>站点8</li>
+        	<li>站点9</li>
+        	<li>站点10</li>
+        </ul>
+        <div class="duty">
+        	<input type="radio" name="duty" id="onDuty" checked value="上班">
+            <label for="onDuty">上班</label>
+            <input type="radio" name="duty" id="offDuty" value="下班">
+            <label for="offDuty">下班</label>
+        </div>
+        <div class="save">
+        	<span id="cancel" style="margin:0 5% 0 10%;background:#ccc;">取消</span>
+            <span id="save" style="margin:0 10% 0 5%;">保存</span>
+        </div>
+    </div>
+    <div class="myset">
+    	<ul>
+        	<li>
+            	<span style="width:18%;margin-right:3%;text-indent:10px;">967路</span>
+                <span style="width:50%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">东钱湖旅游学校</span>
+                <span style="margin:0 3%;">上班</span>
+                <img src="images/cancel.png" alt="" class="delte" />
+            </li>
+        	<li>
+            	<span style="width:18%;margin-right:3%;text-indent:10px;">967路</span>
+                <span style="width:50%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">东钱湖旅游学校</span>
+                <span style="margin:0 3%;">上班</span>
+                <img src="images/cancel.png" alt="" class="delte" />
+            </li>
+        	<li>
+            	<span style="width:18%;margin-right:3%;text-indent:10px;">967路</span>
+                <span style="width:50%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">东钱湖旅游学校</span>
+                <span style="margin:0 3%;">上班</span>
+                <img src="images/cancel.png" alt="" class="delte" />
+            </li>
+        </ul>
+    </div>
+    <div class="line_bg"></div>
+</div>
+</body>
+</html>

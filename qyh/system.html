@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>制度章程</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+ul{width: 100%;overflow: hidden;}
+ul li{padding: 0 10px;background: #fff;margin-bottom: 5px;line-height: 50px;font-size: 15px;}
+ul li span{margin-left: 15px;}
+</style>
+</head>
+<body>
+	<ul>
+		<li>协会章程</li>
+		<li>法人述职制度</li>
+		<li>经费管理细则</li>
+		<li>秘书处工作职责</li>
+		<li>信息联络员工作规则</li>
+		<li>信息披露制度</li>
+		<li>印章文件制度</li>
+		<li>优秀信息联络员评选办法</li>
+		<li>重大活动备案制度</li>
+	</ul>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('li').on('click',function(){
+		var id=$(this).index();
+		var title=encodeURIComponent($(this).text());
+		if(id>0){
+			window.location.href='sysContent.html?id='+id+'&title='+title;
+		}else{
+			window.location.href='sysContent1.html';
+		}
+	});
+});
+</script>

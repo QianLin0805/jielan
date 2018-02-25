@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>全部成员</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<style type="text/css">
+ul{padding: 0 10px;overflow: hidden;background: #fff;margin-bottom: 20px;display: none;}
+ul li{width: 100%;height: 50px;line-height: 50px;border-top: 1px solid #e0e0e0;font-size: 16px;color: #333;}
+ul li:first-child{border: none;}
+ul li img{width: 40px;height: 40px;margin: 5px 10px 0 0;}
+</style>
+</head>
+<body>
+	<p class="tip">数据加载中...</p>
+	<ul ng-app="myApp" ng-controller="dataCtrl">
+		<li ng-repeat="x in data"><img ng-src={{x.headImg}} alt="" /><span>{{x.name}}</span></li>
+	</ul>
+	<p class="tishi"></p>
+</body>
+</html>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+var id = getQueryString('id');
+angular.module('myApp',[]).controller('dataCtrl',function($scope,$http){
+	$http({
+		url: link+"meetingDetails.do",
+		data: {
+			"id":id
+		},
+	    method: 'POST',
+	    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+	    transformRequest: function(obj) {
+	        var str = [];
+	        for(var p in obj)
+	        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	        return str.join("&");
+	    }
+	}).success(function(response){
+		if(response.resultCode!=200){
+			$('.tishi').text('加载失败').show();
+			tishi();
+			return;
+		}
+		$('.tip').hide();
+		$('ul').show();
+		$scope.data = response.resultContent.meetingUsers;
+	}).error(function(response,status){
+		$('.tip').text('请求异常');
+	});
+});
+</script>

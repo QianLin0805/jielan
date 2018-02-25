@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>大晒场</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/dsc.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#ececec;}
+</style>
+</head>
+<body>
+	<div class="dsc">
+    	<h1><img src="images/logo.jpg" alt="" /><span>影评</span></h1>
+        <div class="list">
+            <span style="background:#da0f0f;margin-top:0;">1</span>
+            <span style="background:#12a5e9;">2</span>
+            <span style="background:#76c62f;">3</span>
+            <span style="background:#bfbfbf;">4</span>
+            <p class="dark" style="background:#ccc;left:11px;"></p>
+            <p class="light" style="background:#fafafa;left:12px;"></p>
+        </div>
+        <ul class="films">
+            <a href="fdetail.html"><li>
+                <img src="images/dsc_pic1.jpg" alt="" />
+                <div>
+                	<h2 class="name"><span>罗马假日</span> <i>9.5</i></h2>
+                	<p class="director"><span>导演:</span><i>刘伟强 麦兆辉</i></p>
+                    <p class="actor"><span>主演:</span><i>梁朝伟 刘德华 曾志伟 黄秋生</i></p>
+                    <p class="screen"><span>上映:</span><i>2015-08-23 美国</i></p>
+                </div>
+                <p class="comment">电影还可以，剧情表演相当到位演相当到位。电影还可以，剧情表演相当到位演相当到位。</p>
+            </li></a>
+            <a href="fdetail.html"><li>
+                <img src="images/dsc_pic1.jpg" alt="" />
+                <div>
+                	<h2 class="name"><span>罗马假日</span> <i>9.5</i></h2>
+                	<p class="director"><span>导演:</span><i>刘伟强 麦兆辉</i></p>
+                    <p class="actor"><span>主演:</span><i>梁朝伟 刘德华 曾志伟 黄秋生</i></p>
+                    <p class="screen"><span>上映:</span><i>2015-08-23 美国</i></p>
+                </div>
+                <p class="comment">电影还可以，剧情表演相当到位演相当到位。电影还可以，剧情表演相当到位演相当到位。</p>
+            </li></a>
+            <a href="fdetail.html"><li>
+                <img src="images/dsc_pic1.jpg" alt="" />
+                <div>
+                	<h2 class="name"><span>罗马假日</span> <i>9.5</i></h2>
+                	<p class="director"><span>导演:</span><i>刘伟强 麦兆辉</i></p>
+                    <p class="actor"><span>主演:</span><i>梁朝伟 刘德华 曾志伟 黄秋生</i></p>
+                    <p class="screen"><span>上映:</span><i>2015-08-23 美国</i></p>
+                </div>
+                <p class="comment">电影还可以，剧情表演相当到位演相当到位。电影还可以，剧情表演相当到位演相当到位。</p>
+            </li></a>
+            <a href="fdetail.html"><li>
+                <img src="images/dsc_pic1.jpg" alt="" />
+                <div>
+                	<h2 class="name"><span>罗马假日</span> <i>9.5</i></h2>
+                	<p class="director"><span>导演:</span><i>刘伟强 麦兆辉</i></p>
+                    <p class="actor"><span>主演:</span><i>梁朝伟 刘德华 曾志伟 黄秋生</i></p>
+                    <p class="screen"><span>上映:</span><i>2015-08-23 美国</i></p>
+                </div>
+                <p class="comment">电影还可以，剧情表演相当到位演相当到位。电影还可以，剧情表演相当到位演相当到位。</p>
+            </li></a>
+        </ul>
+        <div class="page">
+        	<a class="prev" style="background:#ccc;">上一页</a>
+            <a href="" class="current">1</a>
+            <a href="">2</a>
+            <a href="">3</a>
+            <a href="">4</a>
+            <a href="">5</a>
+            <a href="">6</a>
+            <a href="">7</a>
+            <a href="" class="next">下一页</a>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	var pingkuan=$(window).width();
+	function buju(){
+		$('.films li').css({
+			width:pingkuan-63+'px'
+		});
+		$('.films li div').css({
+			width:pingkuan-178+'px'
+		});
+		if(pingkuan>350){
+			$('p i').css({
+				width:pingkuan-216+'px'
+			});
+		}else{
+			$('p i').css({
+				width:pingkuan-213+'px'
+			});
+		}
+	};
+	buju();
+	//字数超出用省略号代替
+	/*var name=$('.name span').text().substring(0,6);
+	var director=$('.director i').text().substring(0,7);
+	var actor=$('.actor i').text().substring(0,15);
+	if($('.name span').text().length>6){
+		$('.name span').text(name+'...')
+	}
+	if($('.director i').text().length>7){
+		$('.director i').text(director+'...');
+	}
+	if($('.actor i').text().length>15){
+		$('.actor i').text(actor+'...');
+	}*/
+});
+</script>

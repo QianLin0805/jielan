@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>彩票查询</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/index.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">body{background:#fff;}</style>
+</head>
+<body>
+<div class="lottery_wrap">
+    <div class="check">
+        <select name="" id="">
+        	<option value="">超级大乐透</option>
+        	<option value="">福彩3d</option>
+        	<option value="">排列3</option>
+        	<option value="">排列5</option>
+        	<option value="">七彩乐</option>
+        	<option value="">七星彩</option>
+        	<option value="">双色球</option>
+        	<option value="">六场半全彩</option>
+        	<option value="">四场进球彩</option>
+        	<option value="">十四场胜负彩(任9)</option>
+        	<option value="">11选5</option>
+        	<option value="">体彩20选5</option>
+        	<option value="">体彩6+1</option>
+        </select>
+        <input type="tel" />
+    </div>
+    <p id="check">查询</p>
+    <div class="result">
+    	<h4><span id="name"></span><span id="period"></span></h4>
+        <p class="time"><span id="date">2015-08-08</span><span id="week">(周六)</span></p>
+        <div class="num"><p>2</p><p>0</p><p>5</p></div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('#check').on('click',function(){
+		if($('input').val()!=''){
+			var name=$('select').find('option:checked').text();
+			var period=$('input').val();
+			$('.result').show();
+			$('#name').text(name);
+			$('#period').text(period+'期');
+		}
+	});
+})
+</script>

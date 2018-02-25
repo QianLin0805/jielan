@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>我的收藏夹</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/my.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="plug-in/iscroll.js"></script>
+<script type="text/javascript" src="js/upload.js"></script>
+<script type="text/javascript">
+var loadover;
+function pullUpAction () {
+	if(loadover) return;
+	//loadover = true;         每次加载后判断是否全部加载完
+	$('.pullUpIcon img').hide().next().show();
+	setTimeout(function () {
+		for(var i=0;i<3;i++){
+			//假数据
+			var appendItem=$('.item').eq(0).clone();
+			$('.list').append(appendItem);
+
+			//ajax添加数据
+			/*$.ajax({
+				type:"POST",
+				url:"",
+				async:false,
+				data:"",
+				success:function(){
+
+				}
+			});*/
+			$('#pullUp img').show().removeClass('active');
+		}
+		myScroll.refresh();     //数据加载完成后，调用界面更新方法
+		$('.pullUpIcon img').show().next().hide();
+		if(loadover){
+			$('.pullUpIcon,.pullUpLabel').hide();
+			$('.loadover2').show();
+		}
+	}, 1000);
+}
+$(function(){
+	(function buju(){
+		var pk=$(window).width();
+		var bili=pk/750;
+		if(pk>640){
+			$('li').css('width',318+'px');
+		}else{
+			$('li').css('width',0.5*pk-2+'px');
+		}
+	})();
+	if($('#scroller').height()<=$('#wrapper').height()){
+		loadover = true;        //控制是否已全部加载
+		$('.loadover').show();
+		$('#pullUp').hide();
+	}else{
+		loadover = false;
+		$('.loadover').hide()
+		$('#pullUp').show();
+	}
+	if(loadover){
+		$('.pullUpIcon,.pullUpLabel').hide();
+		$('.loadover').show();
+	}
+});
+</script>
+</head>
+<body>
+<div class="record">
+	<div id="wrapper">
+		<div id="scroller">
+			<ul class="list">
+				<li class="item"><a href="">
+					<img src="images/index/goods1.jpg" alt="">
+					<h3>华为荣耀双卡双待手机...</h3>
+					<p><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></p>
+				</a></li>
+				<li class="item"><a href="">
+					<img src="images/index/goods1.jpg" alt="">
+					<h3>华为荣耀双卡双待手机...</h3>
+					<p><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></p>
+				</a></li>
+				<li class="item"><a href="">
+					<img src="images/index/goods1.jpg" alt="">
+					<h3>华为荣耀双卡双待手机...</h3>
+					<p><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></p>
+				</a></li>
+				<li class="item"><a href="">
+					<img src="images/index/goods1.jpg" alt="">
+					<h3>华为荣耀双卡双待手机...</h3>
+					<p><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></p>
+				</a></li>
+			</ul>
+			<div id="pullUp"><div class="pullUpIcon"><img src="images/pullUp.png" alt="" /><p id="load"><span class="disc1"></span><span class="disc2"></span><span class="disc3"></span><span class="disc4"></span><span class="disc5"></span><span class="disc6"></span><span class="disc7"></span><span class="disc8"></span></p></div><span class="pullUpLabel">上拉加载更多...</span><span class="loadover2">已全部加载</span></div>
+		</div>
+	</div>
+	<p class="loadover">已全部加载</p>
+	<div class="no">
+		您的暂时没有收藏记录<br />前往在线商城<a href="index.html">首页</a>收藏
+	</div>
+</div>
+</body>
+</html>

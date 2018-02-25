@@ -1,0 +1,80 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*老槐树*/
+.dsc h1{height:45px;margin:10px 0 20px;font-size:18px;font-weight:bold;color:#282727;}
+.dsc h1 img{height:45px;margin:0 6px 0 12px;float:left;}
+.dsc h1 span{line-height:35px;margin-top:10px;float:left;}
+.dsc .list{width:24px;overflow:hidden;margin:3px 12px 0;float:left;position:relative;}
+.dsc .list span{width:24px;height:24px;line-height:24px;margin-top:168px;border-radius:3px;text-align:center;color:#fff;font-size:16px;display:block;position:relative;z-index:3;}
+.dsc .list p{width:1px;height:100%;position:absolute;top:0;}
+.dsc .films{width:auto;height:auto;float:left;margin-bottom:10px;}
+.films li{height:180px;margin-bottom:10px;border:1px solid #d0d0d0;border-radius:5px;background:#fff;}
+.films li img{width:85px;margin:10px 10px 15px 10px;float:left;}
+.films li div{float:left;}
+.films li h2{font-size:16px;line-height:16px;margin:10px 0 8px;}
+.films li h2 i{color:#ed4343;}
+.films li div p{width:100%;overflow:hidden;font-size:13px;color:#333;line-height:18px;}
+.films li div .actor{margin-bottom:6px;}
+.films li p span{margin-right:3px;float:left;}
+.films li p i{display:inline-block;float:left;}
+.films li .comment{margin:0 10px;border-top:1px solid #e5e5e5;height:44px;line-height:44px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#666;clear:both;}
+.dsc .page{padding:0 12px 30px;height:35px;line-height:35px;font-size:15px;text-align:right;clear:both;}
+.page a{width:20px;display:inline-block;text-align:center;color:#282828;}
+.page .prev,.page .next{width:60px;background:#00a0e9;color:#fff;font-size:14px;border-radius:3px;}
+.page a.current{font-size:17px;color:#00a0e9;}
+
+/*影片详情*/
+
+.fHead{padding:18px 12px 10px;overflow:hidden;background:#fff;}
+.fHead h1{font-size:18px;line-height:24px;font-weight:bold;}
+.fHead .time{color:#666;line-height:24px;margin-bottom:12px;}
+.fHead img{margin-right:10px;float:left;}
+.fHead .introduce{font-size:13px;overflow:hidden;float:left;}
+.introduce p{width:100%;line-height:21px;overflow:hidden;}
+.introduce p span{margin-right:3px;display:inline-block;float:left;}
+.introduce p i{display:inline-block;float:left;}
+.part{padding:0 12px 10px;margin:10px 0;background:#fff;}
+.part h2{line-height:50px;font-size:16px;color:#666;}
+.part a img{width:32%;margin-bottom:6px;margin-right:2%;float:left;}
+.part a img.edge{margin-right:0;}
+.part a img.hide{display:none;}
+.part p{font-size:15px;color:#0076ee;text-align:right;line-height:24px;}
+.fComment{width:100%;overflow:hidden;background:#fff;margin-bottom:10px;}
+.fComment h2{line-height:49px;font-size:16px;color:#666;border-bottom:1px solid #e5e5e5;text-indent:12px;background:url(../images/arrow2.png) no-repeat 97% center;background-size:9px;}
+.fComment h2 span{float:right;margin-right:3%;}
+.fComment h2 span img{width:18px;margin:17px 15px 0 8px;vertical-align:top;}
+.fComment h3{line-height:35px;font-size:16px;color:#576b95;font-weight:bold;text-indent:12px;}
+.fComment p{font-size:15px;padding:0 12px 0 28px;color:#333;line-height:21px;}
+.fComment div{font-size:12px;color:#767676;line-height:40px;padding-left:28px;}
+.fComment div i{color:#999;margin:0 6px;}
+.fComment div img{height:15px;margin-top:-3px;margin-right:2px;}
+.type{width:100%;overflow:hidden;background:#fff;}
+.type h2{line-height:49px;font-size:16px;color:#666;text-indent:12px;border-bottom:1px solid #e5e5e5;}
+.type ul{width:92%;margin:15px auto;overflow:hidden;}
+.type ul li{width:16.6%;height:160px;line-height:30px;float:left;text-align:center;font-size:16px;color:#666;}
+.type li p{width:12px;height:100px;background:#e5e5e5;position:relative;left:50%;margin-left:-6px;}
+.type li p i{width:12px;display:inline-block;position:absolute;left:0;bottom:0;}
+.type li b{font-size:15px;}
+.items{width:100%;overflow:hidden;background:#fff;margin-bottom:5px;}
+.items.dialogue{margin-bottom:0;padding-bottom:30px;}
+.items h2{line-height:50px;font-size:16px;text-indent:12px;background:url(../images/arrow2.png) no-repeat 97% center;background-size:9px;}
+.items.swing h2{color:#eb6877;}
+.items.plot h2{color:#8957a1;}
+.items.act h2{color:#ece01f;}
+.items.vision h2{color:#eb6100;}
+.items.sound h2{color:#8fc31f;}
+.items.dialogue h2{color:#00a0e9;}
+.items h2 span{float:right;margin-right:3%;color:#666;}
+.items h2 span img{width:18px;margin:17px 15px 0 8px;vertical-align:top;}
+.items h3{line-height:35px;font-size:16px;color:#576b95;font-weight:bold;text-indent:12px;border-top:1px solid #e5e5e5;}
+.items p{font-size:15px;padding:0 12px 0 28px;color:#333;line-height:21px;}
+.items div{font-size:12px;color:#767676;line-height:40px;padding-left:28px;}
+.items div i{color:#999;margin:0 6px;}
+.items div img{height:15px;margin-top:-3px;margin-right:2px;}
+
+@media screen and (min-width:350px){
+.films li div p{font-size:14px;}
+.fHead .introduce{font-size:14px;}
+.part a img{margin-bottom:7px;}
+}

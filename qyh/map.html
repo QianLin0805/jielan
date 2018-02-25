@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>导航</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=itWnBCW7Ntd7ktXiwR9PB5TM"></script>
+<script type="text/javascript" src="js/convertor.js"></script>
+<style type="text/css">
+html,body{width: 100%;height: 100%;position: absolute;}
+#map{width: 100%;height: 100%;}
+</style>
+</head>
+<body>
+<div id="map"></div>
+</body>
+</html>
+<script type="text/javascript">
+var destination=decodeURI(getQueryString('addr'));
+if(navigator.geolocation){
+	navigator.geolocation.getCurrentPosition(function(position){
+		var lng = position.coords.longitude;                          //纬度
+		var lat = position.coords.latitude;                           //经度
+		var gpsPoint = new BMap.Point(lng, lat);
+
+		BMap.Convertor.translate(gpsPoint, 0, initMap);               //转换坐标
+	});
+
+	function initMap(point){
+		//初始化地图 
+		point.lat;
+		point.lng;
+		map = new BMap.Map("map");
+		map.centerAndZoom(point, 16);                                 //初始化地图到当前位置并设置层级
+		map.addControl(new BMap.NavigationControl());                 //缩放控件
+		map.addControl(new BMap.ScaleControl());                      //地图比例控件
+		var marker = new BMap.Marker(point);                          //标记当前位置
+		map.addOverlay(marker);                                       //添加标记
+
+		//路线
+		var end=destination;
+		var driving=new BMap.DrivingRoute(map,{renderOptions:{map:map,panel:"result",autoViewport:true}});
+		driving.search(point,end);
+	}
+}
+</script>

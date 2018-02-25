@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>个人信息</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/inform.js"></script>
+<style type="text/css">
+body{background:#ebebeb;}
+.inform{width:100%;overflow:hidden;background:#fff;margin-bottom:10px;}
+.inform li{width:90%;margin:0 3%;padding:0 2%;height:50px;line-height:50px;border-bottom:1px solid #dcdcdc;font-size:16px;}
+.inform a li{color:#000;}
+.inform li #file{width:80px;height:60px;margin-top:5px;background:url(images/arrow3.png) no-repeat right center;background-size:10px auto;position:relative;float:right;}
+.inform li #file img{width:60px;vertical-align:top;}
+.inform li #file input{width:70px;height:60px;position:absolute;left:0;top:0;z-index:11;opacity:0;filter:Alpha(opacity=0);}
+.inform li p{width:70%;text-align:right;padding-right:20px;background:url(images/arrow3.png) no-repeat right center;background-size:10px auto;float:right;color:#9e9e9e;}
+.select{width:100%;top:0;position:absolute;left:0;top:0;overflow:hidden;display:none;}
+.select #select_bg{width:100%;height:100%;background:rgba(0,0,0,0.4)!important;background:#000;filter:Alpha(opacity=40);display:none;}
+.select ul{width:105%;height:160px;overflow-y:scroll;box-shadow:0 -1px 1px #ccc;position:absolute;left:0;bottom:-160px;z-index:9;background:#fff;display:none;}
+.select li{width:100%;height:40px;line-height:40px;border-top:1px solid #ccc;text-align:center;color:#555;}
+.select li:first-child{border:none;}
+.select p{width:100%;line-height:39px;border-top:1px solid #ccc;text-align:center;position:absolute;left:0;bottom:-200px;z-index:11;background:#fff;color:#222;}
+</style>
+</head>
+<body>
+	<ul style="padding-top:10px;" class="inform">
+    	<li style="height:80px;line-height:80px;">
+        	<span>头像</span>
+            <div id="file"><img src="images/portrait.jpg" alt="" /><input type="file" /></div>
+        </li>
+    	<a href="name_modify.html"><li style="border:none;"><span>姓名</span><p>易发强</p></li></a>
+    </ul>
+	<ul class="inform">
+    	<a href="tel_modify.html"><li><span>手机号</span><p>15896325489</p></li></a>
+    	<li class="card">
+            <span>银行卡</span>
+            <p><span id="card">621226*********2913</span><i>请绑定银行卡</i></p>
+        </li>
+    	<a href="company_modify.html"><li>
+            <span>公司名称</span>
+            <p>我爱我家</p>
+        </li></a>
+    	<li style="border:none;" class="area">
+            <span>服务区域</span>
+            <p id="area"><i id="province">浙江省</i>/<i class="city">杭州市</i>/<i id="section">滨江区</i></p>
+        </li>
+    </ul>
+    <div class="select">
+    	<div id="select_bg"></div>
+    	<ul class="province">
+            <li>浙江省</li>
+            <li>江苏省</li>
+            <li>广东省</li>
+            <li>合肥省</li>
+            <li>江西省</li>
+            <li>四川省</li>
+            <li>贵州省</li>
+            <li>云南省</li>
+            <li>安徽省</li>
+        </ul>
+    	<ul class="city">
+            <li>杭州市</li>
+            <li>宁波市</li>
+            <li>温州市</li>
+            <li>嘉兴市</li>
+            <li>湖州市</li>
+            <li>绍兴市</li>
+            <li>金华市</li>
+            <li>台州市</li>
+        </ul>
+    	<ul class="section">
+            <li>西湖区</li>
+            <li>上城区</li>
+            <li>下城区</li>
+            <li>江干区</li>
+            <li>滨江区</li>
+            <li>拱墅区</li>
+            <li>萧山区</li>
+            <li>余杭区</li>
+        </ul>
+        <p id="close">关闭</p>
+    </div>
+</body>
+</html>

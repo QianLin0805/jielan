@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>投票详情</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<style type="text/css">
+.wrap{width: 100%;overflow: hidden;display: none;}
+.main{padding: 10px;background: #fff;overflow: hidden;}
+.main h3{font-size: 16px;color: #333;line-height: 20px;padding: 5px 0;}
+.main .content{text-indent: 2em;color: #555;line-height: 22px;}
+.main .info{color: #808080;line-height: 30px;}
+.main .info .date{margin-right: 10px;}
+.main .info .actor{float: right;}
+.vote{padding: 0 10px 20px;overflow: hidden;position: relative;}
+.vote h2{font-size: 16px;color: #333;line-height: 20px;padding: 10px 0;}
+.vote .select{padding: 10px 0 10px 38px;overflow: hidden;color: #333;font-size: 16px;line-height: 20px;position: relative;}
+.vote .select input.checkbox{width: 18px;height: 18px;position: absolute;left: 10px;top: 50%;background: url(images/box1.png) no-repeat left center;background-size: 18px auto;margin-top: -9px;}
+.vote .select input.checkbox:checked{background-image: url(images/box2.png);}
+.vote .select input.radio{width: 18px;height: 18px;position: absolute;left: 10px;top: 50%;background: url(images/box3.png) no-repeat left center;background-size: 18px auto;margin-top: -9px;}
+.vote .select input.radio:checked{background-image: url(images/box4.png);}
+.vote .used{width: 100%;line-height: 30px;display: none;position: absolute;left: 0;bottom: 60px;text-align: center;color: red;}
+.vote .detail{margin-left: 10px;font-size: 13px;color: #21becc;}
+.vote #vote{width: 100%;height: 40px;line-height: 40px;margin-top: 50px;font-size: 16px;background: #ef5252;color: #fff;border-radius: 5px;display: block;text-align: center;}
+.mask{width: 100%;background: #fff;position: fixed;left: 0;top: 0;bottom: 0;z-index: 999;}
+.mask .content1{padding: 10px 10px 60px;line-height: 20px;text-indent: 10px;overflow-x: hidden;overflow-y: scroll;}
+.mask .close{position: absolute;left: 50%;bottom: 15px;width: 30px;margin-left: -15px;}
+.hide{line-height: 50px;text-align: center;color: #999;}
+.result{padding: 0 10px 20px;overflow: hidden;}
+.result h2{font-size: 16px;color: #333;line-height: 20px;padding: 10px 0;}
+.result ul{width: 100%;overflow: hidden;}
+.result ul li{width: 100%;overflow: hidden;margin-bottom: 10px;}
+.result li h3{font-size: 16px;color: #333;line-height: 30px;}
+.result li div{width: 60%;height: 20px;white-space: nowrap;}
+.result div p{height: 20px;line-height: 20px;background: #eca45c;float: left;}
+.result div span{font-size: 15px;color: #333;margin-left: 8px;}
+.result div i{color: #999;}
+</style>
+</head>
+<body>
+<p class="tip">数据加载中...</p>
+<div class="wrap" ng-app="myApp" ng-controller="dataCtrl" ng-model="isUsed">
+	<div class="main">
+		<h3>{{data.issue}}</h3>
+		<p class="content" ng-bind-html="data.content|trustHtml"></p>
+		<p class="info"><span class="deadtime"><i class="date">{{data.endTime}}</i>截止</span><span class="actor"><i>{{data.joinNum}}</i>人参与</span></p>
+	</div>
+	<div class="vote" ng-show="data.isUsed==0&&data.timeOut==0">
+		<h2>{{data.issue}}({{type1}})</h2>
+		<p class="select" ng-repeat="x in data.answers">
+			<label for={{x.id}}><input type={{type}} class="{{type}}" name="vote" id={{x.id}} />{{x.answer}}</label>
+			<span ng-if="x.intro_url||x.intro_content">
+				<a class="detail" ng-if="x.intro_type==1" ng-click="detail(x.intro_content)">查看详情</a>
+				<a class="detail" ng-if="x.intro_type==0" href="{{x.intro_url}}">查看详情</a>
+			</span>
+		</p>
+		<a ng-click="skit()" id="vote">投票</a>
+	</div>
+	<p class="hide" ng-show="data.isUsed==1||data.timeOut==1" ng-if="!data.isShown">谢谢您的参与，投票结果未公开！</p>
+	<div class="result" ng-show="data.isUsed==1||data.timeOut==1" ng-if="data.isShown">
+		<h2>{{data.issue}}({{type1}})</h2>
+		<ul>
+			<li ng-repeat="x in data.answers">
+				<h3>{{x.answer}}</h3>
+				<div><p class="cent" style="width:{{(x.takeNum/data.joinNum*100).toFixed(2)}}%"></p><span><b ng-if="x.takeNum==0">0</b><b ng-if="x.takeNum!=0">{{(x.takeNum/data.joinNum*100).toFixed(2)}}%</b><i>({{x.takeNum}})人</i></span></div>
+			</li>
+		</ul>
+	</div>
+	<div class="mask" ng-show="show">
+		<p class="content1" ng-bind-html="value|trustHtml"></p>
+		<img src="images/close.png" class="close" ng-click="hide()" alt="" />
+	</div>
+</div>
+<p class="tishi"></p>
+</body>
+</html>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+var sCorpID=getQueryString('sCoreID');
+var userId=getQueryString('userId');
+var issue_id=getQueryString('issue_id');
+var userId,userName;
+if(getQueryString('code')){
+	var code=getQueryString('code');
+}
+
+if(window.name){
+	var info = (new Function("return "+ window.name))();
+	userId = info.user;
+}else{
+	$.ajax({
+		type:"POST",
+		url:link+"getOAuth.do",
+		async:false,
+		data:{
+			"coreId":sCorpID,
+			"code":code
+		},
+		success:function(response){
+			userId=response.resultContent.UserId;
+		}
+	});
+}
+$.ajax({
+	type:"POST",
+	url:link+"findUser.do",
+	async:false,
+	data:{
+		"sCorpID":sCorpID,
+		"userId":userId
+	},
+	success:function(response){
+		userName=response.resultContent.name;
+	}
+});
+
+angular.module('myApp',[]).filter('trustHtml', function ($sce) {
+        return function (input) {
+            return $sce.trustAsHtml(input);
+        }
+    }).controller('dataCtrl',function($scope,$http){
+    $scope.show = false;
+	$http({
+		url: link+"voteDetails.do",
+		data: {
+			"sCorpID":sCorpID,
+			"userId":userId,
+			"issue_id":issue_id
+		},
+	    method: 'POST',
+	    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+	    transformRequest: function(obj) {
+	        var str = [];
+	        for(var p in obj)
+	        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	        return str.join("&");
+	    }
+	}).success(function(response){
+		if(response.resultCode!=200){
+			$('.tishi').text('加载失败').show();
+			tishi();
+			return;
+		}
+		$('.tip').hide();
+		$('.wrap').show();
+		$scope.data = response.resultContent;
+		
+		if(response.resultContent.type==1){
+			$scope.type = "checkbox";
+			$scope.type1 = "多选";
+		}else{
+			$scope.type = "radio";
+			$scope.type1 = "单选";
+		}
+	}).error(function(response,status){
+		$('.tip').text('请求异常');
+	});
+	$scope.skit = function(){
+		var answers;
+		$('input:checked').each(function(){
+			if(answers){
+				answers+=','+$(this).attr('id');
+			}else{
+				answers=$(this).attr('id');
+			}
+		});
+		if($('input:checked').length>0){
+			$.ajax({
+				type:"POST",
+				url:link+"usedVote.do",
+				async:true,
+				data:{
+					"sCorpID":sCorpID,
+					"userId":userId,
+					"userName":userName,
+					"issue_id":issue_id,
+					"answers":answers
+				},
+				success:function(response){
+					if(response.resultCode==400){
+						$('.tishi').text( response.resultMsg ).show();
+						tishi();
+						return;
+					}else if(response.resultCode!=400&&response.resultCode!=200){
+						$('.tishi').text( response.resultMsg ).show();
+						tishi();
+						return;
+					}
+					document.location.reload();
+				},
+				error:function(){
+					$('.tishi').text("提交失败").show();
+					tishi();
+				}
+			});
+		}
+	}
+	$scope.detail = function(value){
+		$scope.value = value;
+		$scope.show = true;
+	}
+	$scope.hide = function(){
+		$scope.show = false;
+	}
+});
+window.onunload = function(){  
+	var user = userId;
+	window.name  = '{user:"'+user+'"}';
+} 
+</script>

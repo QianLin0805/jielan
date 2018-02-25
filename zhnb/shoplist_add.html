@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>购物清单1</title>
+<link rel="stylesheet" href="css/css1.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#efefef;}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	function buju(){
+		var pingkuan=$(window).width();
+		var pinggao=$(window).height();
+		var bili=pingkuan/720;
+		$('textarea').css({
+			backgroundSize:0.92*pingkuan,
+			lineHeight:bili*80+'px'
+		});
+		$('.list_add').css({
+			height:pinggao
+		});
+		$('.setdate').css({
+			height:pinggao
+		});
+		$('.list_add div').children('input').css({
+			width:0.76*pingkuan-22+'px'
+		});
+	};
+	$(window).load(function(){
+		buju();
+	});
+	//弹出并添加清单
+	var addItem='<li><input type="checkbox" /><p></p><span></span></li>';
+	$('.add').bind('click',function(){
+		$('.list_add').show();
+		$('.add_box p').children('input').val('');
+		$('.list_add').on('touchmove',function(){
+			event.preventDefault();
+		});
+		//添加清单
+		$('#new_save').bind('click',function(){
+			$(this).unbind('click');
+			var addContent=$('.add_box p').eq(0).children('input').val();
+			var addNum=$('.add_box p').eq(1).children('input').val();
+			//console.log("addContent-->" + addContent + ",addNum-->" + addNum );
+			if(addContent!==''&&addNum!==''){
+				$('ul').prepend(addItem).children().first().children('p').text(addContent);
+				$('ul').children().first().children('span').text(addNum);
+			}
+		});
+		$('.add_box div').children().bind('click',function(){
+			$('.list_add').hide();
+		});
+	});
+	//弹出日期时间提醒
+	/*$('.date h3').bind('click',function(){
+		var date1=$(this).next().children('span').first().text();
+		var time1=$(this).next().children('span').eq(1).text();
+		$('.setdate').show();
+		$('.date_box').children('input').eq(0).val(date1);
+		$('.date_box').children('input').eq(1).val(time1);
+		$('.setdate').on('touchmove',function(){
+			event.preventDefault();
+		});
+		//日期时间提醒切换
+		$('.switch').children().first().bind('click',function(){
+			$(this).addClass('date_cur').siblings().removeClass('date_cur');
+			$('.date_box').children('input').eq(0).show().next().hide();
+		});
+		$('.switch').children().last().bind('click',function(){
+			$(this).addClass('date_cur').siblings().removeClass('date_cur');
+			$('.date_box').children('input').eq(1).show().prev().hide();
+		});
+		//保存
+		$('.save').children().last().bind('click',function(){
+			var date2=$('.date_box').children('input').eq(0).val();//日期
+			var time2=$('.date_box').children('input').eq(1).val();//时间
+			var warnTime=$('.warn select').find('option:selected').text();
+			$('.date h3').css('borderBottom','1px solid #ccc').children().show();
+			$('.date div').show().children().first().text(date2);
+			$('.date div').children().eq(1).text(time2);
+			$('.date div p').children().text(warnTime);
+		});
+	});
+	//关闭弹窗提醒
+	$('.save').children().bind('click',function(){
+		$('.setdate').hide();
+		$('.switch').children().first().trigger('click');
+	});*/
+})
+</script>
+</head>
+<body>
+    <div class="head shop_head">
+        <a href="shoplist.html"><img src="images/arrow.png" alt="" />
+    	<h1>购物清单1</h1></a>
+    </div>
+    <div class="main list_main">
+        <ul>
+        	<li><input type="checkbox"><p>爆米花</p><span>1包</span></li>
+        	<li><input type="checkbox"><p>薯片</p><span>1袋</span></li>
+        	<li><input type="checkbox"><p>蔓越莓</p><span>1斤</span></li>
+        	<li class="add"><div></div><p>添加商品</p></li>
+        </ul>
+        <!--<div class="date">
+        	<h3>设置日期与提醒<img src="images/my/arrow2.jpg" alt="" /></h3>
+        	<div><span>2015-07-10</span><span>08:40</span><p>提前<span>5分钟</span>提醒</p></div>
+        </div>-->
+        <textarea name="" id="" rows="3" placeholder="添加备注..."></textarea>
+    </div>
+    <div class="list_add">
+    	<div class="add_box">
+        	<h4>添加项</h4>
+            <p><span>商品</span><input type="text"></p>
+            <p><span>数量</span><input type="text"></p>
+            <div><button>取消</button><button id="new_save" style="color:#f2665f;">保存</button></div>
+        </div>
+    </div>
+    <!--<div class="setdate">
+    	<div class="date_box">
+        	<h4>设置日期与提醒</h4>
+            <div class="switch"><p class="date_cur">日期</p><p>时间</p></div>
+            <input type="date">
+            <input type="time" style="display:none;">
+            <div class="warn">
+                <span>提前提醒</span>
+                <select name="" id="">
+                	<option value="">5分钟</option>
+                	<option value="">10分钟</option>
+                	<option value="">15分钟</option>
+                	<option value="">30分钟</option>
+                	<option value="">60分钟</option>
+                	<option value="">1天</option>
+                    <option value="">自定义</option>
+                </select>
+            </div>
+            <div class="save"><button>取消</button><button style="color:#f2665f;">保存</button></div>
+        </div>
+    </div>-->
+</body>
+</html>

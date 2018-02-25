@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>记事本1</title>
+<link rel="stylesheet" href="css/css1.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#efefef;}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	function buju(){
+		var pingkuan=$(window).width();
+		var pinggao=$(window).height();
+		var bili=pingkuan/720;
+		$('textarea').css({
+			backgroundSize:0.92*pingkuan,
+			lineHeight:bili*80+'px'
+		});
+		$('.note_warn').css({
+			height:pinggao
+		});
+	};
+	$(window).load(function(){
+		buju();
+	});
+	/*//弹出设置
+	$('.date h3').bind('click',function(){
+		var date1=$(this).next().children('span').text();
+		var time1=$(this).next().children('p').eq(0).children().text();
+		var warnNum1=$(this).next().children('p').eq(1).text();
+		$('.note_warn').show();
+		$('.warn_box').children('input').val(date1);
+		$('.warnme').children('input').val(time1);
+		$('.repeat').text(warnNum1);
+		$('.note_warn').on('touchmove',function(){
+			event.preventDefault();
+		});
+		$('.save').children().last().bind('click',function(){
+			var date2=$('.warn_box').children('input').val();
+			var time2=$('.warnme').children('input').val();
+			var warnNum2=$('.repeat').text();
+			$('.date h3').css('borderBottom','1px solid #ccc').children().show();
+			$('.date div').show().children('span').text(date2);
+			if(time2==''){
+				$('.date div p').eq(0).hide();
+			}else{
+				$('.date div p').eq(0).show().children().text(time2);
+			}
+			$('.date div').children('p').eq(1).text(warnNum2);
+		});
+		//关闭
+		$('.save').children().bind('click',function(){
+			$('.note_warn').hide();
+		});
+	});
+	//重不重复
+	$('.repeat').bind('click',function(){
+		$('ul').show();
+		$('.warn_box').hide();
+	});
+	$('ul').children().bind('click',function(){
+		$(this).children('input').get(0).checked=true;
+	});
+	$('.repeat_last').children().bind('click',function(){
+		var selectRepeat=$('ul li').find('input:checked').next().text();
+		$('ul').hide();
+		$('.warn_box').show();
+		$('.repeat').text(selectRepeat);
+	});
+	//自定义
+	$('ul').children().eq(5).bind('click',function(){
+		$('.define_box').show();
+		$('ul').hide();
+	});
+	$('.define_box').children('select').eq(0).change(function(){
+		var m=$(this).find('option:selected').text();
+		$('.define_box p').children('span').text(m);
+	});
+	$('.define_box').children('select').eq(1).change(function(){
+		var n=$(this).find('option:selected').text();
+		$('.define_box p').children('a').text(n);
+	});
+	$('.define_save').children().bind('click',function(){
+		var j=$(this).index();
+		var difineRepeat=$('.define_box').children('p').text();
+		if(j==1){
+			$('.define_box').hide();
+			$('ul').show();
+			$('ul').children().eq(5).children('label').text(difineRepeat);
+		}else{
+			$('.define_box').hide();
+			$('ul').show();
+			$('ul').children().eq(0).children('input').get(0).checked=true;
+		}
+	});*/
+})
+</script>
+</head>
+<body>
+    <div class="head note_head">
+        <a href="note.html"><img src="images/arrow.png" alt="" />
+    	<h1>记事本1</h1></a>
+        <div><!--<p><img src="images/my/camera.png" alt="" /><input type="file"></p>--><span>保存</span></div>
+    </div>
+    <div class="main note_main">
+        <textarea name="" id="" rows="5" placeholder="记事内容..."></textarea>
+        <!--<div class="date">
+        	<h3>设置日期与提醒<img src="images/my/arrow2.jpg" alt="" /></h3>
+        	<div>
+                <span>2015-07-10</span>
+                <p><span>8:40</span>提醒我</p>
+                <p style="float:right;">从不重复</p>
+            </div>
+        </div>-->
+    </div>
+    <!--<div class="note_warn">
+    	<div class="warn_box">
+        	<h4><span>今天</span>到期</h4>
+            <input type="date">
+            <div class="warnme"><span>提醒我</span><input type="time"></div>
+            <div class="repeat">从不重复</div>
+            <div class="save"><button>取消</button><button style="color:#f2665f;">保存</button></div>
+        </div>
+        <ul>
+            <li>
+                <input type="radio" name="setrepeat" id="never" checked>
+                <label for="never">从不重复</label>
+            </li>
+            <li>
+                <input type="radio" name="setrepeat" id="eDay">
+                <label for="eDay">每1天重复</label>
+            </li>
+            <li>
+                <input type="radio" name="setrepeat" id="eWeek">
+                <label for="eWeek">每1周重复</label>
+            </li>
+            <li>
+                <input type="radio" name="setrepeat" id="eMonth">
+                <label for="eMonth">每1月重复</label>
+            </li>
+            <li>
+                <input type="radio" name="setrepeat" id="eYear">
+                <label for="eYear">每1年重复</label>
+            </li>
+            <li>
+                <input type="radio" name="setrepeat" id="defined">
+                <label for="defined">自定义...</label>
+            </li>
+            <li class="repeat_last"><button>保存</button></li>
+        </ul>
+    	<div class="define_box">
+            <h4>自定义...</h4>
+            <select name="" id="">
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+            </select>
+            <select name="" id="">
+                <option value="">天</option>
+                <option value="">周</option>
+                <option value="">月</option>
+                <option value="">年</option>
+            </select>
+            <p>每<span>1</span><a>天</a>重复</p>
+            <div class="define_save"><button>取消</button><button style="color:#f2665f;">保存</button></div>
+        </div>
+    </div>-->
+</body>
+</html>

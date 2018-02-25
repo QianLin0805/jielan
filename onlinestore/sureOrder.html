@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>在线商城</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/goods.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+</head>
+<body>
+<div class="sureWrap">
+	<header><a href="goods.html"><img src="images/back1.png" alt="" /></a>确认订单</header>
+	<div class="address">
+    	<h4>收货人：<span class="name">易发强</span><span class="tel">18579965288</span></h4>
+    	<p>收货地址：<span id="address">浙江省杭州市滨江区江南大道恒鑫大厦21层</span></p>
+    	<img src="images/arrow.png" alt="" />
+	</div>
+    <img src="images/my/colorline.jpg" alt="" class="line" />
+    <h3 class="shop">三星官方旗舰店</h3>
+	<div class="info"><a href="goods.html">
+		<img src="images/my/my_pic2.jpg" alt="" />
+		<h2>国行【送壳+钢化膜】Apple/苹果 iPhone 6s Plus 5.5英寸</h2>
+		<span class="count">x1</span>
+		<p>网络类型:无需合约版 机身颜色: 金色 机身内存:64GB</p>
+	</a></div>
+    <ul>
+		<li>
+			购买数量
+			<div class="num"><p class="minus">-</p><input type="tel" id="num" value="1" /><p class="add">+</p></div>
+		</li>
+		<li>商品价格<span>￥<strong id="price">1099.00</strong></span></li>
+		<li>运费<span>￥<strong class="fare">10.00</strong></span></li>
+		<li class="total">共<i id="count"></i>件商品 合计:<i>￥<b id="total"></b>.00</i> (含运费<i id="fare"></i>)</li>
+	</ul>
+	<div class="sub">实付<span>￥:<b id="total2"></b>.00</span><a href="pay.html">确认订单</a></div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+//以下要页面加载完成后执行
+var pg=$(window).height();
+var wrapHeight=$('.sureWrap').height();
+var topValue=wrapHeight-48;         //页面加载后需要获取列表的高度
+var resize=null;
+$('#num').on('focus',function(){
+	if(navigator.platform=='iPhone'||/Linux/g.test(navigator.platform)){
+        if(!resize){
+            resize=setInterval(function(){
+                if(document.activeElement.nodeName=='INPUT'){
+                	if(wrapHeight<=pg){
+                		$('.sub').css({
+	                        position:'absolute',
+	                        bottom:'',
+	                        top:pg-48+'px'
+	                    });
+                	}else{
+	                    $('.sub').css({
+	                        position:'absolute',
+	                        bottom:'',
+	                        top:topValue
+	                    });
+            		}
+                }else{
+                    if(resize){
+                        clearInterval(resize);
+                        resize=null;
+                    }
+                    $('.sub').css({
+                        position:'fixed',
+                        top:'',
+                        bottom:0
+                    });
+                }
+            },100);
+        }
+	}
+});
+$(function(){
+	$('#count').text($('#num').val());
+	$('#total,#total2').text(Number($('#price').text())*Number($('#num').val())+Number($('.fare').text()));
+	$('#fare').text($('.fare').parent().text());
+	$('.minus').on('click',function(){
+		var count=Number($('#num').val());
+		if(count<=1){
+			return;
+		}else{
+			$('#num').val(count-1);
+			$('#total,#total2').text(Number($('#price').text())*Number($('#num').val())+Number($('.fare').text()));
+		}
+	});
+	$('.add').on('click',function(){
+		var max;                              //最大库存
+		var count=Number($('#num').val());
+		if(count>=max){
+			return;
+		}else{
+			$('#num').val(count+1);
+			$('#total,#total2').text(Number($('#price').text())*Number($('#num').val())+Number($('.fare').text()));
+		}
+	});
+    $('#num').on('blur',function(){
+		var max;                              //最大库存
+		var count=Number($(this).val());
+		if(count>=max){
+			return;
+		}else{
+			$('#total,#total2').text(Number($('#price').text())*Number($('#num').val())+Number($('.fare').text()));
+		}
+    });
+});
+</script>

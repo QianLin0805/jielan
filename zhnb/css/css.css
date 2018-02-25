@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0;padding:0;font-size:12px;font-family:"Microsoft YaHei",Arial;}
+div,h1,h2,h3,h4,ul,ol,li,dl,dd,dt,p,table,caption,th,td,form,input,button,select,label,img,span,strong,a,b,i{margin:0;padding:0;}
+h1,h2,h3,h4{font-weight:normal;}
+ul,ol，li{list-style:none;}
+img,input,button,select{border:none;background:none;vertical-align:middle;}
+input,button,select{font-size:14px;font-family:"Microsoft YaHei",Arial;-moz-appearance:none;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+a{text-decoration:none;}
+.head{width:100%;height:48px;background:#f8f8f8;border-bottom:1px solid #e5e5e5;position:fixed;top:0;z-index:111;}
+.head h1{width:100%;line-height:46px;color:#333;font-size:18px;text-indent:12px;}
+.main{width:100%;position:relative;padding:49px 0 60px;}
+.nav{width:100%;height:50px;background:#f5f5f5;border-top:1px solid #e5e5e5;position:fixed;bottom:0;z-index:333;}
+.nav li{width:25%;font-size:14px;text-align:center;float:left;}
+.nav li a{width:100%;padding-top:27px;color:#666;background:url(../images/nav_icon.png) no-repeat;background-size:25px auto;display:block;}
+.nav li .index{background-position:center 8px;}
+.nav li .city{background-position:center -42px;}
+.nav li .topic{background-position:center -143px;}
+.nav li .my{background-position:center -194px;}
+.nav li .nav_current{color:#f2665f;}
+
+/*城市部分*/
+
+.city_main{padding-top:0;}
+.city_main .city_bg{width:100%;height:auto;}
+.city_main img{width:26.9%;height:auto;position:absolute;z-index:11;}
+.city_main .person{width:3.6%;z-index:99;}
+.city_warn{width:100%;height:30px;line-height:30px;text-indent:20px;position:fixed;left:0;top:48px;z-index:110;color:#818181;background:url(../images/city/dot.png) no-repeat 12px center #ebebeb;background-size:4px auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:none;}
+
+/*主题部分*/
+
+.topic_main img{width:100%;}
+.topic_main div{width:100%;height:45px;background:#f8f8f8;position:relative;}
+.topic_main div h2{width:80%;font-size:16px;border-left:3px solid #f2665f;text-indent:6px;margin:12px 0 0 12px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;float:left;color:#3c3c3c;}
+.topic_main div span{font-size:14px;color:#aaa;position:absolute;right:12px;top:14px;}
+.topic_main dl{width:100%;height:61px;padding:12px 0;margin-top:10px;background:#f8f8f8;position:relative;}
+.topic_main dt{width:97px;position:absolute;left:10px;top:12px;}
+.topic_main dd{padding:0 12px 0 117px;position:relative;}
+.topic_main dd h3{width:75%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:14px;color:#757575;margin-top:5px;}
+.topic_main dd span{font-size:14px;color:#aaa;position:absolute;right:12px;top:0;}
+.topic_main dd p{font-size:11px;color:#b5b5b5;clear:both;padding-top:12px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+
+/*我的部分*/
+
+.my_item{width:100%;overflow:hidden;margin-top:12px;}
+.my_item div{height:45px;line-height:44px;background:#fff;margin-bottom:1px;font-size:15px;padding-left:20px;color:#555;}
+.my_item .last_child{border:none;}
+.my_item .card{background:url(../images/my/my_icon.png) no-repeat 19px 13px #fff;background-size:30px auto;text-indent:32px;}
+.my_item .note{background:url(../images/my/my_icon.png) no-repeat 19px -49px #fff;background-size:30px auto;text-indent:32px;}
+.share div a{float:right;}
+.share div a img{width:24px;height:auto;margin-left:10px;}
+.share div a .last_share{margin-right:20px;}
+.share .message{line-height:27px;position:relative;}
+.share .message span{font-size:11px;color:#aaa;float:left;line-height:11px;}
+.share .message div{width:40px;height:18px;border-radius:9px;background:#f2665f;padding:0;position:absolute;right:20px;top:13px;}
+.share .message div p{width:16px;height:16px;border-radius:8px;background:#fff;position:absolute;left:23px;top:1px;}
+.about .last_child p{font-size:16px;line-height:16px;text-align:center;color:#353535;margin:5px 10px 0 0;float:right;}
+.about .last_child p span{font-size:12px;color:#555;}
+.sound h3{text-indent:20px;font-size:15px;line-height:30px;color:#4d4d4d;}
+.sound div{line-height:27px;position:relative;}
+.sound div span{font-size:11px;color:#aeaeae;float:left;line-height:11px;}
+.sound div div{width:40px;height:18px;border-radius:9px;background:#f2665f;padding:0;position:absolute;right:20px;top:13px;}
+.sound div div p{width:16px;height:16px;border-radius:8px;background:#fff;position:absolute;left:23px;top:1px;}
+
+@media (min-width: 640px){
+body{width: 640px; margin-left: auto; margin-right: auto;}
+}

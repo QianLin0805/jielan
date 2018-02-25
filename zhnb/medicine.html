@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>用药提醒</title>
+<link rel="stylesheet" href="css/css1.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#efefef;}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	//布局
+	function buju(){
+		var pingkuan=$(window).width();
+		var pinggao=$(window).height();
+		var bili=pingkuan/720;
+		$('li').css({
+			width:pingkuan+55+'px'
+		});
+		$('li').children('a').css({
+			width:pingkuan
+		});
+	}
+	$(window).load(function(){
+		buju();
+	});
+	//表单
+	$('.main div').children('input').bind('keyup',function(){
+		var enterVal=$(this).val();
+		if(enterVal==''){
+			$('.ok_icon').hide();
+		}else{
+			$('.ok_icon').show();
+		}
+	});
+	//添加
+	var addItem=$('.newcreat li').first().clone();
+	$('.ok_icon').bind('click',function(){
+		var addContent=$('.main div').children('input').val();
+		$('.newcreat').prepend(addItem).children().first().children('a').children('b').text(addContent);
+		$(this).hide();
+		$('.main div').children('input').val('');
+		buju();
+	});
+	//划动显示隐藏删除
+	var startX;
+	var startY;
+	$('li').bind('touchstart',function(){
+		startX=event.touches[0].pageX;
+		startY=event.touches[0].pageY;
+	});
+	$('li').bind('touchmove',function(){
+		var y=Math.abs(event.changedTouches[0].pageY-startY);
+		if(y<10){
+			event.preventDefault();
+		}
+	});
+	$('li').bind('touchend',function(){
+		var x=event.changedTouches[0].pageX-startX;
+		if(x<0){
+			$(this).animate({left:'-55px'},100);
+		}else if(x>0){
+			$(this).animate({left:0},100);
+		}
+	});
+	//完成与未完成清单切换
+	$('.check').bind('click',function(){
+		var parent=$(this).parent();
+		//alert($(this).is('.check_new'))
+		if($(this).is('.check_new')){
+			$(this).removeClass('check_new').addClass('check_com').children().get(0).checked=true;
+			$('.complete').append(parent);
+		}else if($(this).is('.check_com')){
+			$(this).removeClass('check_com').addClass('check_new').children().get(0).checked=false;
+			$('.newcreat').append(parent);
+		}
+	});
+	//显示隐藏已完成清单
+	var m=0;
+	$('.slider').children().bind('click',function(){
+		$('.complete').slideToggle();
+		if(m%2==0){
+			$(this).text('隐藏已完成的任务');
+			m++;
+		}else{
+			$(this).text('显示已完成的任务');
+			m++;
+		}
+	});
+	//删除清单
+	$('.delete').bind('click',function(){
+		$(this).parent().remove();
+	});
+})
+</script>
+</head>
+<body>
+    <div class="head myInner_head">
+        <a href="mynote.html"><img src="images/arrow.png" alt="" />
+    	<h1>用药提醒</h1></a>
+        <img src="images/ok.png" alt="" class="ok_icon" />
+    </div>
+    <div class="main myInner_main">
+        <div class="enter"><input type="text" placeholder="添加一个用药提醒..."></div>
+        <ul class="newcreat">
+        	<li>
+                <p class="check check_new"><input type="checkbox" disabled></p>
+                <a href="medicine_add.html"><b>用药提醒1</b><span>6月12日 9:32</span></a>
+                <p class="delete"></p>
+            </li>
+            <li>
+                <p class="check check_new"><input type="checkbox" disabled></p>
+                <a href=""><b>用药提醒2</b><span>6月12日 9:32</span></a>
+                <p class="delete"></p>
+            </li>
+            <li>
+                <p class="check check_new"><input type="checkbox" disabled></p>
+                <a href=""><b>用药提醒3</b><span>6月12日 9:32</span></a>
+                <p class="delete"></p>
+            </li>
+        </ul>
+        <div class="slider"><span>显示已完成的提醒</span></div>
+        <ul class="complete">
+        	<li>
+                <p class="check check_com"><input type="checkbox" disabled checked></p>
+                <a href=""><b>用药提醒4</b><span>6月12日 9:32</span></a>
+                <p class="delete"></p>
+            </li>
+            <li>
+                <p class="check check_com"><input type="checkbox" disabled checked></p>
+                <a href=""><b>用药提醒5</b><span>6月12日 9:32</span></a>
+                <p class="delete"></p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

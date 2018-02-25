@@ -1,0 +1,122 @@
+@charset "utf-8";
+/* CSS Document */
+header{width: 100%;height: 45px;line-height: 45px;background: #eee;color: #1a1a1f;font-size: 18px;text-align: center;position: relative;}
+header a{width: 32px;height: 45px;line-height: 40px;position: absolute;left: 0;}
+header img{width: 10px;vertical-align: middle;}
+.swiper-container img{width: 100%;}
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{bottom: 6px;}
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{margin: 0 3px;}
+.swiper-pagination-bullet-active{background: #f00;}
+.tips{width: 140px;height: 80px;border-radius: 8px;background: rgba(0,0,0,0.8);color: #fff;text-align: center;position: fixed;left: 50%;top: 45%;z-index: 999;margin: -40px 0 0 -70px;display: none;}
+.tips img{width: 25px;margin-top: 15px}
+.tips p{font-size: 13px;line-height: 36px;}
+
+.goods{width: 100%;height: auto;position: relative;}
+.goods .main{width: 100%;background: #fff;position: relative;z-index: 111;box-shadow: 0 -10px 20px rgba(0,0,0,0.15);}
+.goods .main .title{padding: 15px 0;margin: 0 10px;line-height: 20px;font-size: 15px;border-bottom: 1px solid #e5e5e5;}
+.goods .main .price{width: 100%;overflow: hidden;border-bottom: 1px solid #e5e5e5;}
+.goods .price li{width: 33.3%;float: left;height: 72px;padding-top: 10px;line-height: 30px;text-align: center;color: #666;}
+.goods .price p{color: red;margin-left: -3px;}
+.goods .price p strong{font-size: 18px;font-weight: bold;}
+.goods .main .info{width: 100%;height: 30px;line-height: 30px;color: #666;position: relative;font-size: 12px;text-align: center;}
+.goods .info .deliver{position: absolute;left: 10px;top: 0;}
+.goods .info .address{position: absolute;right: 10px;top: 0;}
+.goods .select{padding: 0 25px 0 10px;height: 40px;line-height: 40px;margin: 12px 0;background: #fff;font-size: 15px;position: relative;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.goods .select span{margin-left: 10px;}
+.goods .select img{width: 10px;position: absolute;right: 10px;top: 12px;}
+.goods .apparise{width: 100%;height: 60px;line-height: 22px;background: #fff;position: relative;}
+.goods .apparise a{padding: 0 10px;height: 60px;color: #666;display: block;}
+.goods .apparise h4{padding-top: 10px;font-size: 15px;}
+.goods .apparise p{color: black;}
+.goods .apparise p b{color: red;margin-left: 5px;}
+.goods .apparise span{height: 30px;line-height: 30px;display: inline-block;padding-right: 15px;position: absolute;right: 10px;top: 15px;background: url(../images/arrow.png) no-repeat right center;background-size: 10px auto;}
+.goods .picInfo{width: 100%;overflow: hidden;margin-top: 5px;background: #fff;margin-bottom: 63px;}
+.goods .picInfo h3{text-align: center;height: 40px;line-height: 40px;font-size: 15px;border-bottom: 3px solid #dd2727;}
+.goods .picInfo img{width: 100%;}
+.bottom{width: 100%;height: 48px;line-height: 48px;background: #fff;position: fixed;left: 0;bottom: 0;z-index: 555;font-size: 15px;}
+.bottom .collect{width: 15%;padding-top: 24px;height: 24px;line-height: 20px;font-size: 12px;color: #858585;text-align: center;background: url(../images/collect.png) no-repeat center 9px;background-size: 15px;float: left;}
+.bottom .collected{background-image: url(../images/collect1.png);color: #e3393c;}
+.bottom .add{background: #ff9402;color: #fff;position: absolute;left: 15%;right: 43%;top: 0;text-align: center;}
+.bottom .buy{background: #e3393c;color: #fff;position: absolute;left: 57%;right: 0;top: 0;text-align: center;display: block;}
+
+.mask{width: 100%;overflow: hidden;background: rgba(0,0,0,0.5);position: fixed;left: 0;bottom: 0;top: 0;z-index: 888;display: none;}
+.mask .box{width: 100%;height: 400px;background: #fff;position: absolute;left: 0;bottom: -430px;}
+.mask .box .top{padding-left: 120px;height: 100px;position: absolute;left: 10px;right: 10px;top: 0;border-bottom: 1px solid #efefef;}
+.mask .top .minPic{width: 108px;height: 108px;border: 1px solid #efefef;border-radius: 10px;position: absolute;left: 0;bottom: 19px;}
+.mask .top h2{padding: 15px 20px 0 0;font-size: 14px;line-height: 20px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.mask .top .price{font-size: 16px;color: red;line-height: 35px;}
+.mask .top .close{width: 30px;height: 30px;position: absolute;right: -6px;top: 0;background: url(../images/index/close.png) no-repeat center center;background-size: 18px auto;}
+.mask #wrapper{width: 100%;position: absolute;left: 0;top: 101px;bottom: 99px;}
+.mask #scroller{width: 100%;position:relative;-webkit-tap-highlight-color:rgba(0,0,0,0);float:left;}
+.mask .wrap{padding: 0 10px;overflow: hidden;margin-bottom: 10px;}
+.mask .wrap h3{font-size: 14px;line-height: 40px;}
+.mask .wrap .option{line-height: 30px;font-size: 13px;color: #787878;overflow: hidden;}
+.mask .wrap .option p{background: #f5f5f5;float: left;padding: 0 10px;border-radius: 5px;margin: 0 12px 10px 0;}
+.mask .wrap .option p.active{background: #e3393c;color: white;}
+.mask .num{height: 50px;border-top: 1px solid #efefef;position: absolute;left: 10px;right: 10px;bottom: 48px;}
+.mask .num h3{float: left;line-height: 50px;font-size: 14px;}
+.mask .num p{float: left;height: 24px;line-height: 24px;width: 24px;text-align: center;background: #f5f5f5;margin-top: 13px;font-size: 21px;color: #919191;float: right;}
+.mask .num .minus{font-size: 24px;line-height: 22px;}
+.mask .num input{width: 40px;height: 24px;font-size: 15px;margin: 13px 5px 0;text-align: center;float: right;}
+.mask .num .store{font-size: 13px;width: auto;background: #fff;margin-left: 10px;}
+.mask .btn{width: 100%;height: 48px;line-height: 48px;position: absolute;left: 0;bottom: 0;background: #e3393c;color: white;font-size: 15px;text-align: center;display: none;}
+.mask .add{width: 50%;background: #ff9402;}
+.mask .buy{width: 50%;left: 50%;}
+
+/*确认订单*/
+.sureWrap{width: 100%;height: auto;position: relative;}
+.sureWrap .address{padding: 20px 20px 20px 33px;line-height: 25px;background: url(../images/my/position.png) no-repeat 10px center #fff;background-size: 18px auto;position: relative;}
+.sureWrap .address h4{width: 100%;font-size: 16px;}
+.sureWrap .address p{width: 100%;color: #333;font-size: 13px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.sureWrap .address img{width: 10px;position: absolute;right: 10px;top: 35px;}
+.sureWrap .line{width: 100%;float: left;}
+.sureWrap .shop{height: 35px;line-height: 35px;padding-left: 33px;color: #272636;font-size: 14px;background: url(../images/my/house.png) no-repeat 10px center #fff;background-size: 18px auto;clear: both;}
+.sureWrap .info{width: 100%;height: 90px;overflow: hidden;background: #eee;}
+.sureWrap .info a{height: 60px;padding: 15px 10px 15px 75px;overflow: hidden;display: block;position: relative;}
+.sureWrap .info img{width: 60px;height: 60px;position: absolute;left: 10px;top: 15px;}
+.sureWrap .info h2{padding-right: 20px;height: 40px;line-height: 20px;font-size: 15px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-.webkit-linesureWrap -clamp:2;-webkit-box-orient:vertical;}
+.sureWrap .info .count{position: absolute;right: 10px;top: 35px;line-height: 20px;font-size: 15px;}
+.sureWrap .info p{width: 100%;line-height: 20px;font-size: 12px;color: #999;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.sureWrap ul{width: 100%;overflow: hidden;padding-bottom: 58px;}
+.sureWrap li{padding: 0 10px;height: 50px;line-height: 50px;font-size: 15px;border-top: 1px solid #e5e5e5;background: #fff;}
+.sureWrap li:first-child{border: none;}
+.sureWrap li .num{width: 98px;float: right;height: 24px;margin-top: 13px;line-height: 24px;}
+.sureWrap li .num p{width: 24px;height: 24px;background: #f5f5f5;color: #919191;font-size: 21px;text-align: center;display: inline-block;}
+.sureWrap li .num input{width: 40px;height: 24px;font-size: 15px;margin: 0 5px;text-align: center;}
+.sureWrap li .num .minus{font-size: 24px;line-height: 22px;}
+.sureWrap li span{float: right;}
+.sureWrap .total{text-align: right;font-size: 12px;color: #555;}
+.sureWrap .total i{color: red;}
+.sureWrap .total b{font-size: 15px;}
+.sub{padding-left: 10px;position: fixed;left: 0;bottom: 0;right: 0;height: 48px;line-height: 48px;background: #fff;z-index: 555;color: red;font-size: 16px;}
+.sub a{width: 120px;display: inline-block;float: right;background: #e3393c;color: white;font-size: 15px;text-align: center;}
+
+/*评价*/
+.assess{width: 100%;overflow: hidden;position: absolute;left: 0;top: 0;bottom: 0;}
+.assess .top{width: 100%;height: 44px;background: #fff;}
+.assess .top li{width: 25%;height: 44px;float: left;text-align: center;font-size: 14px;}
+.assess .top a{width: 100%;height: 36px;padding-top: 8px;display: block;color: #1a1a1f;line-height: 16px;}
+.assess .top a.current{color: red;}
+.assess .top a span{font-size: 12px;}
+.assess .line{width: 100%;height: 3px;}
+.assess #wrapper{width: 100%;position:absolute;left:0;top:47px;bottom:0;}
+.assess #scroller{width: 100%;position:relative;-webkit-tap-highlight-color:rgba(0,0,0,0);float:left;}
+.assess .list{width: 100%;overflow: hidden;}
+.assess .list li{width: 100%;overflow: hidden;margin-top: 10px;position: relative;}
+.assess .list .left{width: 50px;height: 70px;line-height: 20px;font-size: 12px;color: #333;position: absolute;left: 10px;top: 0;}
+.assess .left img{width: 50px;height: 50px;border-radius: 3px;}
+.assess .left .name{width: 100%;display: inline-block;text-align: center;}
+.assess .list .right{height: auto;padding: 0 10px;margin: 0 10px 0 76px;background: #fff;position: relative;}
+.assess .right .arrow{width: 0;height: 0;border-top: 6px solid transparent;border-bottom: 6px solid transparent;border-right: 6px solid #fff;position: absolute;left: -6px;top: 9px;}
+.assess .right h3{height: 30px;line-height: 30px;border-bottom: 1px solid #e6e6e6;font-size: 12px;}
+.assess .right h3 span{float: right;color: #666;}
+.assess .right .content{padding: 10px 0;line-height: 20px;}
+.assess .right .pics{width: 100%;overflow: hidden;}
+.assess .right .pics img{width: 40px;height: 40px;float: left;margin: 0 10px 10px 0;}
+
+@media (min-width: 640px){
+.bottom,.mask,.assess,.sub{width: 640px;left: 50%;margin-left: -320px;}
+}
+@media (min-height: 600px){
+.mask .box{height: 500px;bottom: -530px}
+}

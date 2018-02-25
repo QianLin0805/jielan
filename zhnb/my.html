@@ -1,0 +1,122 @@
+<!doctype html><html><!-- InstanceBegin template="/Templates/temple.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link rel="stylesheet" href="css/css.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>我的</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+	body{background:#efefef;}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.my').addClass('nav_current');
+	var i=0;
+	$('.message').children('div').click(function(){
+		$('.sound').slideToggle();
+		if(i%2==0){
+			$(this).children('p').animate({left:'1px'},200,'linear');
+			$(this).css('background','#ccc');
+			/*$('.sound div').children('div').css('background','#ccc');
+			$('.sound div div').children().animate({left:'1px'},200,'linear');*/
+			i++;
+		}else{
+			$(this).children('p').animate({left:'23px'},200,'linear');
+			$(this).css('background','#f2665f')
+			/*$('.sound div').children('div').css('background','#f2665f');
+			$('.sound div div').children().animate({left:'23px'},200,'linear');*/
+			i++;
+		}
+	});
+	/*var j=0;
+	$('.sound').children().eq(1).children('div').click(function(){
+		if(j%2==0){
+			$(this).children().animate({left:'1px'},200,'linear');
+			$(this).css('background','#ccc')
+			j++;
+		}else{
+			$(this).children().animate({left:'23px'},200,'linear');
+			$(this).css('background','#f2665f')
+			j++;
+		}
+	});
+	var z=0;
+	$('.sound').children().eq(2).children('div').click(function(){
+		if(z%2==0){
+			$(this).children().animate({left:'1px'},200,'linear');
+			$(this).css('background','#ccc')
+			z++;
+		}else{
+			$(this).children().animate({left:'23px'},200,'linear');
+			$(this).css('background','#f2665f')
+			z++;
+		}
+	});*/
+})
+</script>
+<!-- InstanceEndEditable -->
+</head>
+<body>
+<!-- InstanceBeginEditable name="edit" -->
+<div class="head">
+	<h1>我的</h1>
+</div>
+<div class="main">
+	<div class="my_item">
+        <a href="mycard.html"><div class="card">我的卡券</div></a>
+        <a href="mynote.html"><div class="note last_child">我的记事</div></a>
+	</div>
+    <div class="my_item share">
+        <div>分享
+            <a href=""><img src="images/my/my.png" alt="" class="last_share" /></a>
+            <a href=""><img src="images/my/mail.png" alt="" /></a>
+            <a href=""><img src="images/my/pengyou.png" alt="" /></a>
+        	<a href=""><img src="images/my/weixin.png" alt="" /></a>
+        </div>
+        <a href="advice.html"><div>意见反馈</div></a>
+        <div class="last_child message">
+            消息提醒<br />
+            <span>可实现消息提醒功能</span>
+            <div><p></p></div>
+        </div>
+	</div>
+    <!--<div class="my_item sound">
+    	<h3>提示音效</h3>
+        <div>
+        	铃声<br />
+            <span>可实现消息提醒功能</span>
+            <div><p></p></div>
+        </div>
+        <div class="last_child">
+        	振动<br />
+            <span>可实现消息提醒功能</span>
+            <div><p></p></div>
+        </div>
+    </div>-->
+    <div class="my_item about">
+        <a href="about.html"><div>关于</div></a>
+        <div class="last_child">版本更新<p>4.0.0<br /><span>已是最新版本</span></p></div>
+	</div>
+</div>
+<!-- InstanceEndEditable -->
+<ul class="nav">
+    <li>
+        <a href="index.html" class="index">首页</a>
+    </li>
+    <li>
+        <a href="city.html" class="city">城市</a>
+    </li>
+    <li>
+        <a href="topic.html" class="topic">主题</a>
+    </li>
+    <li>
+        <a href="my.html" class="my">我的</a>
+    </li>
+</ul>
+</body>
+<!-- InstanceEnd --></html>

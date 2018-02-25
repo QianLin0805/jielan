@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>个人信息</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#ebebeb;}
+.inform{width:100%;overflow:hidden;background:#fff;margin-bottom:10px;}
+.inform li{width:90%;margin:0 3%;padding:0 2%;height:50px;line-height:50px;border-bottom:1px solid #dcdcdc;font-size:16px;}
+.inform a li{color:#000;}
+.inform li #file{width:80px;height:60px;margin-top:5px;background:url(images/arrow3.png) no-repeat right center;background-size:10px auto;position:relative;float:right;}
+.inform li #file img{width:60px;vertical-align:top;}
+.inform li #file input{width:70px;height:60px;position:absolute;left:0;top:0;z-index:11;opacity:0;filter:Alpha(opacity=0);}
+.inform li p{width:70%;text-align:right;padding-right:20px;background:url(images/arrow3.png) no-repeat right center;background-size:10px auto;float:right;color:#9e9e9e;}
+</style>
+</head>
+<body>
+	<ul style="padding-top:10px;" class="inform">
+    	<li style="height:80px;line-height:80px;">
+        	<span>头像</span>
+            <div id="file"><img src="images/portrait.jpg" alt="" /><input type="file" /></div>
+        </li>
+    	<li style="border:none;"><span>姓名</span><p>易发强</p></li>
+    </ul>
+	<ul class="inform">
+    	<a href="tel_modify.html"><li><span>手机号</span><p>15896325489</p></li></a>
+    	<li><span>身份证</span><p>52242**********274</p></li>
+    	<li class="card" style="border:none;">
+            <span>银行卡</span>
+            <p><span id="card">621226*********2913</span><i>请绑定银行卡</i></p>
+        </li>
+    </ul>
+</body>
+</html>
+<script type="text/javascript">
+$(window).load(function(){
+	var card=$('#card').text();
+	if(card==''){
+		$('#card').hide();
+		$('.card').bind('click',function(){
+			window.location.href='addcard1.html';
+		});
+	}else{
+		$('#card').next().hide();
+		$('.card').bind('click',function(){
+			window.location.href='mycard.html';
+		});
+	}
+});
+</script>

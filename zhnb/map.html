@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>限行信息</title>
+<link rel="stylesheet" href="css/map.css" type="text/css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=itWnBCW7Ntd7ktXiwR9PB5TM"></script>
+<script type="text/javascript" src="js/convertor.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var pinggao=$(window).height();
+	function buju(){
+		$('ul').css({
+			height:pinggao-112,
+			top:-pinggao
+		});
+	}
+	buju();
+	$('header span img:eq(0)').bind('click',function(){
+		$('header span').children().first().hide().next().show();
+		$('ul').animate({top:0});
+	});
+	$('header span').children().eq(1).bind('click',function(){
+		$(this).hide().prev().show();
+		$('ul').animate({top:-pinggao});
+	});
+	//GPS创建地图
+	if(navigator.geolocation){
+		navigator.geolocation.getCurrentPosition(function(position){
+			var lat = position.coords.latitude;                       //经度
+			var lng = position.coords.longitude;                      //纬度
+			
+			map = new BMap.Map("map");
+			var curPosition = new BMap.Point(lng, lat);               //当前位置
+			map.centerAndZoom(curPosition, 15);                       //初始化地图到当前位置并设置层级
+			map.addControl(new BMap.NavigationControl());             //缩放控件
+			map.addControl(new BMap.ScaleControl());                  //地图比例控件
+			map.addOverlay(new BMap.Marker(new BMap.Point(lng,lat))); //标记当前位置
+			
+			//锁定当前地址控件
+			var address;
+			var geolocationControl=new BMap.GeolocationControl()
+			geolocationControl.addEventListener("locationSuccess",function(e){
+				address = '';
+				//address += e.addressComponent.province;     //省
+				//address += e.addressComponent.city;         //市
+				address += e.addressComponent.district;       //区
+				address += e.addressComponent.street;         //街道
+				//address += e.addressComponent.streetNumber; //号
+				//$('header p').children('b').text(address);
+				return address;
+			});
+			map.addControl(geolocationControl);
+			
+			//标注
+			var points = [
+				[120.20783,30.212233,'标记1','我的备注1'],
+				[120.200715,30.207926,'标记2','我的备注2'],
+				[120.210795,30.206223,'标记3','我的备注3']
+			];
+			for(var i=0; i<points.length; i++){
+				(function(x){
+					var point1 = points[x];
+					var point = new BMap.Point(point1[0], point1[1]);
+					var myIcon = new BMap.Icon("images/map/mark.png",new BMap.Size(20, 24));
+					var markers = new BMap.Marker(point,{icon:myIcon});
+					var opts = {
+						width : 150,                                  //信息窗口宽度
+						height: 60,                                   //信息窗口高度
+						title : '标题：'+point1[2],                    //信息窗口标题
+						enableAutoPan : true                          //自动平移
+					}
+					var infoWindow = new BMap.InfoWindow(point1[3], opts);
+					markers.addEventListener("click", function(){ 
+						map.openInfoWindow(infoWindow,point);          //点击开启信息窗口
+					});
+					map.addOverlay(markers);                           //将标注添加到地图
+				})(i);
+			}
+			$('#search').bind('click',function(){
+				map.clearOverlays();
+				var start=curPosition
+				var end=$('#mudi').val();
+				var driving=new BMap.DrivingRoute(map,{renderOptions:{map:map,panel:"result",autoViewport:true}});
+				driving.search(start,end);
+				setTimeout(function(){
+					var i=1;
+					var step=$('#result table').children().length;
+					var dir=$('#result table tr:eq(0) td').children('span').css('background');
+					var way=$('#result table tr:eq(0) td').children('div').text();
+					$('.result').animate({bottom:'5px'},500);
+					$('.dir').css('background',dir);
+					$('.way').text(way);
+				},800);
+			});
+			
+			//创建折线
+			var polyline = new BMap.Polyline([
+				new BMap.Point(120.20783, 30.212233),
+				new BMap.Point(120.200715, 30.207926),
+				new BMap.Point(120.210795, 30.206223)
+			], {strokeColor:"blue", strokeWeight:3, strokeOpacity:0.75});
+			map.addOverlay(polyline);
+			addArrow(polyline,5,Math.PI/6);
+			
+			//绘制箭头的函数  
+			function addArrow(polyline,length,angleValue){
+				var linePoint=polyline.getPath();                     //线的坐标串  
+				var arrowCount=linePoint.length;  
+				for(var i =1;i<arrowCount;i++){                       //在拐点处绘制箭头  
+				var pixelStart=map.pointToPixel(linePoint[i-1]);  
+				var pixelEnd=map.pointToPixel(linePoint[i]);  
+				var angle=angleValue;                                 //箭头和主线的夹角  
+				var r=length;                                         //r/Math.sin(angle)代表箭头长度  
+				var delta=0;                                          //主线斜率，垂直时无斜率  
+				var param=0; //代码简洁考虑  
+				var pixelTemX,pixelTemY;//临时点坐标  
+				var pixelX,pixelY,pixelX1,pixelY1;//箭头两个点  
+				if(pixelEnd.x-pixelStart.x==0){ //斜率不存在是时  
+					pixelTemX=pixelEnd.x;  
+					if(pixelEnd.y>pixelStart.y)  
+					{  
+					pixelTemY=pixelEnd.y-r;  
+					}  
+					else  
+					{  
+					pixelTemY=pixelEnd.y+r;  
+					}     
+					//已知直角三角形两个点坐标及其中一个角，求另外一个点坐标算法  
+					pixelX=pixelTemX-r*Math.tan(angle);   
+					pixelX1=pixelTemX+r*Math.tan(angle);  
+					pixelY=pixelY1=pixelTemY;  
+				}  
+				else  //斜率存在时  
+				{  
+					delta=(pixelEnd.y-pixelStart.y)/(pixelEnd.x-pixelStart.x);  
+					param=Math.sqrt(delta*delta+1);  
+				  
+					if((pixelEnd.x-pixelStart.x)<0) //第二、三象限  
+					{  
+					pixelTemX=pixelEnd.x+ r/param;  
+					pixelTemY=pixelEnd.y+delta*r/param;  
+					}  
+					else//第一、四象限  
+					{  
+					pixelTemX=pixelEnd.x- r/param;  
+					pixelTemY=pixelEnd.y-delta*r/param;  
+					}  
+					//已知直角三角形两个点坐标及其中一个角，求另外一个点坐标算法  
+					pixelX=pixelTemX+ Math.tan(angle)*r*delta/param;  
+					pixelY=pixelTemY-Math.tan(angle)*r/param;  
+				  
+					pixelX1=pixelTemX- Math.tan(angle)*r*delta/param;  
+					pixelY1=pixelTemY+Math.tan(angle)*r/param;  
+				}  
+				  
+				var pointArrow=map.pixelToPoint(new BMap.Pixel(pixelX,pixelY));  
+				var pointArrow1=map.pixelToPoint(new BMap.Pixel(pixelX1,pixelY1));  
+				var Arrow = new BMap.Polyline([  
+					pointArrow,  
+				 linePoint[i],  
+					pointArrow1  
+				], {strokeColor:"blue", strokeWeight:3, strokeOpacity:0.5});  
+				map.addOverlay(Arrow);  
+				}  }
+		});
+	}
+})
+
+</script>
+</head>
+<body>
+	<header>
+    	<a href="index.html"><img src="images/arrow.png" alt="" class="left" /><h1>限行信息</h1></a>
+        <p><img src="images/map/icon1.png" alt="" /><b>海曙区江夏桥西</b></p>
+        <span class="maplist">
+        	<img src="images/map/icon2.png" alt="" />
+        	<img src="images/map/icon3.png" alt="" class="map" style="display:none;" />
+        </span>
+    </header>
+    <div class="search">
+    	<select name="" id="">
+        	<option value="">海曙区</option>
+        	<option value="">江东区</option>
+        	<option value="">镇海区</option>
+        </select>
+        <div>
+        	<input type="text" id="mudi" />
+            <img src="images/index/search1.png" alt="" id="search" />
+        </div>
+    </div>
+    <ul>
+    	<li><span>联丰路与丽园路</span><img src="images/map/traffic.png" alt="" /><b>1.5km</b></li>
+    	<li><span>联丰路与丽园路</span><img src="images/map/traffic.png" alt="" /><b>1.5km</b></li>
+    	<li><span>联丰路与丽园路</span><img src="images/map/traffic.png" alt="" /><b>1.5km</b></li>
+    </ul>
+    <div class="result">
+    	<h3><p></p><span>我的位置</span><b class="next">下一步</b></h3>
+        <div>
+        	<p class="dir"></p>
+        	<p class="way"></p>
+        </div>
+    </div>
+	<div id="map"></div>
+    <div id="result" style="display:none;"></div>
+</body>
+</html>

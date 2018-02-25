@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>订单详情</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/order.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+</head>
+<body>
+<div class="detail detail4">
+    <h1>【杭州市】已签收，感谢使用顺风快递，期待再次为您服务</h1>
+    <div class="user">
+    	<h4>收货人：<span class="name">易发强</span><span class="tel">18579965288</span></h4>
+    	<p>收货地址：<span class="address">浙江省杭州市滨江区江南大道恒鑫大厦21层</span></p>
+    </div>
+    <img src="images/my/colorline.jpg" alt="" class="line" />
+    <h3 class="title">三星官方旗舰店</h3>
+	<div class="info"><a href="goods.html">
+		<img src="images/my/my_pic2.jpg" alt="" />
+		<h2>国行【送壳+钢化膜】Apple/苹果 iPhone 6s Plus 5.5英寸</h2>
+        <span class="count">x1</span>
+		<p>网络类型:无需合约版 机身颜色: 金色 机身内存:64GB</p>
+	</a></div>
+    <div class="price">
+    	<p>运费<span>￥<i>10</i></span></p>
+    	<p>商品金额<span>￥<i>599</i></span></p>
+    	<p class="priceAll">实付款(包含运费)<span><span>￥<i>609</i></span></span></p>
+    </div>
+    <div class="number">
+    	订单编号：<span>1024884655655</span><br />
+		下单时间：<span>2015-10-14 18:16:44</span><br />
+		付款时间：<span>2015-10-14 19:00:34</span><br />
+		发货时间：<span>2015-10-15 12:00:34</span>
+    </div>
+    <div class="btn"><a href="apparise.html" class="red">评价</a><a href="logistics.html">查看物流</a><a class="deleteBtn">删除订单</a></div>
+    <div class="mask deleteOrder">
+        <div class="box">
+            <h3>是否要删除订单</h3>
+            <p class="cancel">取消</p>
+            <a href="javascript:history.go(-1)" class="sure">确定</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+    $('.deleteBtn').on('click',function(){     //交易成功删除订单
+        var that=$(this);
+        $('.deleteOrder').show();
+        $('.cancel').unbind('click');
+        $('.cancel').bind('click',function(){
+            $('.deleteOrder').hide();
+        });
+    });
+});
+</script>

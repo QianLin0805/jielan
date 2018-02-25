@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>全部问卷</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<style type="text/css">
+h3{text-align: center;margin-top: 100px;line-height: 40px;font-size: 21px;}
+a{margin: 20px 10px 0;line-height: 40px;background: #ef5252;color: #fff;text-align: center;border-radius: 5px;display: block;font-size: 16px;}
+</style>
+</head>
+<body>
+	<h3>提交成功，谢谢参与！</h3>
+	<a>返回问卷列表</a>
+</body>
+</html>
+<script type="text/javascript">
+var sCorpID=getQueryString('sCorpID');
+var userId=getQueryString('userId');
+$('a').on('click',function(){
+	window.location.href='invest.html?sCorpID='+sCorpID +'&userId='+userId;
+});
+</script>

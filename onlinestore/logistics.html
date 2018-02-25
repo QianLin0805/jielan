@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>查看物流</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/order.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+</head>
+<body>
+<div class="check">
+    <div class="main">
+        <img src="images/my/my_pic2.jpg" alt="" />
+        <p style="color:#333;">物流状态：<span style="color:#01c901;">运输中</span></p>
+        <p>承运来源：<span>中通快递</span></p>
+        <p>运单编号：<span>3645545455</span></p>
+        <p>官方电话：<span style="color:#009ffa;">95311</span></p>
+    </div>
+    <div class="follow">
+        <h3>物流跟踪</h3>
+        <ul>
+            <li>
+                <p class="line"></p>
+                <p class="circle"></p>
+                <h4>【杭州市】中通快递 滨江区收件员已揽件</h4>
+                <p class="time">2016-01-14 14:25:16</p>
+            </li>
+            <li>
+                <p class="line"></p>
+                <p class="circle"></p>
+                <h4>商家正通知快递公司揽件</h4>
+                <p class="time">2016-01-14 14:25:16</p>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('.follow ul').children().first().addClass('first').prepend('<img src="images/my/circle.png" alt="" />');
+});
+</script>

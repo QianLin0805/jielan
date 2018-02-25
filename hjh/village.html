@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>我的小区</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/index.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+<div class="myVillage">
+	<ul>
+    	<li class="choose">黄龙康成小区</li>
+    </ul>
+	<a href="changeVillage.html">更改小区</a>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('li').on('click',function(){
+		var myVillage=$(this).text();
+		$(this).addClass('choose').siblings().removeClass('choose');
+		window.history.back();
+	});
+})
+</script>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>在线商城</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/order.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+</head>
+<body>
+<div class="payMethod">
+    <p class="top"><a href="pay.html"><img src="images/back1.png" alt="" /></a>选择支付方式</p>
+    <p class="money">支付金额<span>￥<b>1810.00</b></span></p>
+    <h4>请选择支付方式</h4>
+    <ul>
+        <li class="weixin"><span>微信支付</span><input type="radio" name="payMethod" checked /></li>
+        <li class="yinlian"><span>银联支付</span><input type="radio" name="payMethod" /></li>
+        <li class="xianxia"><span>线下支付</span><input type="radio" name="payMethod" /></li>
+    </ul>
+    <p class="btn">确认支付</p>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('li').on('click',function(){
+        if(!$(this).children('input').is(':checked')){
+            $(this).children('input').get(0).checked=true;
+        }
+    });
+    $('.btn').on('click',function(){
+        if($('li').eq(2).children('input').is(':checked')){
+            window.location.href='offline.html';
+        }
+    });
+});
+</script>

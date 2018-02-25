@@ -1,0 +1,89 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*老槐树*/
+.lhs h1{height:45px;margin:10px 0 20px;font-size:18px;font-weight:bold;color:#282727;}
+.lhs h1 img{height:45px;margin:0 6px 0 12px;float:left;}
+.lhs h1 span{line-height:35px;margin-top:10px;float:left;}
+.lhs .item{margin:0 12px 15px;padding-right:12px;overflow:hidden;border:1px solid #d2d0d0;border-radius:5px;background:#fff;position:relative;}
+.lhs .item h2{font-size:14px;color:#666;line-height:40px;text-indent:24px;}
+.lhs .item h2 b{color:#282727;font-size:16px;font-weight:bold;margin-right:5px;}
+.lhs .item h2 span{margin-left:5px;padding:0 2px;font-size:12px;color:#fff;background:#12a5e9;}
+.lhs .item p{height:60px;line-height:20px;padding-left:24px;}
+.lhs .item .question{height:40px;line-height:40px;margin:12px 0 0 18px;text-indent:6px;border-top:1px solid #e5e5e5;color:#666;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15px;}
+.lhs .item .question b{color:#0052ff;}
+.lhs .item .color{width:8px;height:100%;position:absolute;left:0;top:0;border-radius:4px 0 0 4px;z-index:11;background:#bfbfbf;}
+.lhs .item .color1{background:#da0f0f;}
+.lhs .item .color2{background:#12a5e9;}
+.lhs .item .color3{background:#76c62f;}
+
+/*问题列表*/
+.qlist h1{padding:15px 0 10px 12px;height:48px;line-height:24px;background:#fff;color:#666;font-size:14px;position:relative;}
+.qlist h1 b{font-size:18px;color:#282727;font-weight:bold;}
+.qlist h1 span{width:64px;line-height:28px;text-align:center;font-size:15px;color:#fff;background:#ccc;position:absolute;right:12px;top:25px;display:inline-block;}
+.qlist h1 span.mind{background:#00b7ee;}
+.qlist .content{padding:0 12px 24px;line-height:24px;border-bottom:1px solid #dcdcdc;background:#fff;color:#333;font-size:15px;text-align:justify;}
+.qlist .content i{color:#0119ff;margin-left:5px;}
+.qlist .rule{margin:10px 0;height:45px;line-height:45px;border:1px solid #dcdcdc;margin-left:-1px;text-indent:12px;background:url(images/arrow1.png) no-repeat 97% center #fff;background-size:16px auto;font-size:16px;}
+.qlist .question{overflow:hidden;background:#fff;border-top:1px solid #dcdcdc;margin-bottom:20px;}
+.qlist .question a li{width:100%;height:43px;line-height:43px;border-bottom:1px solid #dcdcdc;text-indent:12px;background:url(images/arrow1.png) no-repeat 97% center #fff;background-size:16px auto;font-size:15px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+
+/*问题详情*/
+.qdetail{position:relative;bottom:0;}
+.qdetail .question{padding:15px 12px 20px;overflow:hidden;}
+.qdetail .question h1{font-size:18px;font-weight:bold;line-height:24px;}
+.qdetail .pub_time{font-size:13px;color:#999;line-height:21px;}
+.qdetail .pub_time span{color:#666;float:right;}
+.qdetail .question div{overflow:hidden;font-size:15px;line-height:24px;margin-top:3px;text-align:justify;}
+.qdetail .comment_wrap{width:100%;padding-bottom:51px;overflow:hidden;}
+.comment_wrap h2{font-size:16px;color:#999;line-height:40px;text-indent:12px;}
+.comment_wrap .item{padding:0 12px 20px;overflow:hidden;border-top:1px solid #e5e5e5;}
+.comment_wrap .item h3{font-size:16px;color:#576b95;line-height:40px;}
+.comment_wrap .item h3 b{font-weight:bold;}
+.comment_wrap .item h3 .cent{padding:0 3px;font-size:14px;font-weight:normal;background:#f78a8a;color:#fff;margin-left:5px;vertical-align:top;}
+.comment_wrap .item h3 .reply_count{padding-left:20px;margin-left:10px;background:url(../images/comment.png) no-repeat left center;background-size:16px auto;float:right;display:inline-block;color:#999;font-size:13px;}
+.comment_wrap .item h3 .praise_count{padding-left:20px;background:url(../images/praise.png) no-repeat left center;background-size:15px auto;float:right;display:inline-block;color:#999;font-size:13px;}
+.comment_wrap .item .message{padding-left:16px;font-size:15px;color:#333;line-height:18px;}
+.comment_wrap .item .comment_more{padding-top:25px;height:15px;line-height:15px;color:#999;font-size:13px;color:#767676;position:relative;}
+.comment_wrap .item .comment_more .reply_pic{width:36px;height:36px;line-height:36px;text-align:center;position:absolute;right:-6px;top:12px;}
+.comment_wrap .item .comment_more img{width:21px;}
+.comment_wrap .item .comment_more .comment_box{width:160px;height:24px;line-height:24px;padding:8px 0;border-radius:6px;background:#4b5053;position:absolute;right:24px;top:12px;color:#fff;font-size:15px;text-align:center;display:none;}
+.comment_wrap .item .comment_more .comment_box.show{animation:show ease 0.3s;-webkit-animation:show ease 0.3s;transform-origin:right;-webkit-transform-origin:right;}
+.comment_wrap .item .comment_more .comment_box.hide{animation:hide ease 0.3s;-webkit-animation:hide ease 0.3s;transform-origin:right;-webkit-transform-origin:right;}
+.comment_wrap .item .comment_more .comment_box img{height:16px;margin-right:5px;vertical-align:top;margin-top:5px;} 
+.comment_wrap .item .comment_more .praise{width:79px;border-right:1px solid #373c40;float:left;}
+.comment_wrap .item .comment_more .comment{width:80px;float:left;}
+.comment_wrap .item .praise img.big{animation:big ease-in 0.4s;-webkit-animation:big ease-in 0.4s;}
+.comment_wrap .item .reply{padding:4px 10px 10px;margin-top:25px;height:auto;background:#f2f2f2;border-radius:5px;position:relative;}
+.comment_wrap .item .reply img{width:15px;position:absolute;left:10px;top:-5px;}
+.comment_wrap .item .reply p{font-size:15px;color:#010101;line-height:18px;padding-top:5px;}
+.comment_wrap .item .reply span{color:#576b95;}
+.qdetail .publish{padding:7px 12px;height:36px;background:#f5f5f5;box-shadow:0 -1px 1px #dbdbdb;position:fixed;left:0;bottom:0;z-index:999;}
+.qdetail .publish2{display:none;}
+.qdetail .publish input{height:34px;font-size:16px;line-height:18px;border-radius:3px;border:1px solid #d7d7d7;background:#fff;text-indent:6px;}
+.qdetail .publish p{width:56px;height:36px;line-height:36px;font-size:15px;border-radius:3px;background:#ccc;color:#fff;text-align:center;float:right;}
+
+@keyframes show{
+from{transform:scaleX(0);}
+to{transform:scaleX(1);}
+}
+@-webkit-keyframes show{
+from{-webkit-transform:scaleX(0);}
+to{-webkit-transform:scaleX(1);}
+}
+@keyframes hide{
+from{transform:scaleX(1);}
+to{transform:scaleX(0);}
+}
+@-webkit-keyframes hide{
+from{-webkit-transform:scaleX(1);}
+to{-webkit-transform:scaleX(0);}
+}
+@keyframes big{
+from{transform:matrix(1,0,0,1,0,0);}
+to{transform:matrix(1.4,0,0,1.4,0,0);}
+}
+@-webkit-keyframes big{
+from{-webkit-transform:matrix(1,0,0,1,0,0);}
+to{-webkit-transform:matrix(1.4,0,0,1.4,0,0);}
+}

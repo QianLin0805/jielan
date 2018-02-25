@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>在线商城</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/order.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="plug-in/iscroll.js"></script>
+<script type="text/javascript" src="js/upload.js"></script>
+<script type="text/javascript">
+var loadover;
+function pullUpAction () {
+	if(loadover) return;
+	//loadover = true;         每次加载后判断是否全部加载完
+	$('.pullUpIcon img').hide().next().show();
+	setTimeout(function () {
+		for(var i=0;i<3;i++){
+			//假数据
+			var appendItem=$('.item').eq(1).clone();
+			$('.content').append(appendItem);
+
+			//ajax添加数据
+			/*$.ajax({
+				type:"POST",
+				url:"",
+				async:false,
+				data:"",
+				success:function(){
+
+				}
+			});*/
+			$('#pullUp img').show().removeClass('active');
+		}
+		myScroll.refresh();     //数据加载完成后，调用界面更新方法
+		$('.pullUpIcon img').show().next().hide();
+		if(loadover){
+			$('.pullUpIcon,.pullUpLabel').hide();
+			$('.loadover2').show();
+		}
+	}, 1000);
+}
+</script>
+<script type="text/javascript" src="js/order.js"></script>
+</head>
+<body>
+<div class="order">
+    <p class="top"><a href="my.html"><img src="images/back1.png" alt="" /></a>我的订单</p>
+    <div class="list">
+    	<a href="order.html"><p>全部订单</p></a>
+    	<a href="order1.html"><p class="">待付款</p></a>
+    	<a href="order2.html"><p class="">待发货</p></a>
+    	<a href="order3.html" class="current"><p class="">待收货</p></a>
+    	<a href="order4.html"><p class="">待评价</p></a>
+    </div>
+    <div id="wrapper">
+    	<div id="scroller">
+    		<ul class="content">
+                <li class="item">
+                    <h3>三星官方旗舰店<span>待收货</span></h3>
+                    <div class="info"><a href="detail3.html">
+                        <img src="images/my/my_pic2.jpg" alt="" />
+                        <h2>国行【送壳+钢化膜】Apple/苹果 iPhone 6s Plus 5.5英寸</h2>
+                        <p>网络类型:无需合约版 机身颜色: 金色 机身内存:64GB</p>
+                    </a></div>
+                    <div class="price">共<span class="sum">1</span>件商品<p>合计:<i>￥<strong>899</strong>.00 (含运费￥10.00)</i></p></div>
+                    <p class="btn"><a href="logistics.html" class="btn1 logistics">查看物流</a><a class="btn2 surepay">确认收货</a></p>
+                </li>
+                <li class="item">
+                    <h3>三星官方旗舰店<span>待收货</span></h3>
+                    <div class="info"><a href="detail3.html">
+                        <img src="images/my/my_pic2.jpg" alt="" />
+                        <h2>国行【送壳+钢化膜】Apple/苹果 iPhone 6s Plus 5.5英寸</h2>
+                        <p>网络类型:无需合约版 机身颜色: 金色 机身内存:64GB</p>
+                    </a></div>
+                    <div class="price">共<span class="sum">1</span>件商品<p>合计:<i>￥<strong>899</strong>.00 (含运费￥10.00)</i></p></div>
+                    <p class="btn"><a href="logistics.html" class="btn1 logistics">查看物流</a><a class="btn2 surepay">确认收货</a></p>
+                </li>
+    		</ul>
+			<div id="pullUp"><div class="pullUpIcon"><img src="images/pullUp.png" alt="" /><p id="load"><span class="disc1"></span><span class="disc2"></span><span class="disc3"></span><span class="disc4"></span><span class="disc5"></span><span class="disc6"></span><span class="disc7"></span><span class="disc8"></span></p></div><span class="pullUpLabel">上拉加载更多...</span><span class="loadover2">已看到最后啦</span></div>
+    	</div>
+    </div>
+	<p class="loadover">已看到最后啦</p>
+    <div class="mask sureOrder">
+        <div class="box">
+            <h3>请收货后确认收货</h3>
+            <p class="cancel">取消</p>
+            <a class="sure">确定</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

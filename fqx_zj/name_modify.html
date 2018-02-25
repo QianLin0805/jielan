@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>个人信息</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#ebebeb;}
+#modify{width:90%;line-height:40px;font-size:16px;color:#fff;background:#06bf04;text-align:center;margin:30px 0 0 5%;display:inline-block;border-radius:5px;}
+</style>
+</head>
+<body>
+<div class="modify">
+	<ul style="padding-top:10px;">
+    	<li style="height:80px;line-height:80px;">
+        	<span>头像</span>
+            <div id="file"><img src="images/portrait.jpg" alt="" /><input type="file" disabled /></div>
+        </li>
+        <li style="border:none;"><span>姓名</span><input type="text" value="易发强" id="name" /></li>
+    </ul>
+	<ul>
+    	<li><span>手机号</span><p>15896325489</p></li>
+    	<li class="card">
+            <span>银行卡</span>
+            <p><span id="card">621226*********2913</span><i>请绑定银行卡</i></p>
+        </li>
+    	<li>
+            <span>公司名称</span>
+            <p>我爱我家</p>
+        </li>
+    	<li style="border:none;">
+            <span>服务区域</span>
+            <p><i id="province">浙江省</i>/<i class="city">杭州市</i>/<i id="section">滨江区</i></p>
+        </li>
+    </ul>
+    <a id="modify">修改</a>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function(){
+	//验证姓名
+	var name=true;
+	$('#name').on('keyup',function(){
+		var nameVal=$(this).val();
+		var ptnName=/^[一-龥·a-zA-Z]+$/g;
+		var ptnName1=/^[一-龥·a-zA-Z]{2,50}$/g;
+		if(!ptnName.test(nameVal)){
+			$(this).val(nameVal.replace(/[^一-龥·a-zA-Z]/g,''));
+		}
+		if(nameVal.length>50){
+			$(this).val($(this).val().substr(0,50));
+		}
+		if(!ptnName1.test(nameVal)){
+			return name=false;
+		}
+	});
+	$('#modify').on('click',function(){
+		if(name){
+			window.location.href='inform.html';
+		}
+	});
+});
+$(window).load(function(){
+	$('#name').trigger('focus');
+	var card=$('#card').text();
+	if(card==''){
+		$('#card').hide();
+	}else{
+		$('#card').next().hide();
+	}
+});
+</script>

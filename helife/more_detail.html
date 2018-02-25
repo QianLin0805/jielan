@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>浙江移动和生活</title>
+<link rel="stylesheet" href="css/style3.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var i=0,j=0;
+	$('.rules h2').bind('click',function(){
+		$(this).next().slideToggle();
+		if(i%2==0){
+			$(this).css('backgroundImage','url(images/arrow4.png)');
+			i++;
+		}else{
+			$(this).css('backgroundImage','url(images/arrow5.png)');
+			i++;
+		}
+	});
+	$('.suit h2').bind('click',function(){
+		$(this).next().slideToggle();
+		if(j%2==0){
+			$(this).css('backgroundImage','url(images/arrow4.png)');
+			j++;
+		}else{
+			$(this).css('backgroundImage','url(images/arrow5.png)');
+			j++;
+		}
+	});
+})
+</script>
+</head>
+<body>
+	<header>商品券<a href="javascript:history.go(-1);"><img src="images/arrow3.png" alt="" /></a></header>
+    <div class="more_detail">
+    	<div class="more_top">
+        	<img src="images/more_pic4.jpg" alt="" />
+            <div class="title">
+            	<h1>星巴克中杯手工调制饮料</h1>
+                <p>(除机场店外，杭州所有门店均可使用)</p>
+                <span><b>9122</b>人已购买</span>
+            </div>
+            <div class="price">
+            	<div>
+                	会员价：28元(2324积分)<br />
+                	<span>(<b>惠生活会员</b>专享会员价，<a href="vip.html">点击开通</a>)</span>
+                </div>
+                <p>市场价：33元(2739积分)</p>
+                <a href="shop.html" class="buy">立即购买</a>
+            </div>
+        </div>
+        <div class="rules">
+        	<h2>消费规则</h2>
+        	<p>
+            1) 规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则<br />
+            2) 规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则.</p>
+        </div>
+        <div class="suit">
+        	<h2>适用门店</h2>
+            <div>
+                <div class="address">
+                    地址：杭州市下城区清泰街486号1-2层<br />
+                    <span>300m</span><a href="">离我最近</a>
+                    <img src="images/position.png" alt="" />
+                </div>
+                <p><a href="">查看所有门店</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

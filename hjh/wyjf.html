@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>物业缴费</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/family.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/family.js"></script>
+</head>
+<body>
+<div class="wy">
+    <ul class="inform">
+    	<li><span>小区:</span><p class="informs" id="village"></p></li>
+    	<li><a href="addressModify1.html"><span>详细地址:</span><p class="informs" id="room"></p></a></li>
+    	<li><span>缴费类型:</span><p class="informs" id="type">物业费</p></li>
+    </ul>
+    <p class="next"><span id="next">下一步</span></p>
+    <div class="tip">请先选择<span></span></div>
+    <div class="choose">
+    	<ul class="choose_box">
+        	<li class="villages">上陡门小区</li>
+        	<li class="villages">下吕浦小区</li>
+        	<li class="villages">大自然小区</li>
+        	<li class="villages">新田园小区</li>
+        	<li class="villages">黄龙康城小区</li>
+        </ul>
+    	<ul class="choose_box">
+        	<li class="type">物业费</li>
+        	<li class="type">干净供水费</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	(function(){
+		var pk=$(window).width();
+		var pg=$(window).height();
+		for(var i=0;i<$('.inform').children().length;i++){
+			var spanWidth=$('.informs').eq(i).prev().innerWidth();
+			$('.informs').eq(i).css({
+				width:pk-spanWidth-24+'px'
+			});
+		}
+		$('.choose').css({
+			width:pk+220+'px',
+			height:pg
+		});
+	})();
+	
+	//选择小区
+	var village=false,address=true;
+	$('#village').on('click',function(){
+		$('.villages').unbind('click');
+		$('#floor,#room').text('');
+		$('.choose_box').eq(0).show().siblings().hide();
+		show();
+		$('.villages').bind('click',function(){
+			var villName=$(this).text();
+			hide();
+			$('#village').text(villName);
+			village=true;
+			if(address){
+				$('#next').css('background','#fa5050');
+			}
+		});
+	});
+	//选择缴费类型
+	$('#type').on('click',function(){
+		$('.type').unbind('click');
+		$('.choose_box').eq(3).show().siblings().hide();
+		show();
+		$('.type').bind('click',function(){
+			var typeName=$(this).text();
+			hide();
+			$('#type').text(typeName);
+		});
+	});
+	
+	$('.choose').on('touchstart',function(event){
+		if($(event.target).closest('.choose_box').length==0){
+			hide();
+		}
+	});
+	
+	$('#next').on('click',function(){
+		if(village&&address){
+			window.location.href='wy_pay.html';
+		}
+	});
+})
+</script>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>我的银行卡</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/bank.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+<div class="myCard">
+    <ul>
+        <li>
+        	<img src="images/my/map.png" alt="" class="cardBg" />
+        	<div class="wrap">
+            	<div class="logos"></div>
+                <h3>中国建设银行</h3>
+                <p class="type">[<span>借记卡</span>]</p>
+                <p class="num">6227002022070568519</p>
+                <span class="delete">删除</span>
+            </div>
+        </li>
+        <li>
+        	<img src="images/my/map.png" alt="" class="cardBg" />
+        	<div class="wrap">
+            	<div class="logos"></div>
+                <h3>中国银行</h3>
+                <p class="type">[<span>信用卡</span>]</p>
+                <p class="num">62270020270568793</p>
+                <span class="delete">删除</span>
+            </div>
+        </li>
+    </ul>
+    <a href="addCard1.html" id="addCard"><img src="images/add2.png" alt="">添加银行卡</a>
+    <div class="delete_wrap">
+    	<div class="box">
+    		<h4>提示</h4>
+    		<p>您确定要删除尾号为<span id="last"></span>的<span id="bank"></span><span id="type"></span>吗</p>
+            <div class="btn"><span id="sure" style="margin-right:10px">确认</span><span id="cancel">取消</span></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	(function(){
+		var pg=$(window).height();
+		$('.delete_wrap').css('height',pg);
+		for(var i=0;i<$('.num').length;i++){
+			var bankNum=$('.num').eq(i).text();
+			var replaceStr=bankNum.slice(4,bankNum.length-4);
+			$('.num').eq(i).text(bankNum.replace(replaceStr,' **** **** '));
+		}
+	})();
+	$('.delete').on('click',function(){
+		$('#cancel,#sure').unbind('click');
+		var that=$(this);
+		var bank=$(this).parent().children('h3').text();
+		var type=$(this).prev().prev().children().text();
+		var lastNum=$(this).prev().text().slice($(this).prev().text().length-4);
+		$('#last').text(lastNum);
+		$('#bank').text(bank);
+		$('#type').text(type);
+		$('.delete_wrap').show();
+		$('#cancel').bind('click',function(){
+			$('.delete_wrap').hide();
+		});
+		$('#sure').bind('click',function(){
+			that.parent().parent().remove();
+			$('.delete_wrap').hide();
+		});
+	});
+	$('.delete_wrap').on('touchstart',function(event){
+		if($(event.target).closest('.btn').length==0){
+			event.preventDefault();
+		}
+	});
+})
+</script>

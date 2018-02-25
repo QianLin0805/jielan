@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+.tip{height:40px;line-height:40px;padding:0 25px;font-size:15px;color:#fff;background:#555;border-radius:25px;text-align:center;position:fixed;left:50%;margin-left:-70px;display:none;}
+
+/*家庭*/
+.family_wrap{width:100%;overflow:hidden;}
+.family_wrap .post{padding:50px 10px 10px;background:#fff;overflow:hidden;}
+.family_wrap .post img{width:100%;}
+.family_wrap .list{width:90%;height:170px;padding:0 5%;margin-top:10px;background:#fff;}
+.family_wrap .list li{width:33.3%;height:70px;margin-top:10px;float:left;text-align:center;line-height:30px;}
+.family_wrap .list li img{width:43px;}
+.family_wrap .list li span{color:#333;}
+.family_wrap .property{width:100%;overflow:hidden;}
+.family_wrap .property h2{font-size:16px;line-height:50px;text-align:center;}
+.family_wrap .property ul{width:90%;height:120px;padding:0 5% 50px;background:#fff;}
+.family_wrap .property li{width:33.3%;height:70px;margin-top:10px;float:left;text-align:center;line-height:30px;}
+.family_wrap .property img{width:43px;}
+.family_wrap .property  span{color:#333;}
+.jzfw h2{font-size:16px;line-height:30px;padding-top:10px;text-align:center;}
+.wyfw .property ul{padding:0 5%;}
+
+/*物业报销、物业缴费*/
+.wy{width:100%;overflow:hidden;color:#555;}
+.wy .inform{padding:0 10px;overflow:hidden;background:#fff;}
+.wy .inform li{width:100%;height:40px;line-height:40px;border-top:1px solid #d5d5d5;font-size:16px;}
+.wy .inform li:first-child{border:none;}
+.wy .inform li span{color:#555;padding-right:15px;float:left;}
+.wy .inform li input{line-height:18px;height:40px;float:left;color:#555;}
+.wy .inform li p{line-height:18px;height:40px;line-height:40px;float:left;background:url(../images/arrow.png) no-repeat right center;background-size:7px auto;}
+.wy .inform li #village{background:url(../images/arrow.png) no-repeat right center;background-size:7px auto;}
+.wy .inform li #address{background:url(../images/arrow.png) no-repeat right center;background-size:7px auto;}
+.wy .next{padding:0 10px;height:40px;line-height:40px;font-size:16px;margin-top:20px;}
+.wy .next span{width:100%;height:40px;background:#ccc;color:#fff;text-align:center;display:inline-block;border-radius:5px;}
+
+.wy .pic{overflow:hidden;margin:10px 0;padding:10px 10px 0;border:1px solid #ddd;margin-left:-1px;background:#fff;}
+.wy .pic p{width:70px;height:70px;float:left;margin:0 10px 10px 0;position:relative;}
+.wy .pic p .pics{width:70px;height:70px;}
+.wy .pic p .delete{width:18px;position:absolute;left:0;top:0;}
+.wy .pic div{width:68px;height:68px;border:1px dashed #ccc;background:url(../images/add.png) no-repeat center center;background-size:30px auto;float:left;position:relative;margin-bottom:10px;}
+.wy .pic div input{width:100%;height:100%;position:absolute;left:0;top:0;opacity:0;}
+.wy .describe{width:100%;overflow:hidden;border:1px solid #ddd;margin-left:-1px;position:relative;background:#fff;}
+.wy .describe h3{font-size:16px;line-height:21px;padding:12px 0;text-indent:10px;border-bottom:1px solid #ddd;}
+.wy .describe h3 span{font-size:15px;margin-left:10px;color:#999;}
+.wy .describe textarea{height:90px;margin:10px;background:#fff;line-height:24px;font-size:15px;resize:none;}
+.wy .describe p{color:#999;position:absolute;right:16px;bottom:10px;line-height:27px;}
+.wy .submit{width:90%;height:45px;line-height:45px;text-align:center;font-size:16px;margin:20px auto;border-radius:5px;background:#ccc;color:#fff;display:block;}
+.wy .choose{position:fixed;left:0;top:0;background:rgba(0,0,0,0.6);display:none;}
+.wy .choose ul{width:220px;height:100%;position:absolute;right:0;top:0;background:#fff;display:none;overflow-y:scroll;}
+.wy .choose li{height:40px;line-height:40px;border-bottom:1px solid #eee;font-size:16px;text-indent:10px;}
+.wy .tip{top:75%;}
+
+@media screen and (min-width:350px){
+.wy .pic li{margin-left:15px;}
+}
+
+/*选择支付方式*/
+.wy_pay{padding:0 10px;overflow:hidden;color:#555;}
+.wy_pay h2{font-size:18px;line-height:40px;margin-top:10px;}
+.wy_pay h2 span{margin-right:10px;}
+.wy_pay .inform{font-size:16px;line-height:24px;margin:10px 0 20px;}
+.wy_pay .pay_box{width:100%;overflow:hidden;}
+.wy_pay .pay_box h3{font-size:18px;line-height:24px;}
+.wy_pay .pay_box ul{width:100%;border-top:1px solid #ddd;background:#fff;overflow:hidden;margin-top:5px;}
+.wy_pay .pay_box li{line-height:44px;border-bottom:1px solid #ddd;text-indent:20px;}
+.wy_pay .pay_box li img{height:30px;vertical-align:middle;margin-right:25px;}
+.wy_pay .pay_box li input{width:12px;height:12px;float:right;margin:17px 10px 0 0;background:url(../images/radio1.png) no-repeat left top;background-size:12px auto;}
+.wy_pay .pay_box li input:checked{background-image:url(../images/radio2.png);}
+.wy_pay .sure{width:100%;line-height:40px;border-radius:5px;background:#ccc;color:#fff;text-align:center;font-size:16px;display:inline-block;margin:25px 0 20px;}
+.wy_pay .tip{bottom:10%;}

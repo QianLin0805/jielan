@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>在线商城</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/list.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="plug-in/waterfall.js"></script>
+<script type="text/javascript" src="plug-in/iscroll.js"></script>
+<script type="text/javascript" src="js/upload.js"></script>
+<script type="text/javascript">
+var loadover;             //页面加载数据后判断是否全部加载完
+function pullUpAction () {
+	if(loadover) return;
+	//loadover = true;         每次加载后判断是否全部加载完
+	$('.pullUpIcon img').hide().next().show();
+	setTimeout(function () {
+		for(var i=0;i<3;i++){
+			//假数据
+			var appendItem=$('.item').eq(1).clone();
+			$('.list').append(appendItem);
+
+			//ajax添加数据
+			/*$.ajax({
+				type:"POST",
+				url:"",
+				async:false,
+				data:"",
+				success:function(){
+
+				}
+			});*/
+			$('#pullUp img').show().removeClass('active');
+			createWaterFall();
+		}
+		myScroll.refresh();     //数据加载完成后，调用界面更新方法
+		$('.pullUpIcon img').show().next().hide();
+		if(loadover){
+			$('.pullUpIcon,.pullUpLabel').hide();
+			$('.loadover2').show();
+		}
+	}, 1000);
+}
+</script>
+</head>
+<body>
+<div class="wrap phone">
+	<header>手机<img src="images/classify_grey.png" alt="" id="classify" /></header>
+	<div class="shadow">
+		<ul>
+			<li>华为</li>
+			<li>魅族</li>
+			<li>三星</li>
+			<li>小米</li>
+			<li>福中福</li>
+			<li>纽曼</li>
+			<li>大显</li>
+			<li>宇国通信</li>
+		</ul>
+	</div>
+	<div class="wrapper">
+		<div id="wrapper">
+			<div id="scroller">
+				<ul class="list" id="main">
+					<li class="item" id="first"><p class="active">综合排序</p><p>按销量</p><p>按人气</p><p>按价格</p></li>
+					<li class="item"><a href="goods.html">
+						<img src="images/index/goods1.jpg" alt="">
+						<h3>华为荣耀双卡双待手机...</h3>
+						<p><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></p>
+					</a></li>
+					<li class="item"><a href="goods.html">
+						<img src="images/index/goods1.jpg" alt="">
+						<h3>华为荣耀双卡双待手机...</h3>
+						<p><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></p>
+					</a></li>
+					<li class="item"><a href="goods.html">
+						<img src="images/index/goods1.jpg" alt="">
+						<h3>华为荣耀双卡双待手机...</h3>
+						<p><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></p>
+					</a></li>
+					<li class="item"><a href="goods.html">
+						<img src="images/index/goods1.jpg" alt="">
+						<h3>华为荣耀双卡双待手机...</h3>
+						<p><span class="price"><i>￥<b>999</b></i>元起</span><span class="volume">销量:<i>23</i></span></p>
+					</a></li>
+				</ul>
+				<div id="pullUp"><div class="pullUpIcon"><img src="images/pullUp.png" alt="" /><p id="load"><span class="disc1"></span><span class="disc2"></span><span class="disc3"></span><span class="disc4"></span><span class="disc5"></span><span class="disc6"></span><span class="disc7"></span><span class="disc8"></span></p></div><span class="pullUpLabel">上拉加载更多...</span><span class="loadover2">已全部加载</span></div>
+			</div>
+		</div>
+	</div>
+	<p class="loadover">已全部加载</p>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/list.js"></script>

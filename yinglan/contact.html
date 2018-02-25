@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>联系我们</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/css.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=itWnBCW7Ntd7ktXiwR9PB5TM"></script>
+</head>
+<body>
+<div class="nav">
+	<div class="nav_box">
+        <img src="images/logo.png" alt="" />
+        <p><a href="index.html">首页</a>|<a href="about.html">关于盈澜</a>|<a href="news.html">盈澜新闻</a>|<a href="product.html">产品信息</a>|<a href="join.html">加入盈澜</a>|<a href="contact.html" class="current">联系我们</a></p>
+    </div>
+</div>
+<div class="ban_wrap">
+    <div class="banner">
+        <ul class="ban_slide">
+            <li><img src="images/banner1.jpg" alt="" /></li>
+            <li><img src="images/banner2.jpg" alt="" /></li>
+            <li><img src="images/banner1.jpg" alt="" /></li>
+            <li><img src="images/banner2.jpg" alt="" /></li>
+        </ul>
+        <div class="ban_dot"></div>
+    </div>
+</div>
+<div class="contact main">
+	<h2>YING LAN CHINA</h2>
+    <div class="unit">
+    	<div class="map" id="map"></div>
+        <div class="address">
+        	<h1>浙江盈澜信息科技有限公司</h1>
+            <h3><span>YING LAN CHINA</span></h3>
+            <p>地址：杭州市滨江区江南大道588号恒鑫大厦21楼<br />电话：(86)0571-56073887<br />传真：(86)0571-58111963<br />邮编：310051<br />邮箱：待定</p>
+        </div>
+    </div>
+</div>
+<p class="post" style="margin-top:100px;"><img src="images/pic.jpg" alt="" /></p>
+<div class="foot">
+    <img src="images/logo.png" alt="" /><br />
+    <span>Copyright @ 2006 - 2014 All Right Reserved</span><br />
+    <span>版权所有@浙江盈澜信息科技有限公司（增值电信业务许可证编号 浙B2-2009.157）</span>
+    <div></div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+var map = new BMap.Map("map");  
+	map.centerAndZoom(new BMap.Point(120.177503,30.188761),15); 
+	map.enableScrollWheelZoom(true);
+	map.addControl(new BMap.NavigationControl());             //缩放控件
+	map.disableDragging();                                    //禁止拖拽
+</script>

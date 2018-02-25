@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>在线商城</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/index.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="plug-in/iscroll.js"></script>
+<script type="text/javascript" src="js/nav.js"></script>
+<script type="text/javascript">
+var loadover=false;
+function pullUpAction () {
+	if(loadover) return;
+	setTimeout(function () {
+		for(var i=0;i<3;i++){
+			//假数据
+			var appendItem=$('.list').children().eq(0).clone();
+			$('.list').append(appendItem);
+
+			//ajax添加数据
+			/*$.ajax({
+				type:"POST",
+				url:"",
+				async:false,
+				data:"",
+				success:function(){
+
+				}
+			});*/
+		}
+		myScroll.refresh();     //数据加载完成后，调用界面更新方法
+	}, 1000);
+}
+var myScroll,pullUpEl, pullUpOffset;
+function loaded(){
+	pullUpEl = document.getElementById('pullUp');	
+	pullUpOffset = pullUpEl.offsetHeight;
+	
+	myScroll = new iScroll('wrapper', {
+		scrollbarClass: 'myScrollbar',
+		useTransition: false,
+		onRefresh: function () {
+			if (pullUpEl.className.match('loading')){
+				pullUpEl.className = '';
+				pullUpEl.innerHTML = '上拉加载更多...';
+			}
+		},
+		onScrollMove: function (){
+			if (this.y < (this.maxScrollY - 40) && !pullUpEl.className.match('flip')) {
+				pullUpEl.className = 'flip';
+				pullUpEl.innerHTML = '松手开始更新...';
+				this.maxScrollY = this.maxScrollY;
+				$('.pullUpIcon img').addClass('active');
+			} else if (this.y > (this.maxScrollY + 40) && pullUpEl.className.match('flip')) {
+				pullUpEl.className = '';
+				pullUpEl.innerHTML = '上拉加载更多...';
+				this.maxScrollY = pullUpOffset;
+				$('.pullUpIcon img').removeClass('active');
+			}
+		},
+		onScrollEnd: function () {
+			if (pullUpEl.className.match('flip')) {
+				pullUpEl.className = 'loading';
+				pullUpEl.innerHTML = '加载中...';
+				$('.pullUpIcon img').removeClass('active');
+				pullUpAction();
+			}
+		}
+	});
+	setTimeout(function (){ document.getElementById('wrapper').style.left = '0'; }, 800);
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+document.addEventListener('DOMContentLoaded', loaded, false);
+
+$(function(){
+	$('.end .left').append('<p>已结束</p>');             //已结束
+	$('.end .buy').removeAttr('href');
+	function cent(){                                     //已售
+		for(var i=0;i<$('.item').length;i++){
+			var width=$('.cent').eq(i).parent().prev().text();
+			$('.cent').eq(i).css('width',width);
+		}
+	}
+	cent();
+});
+</script>
+</head>
+<body>
+<div class="sale">
+	<header><a class="limit active">限时抢购</a><a href="sale1.html" class="area">秒杀专区</a></header>
+	<div id="wrapper">
+		<div id="scroller">
+			<ul class="list">
+				<li class="item end">
+					<div class="left"><img src="images/index/goods.jpg" alt=""></div>
+					<h3>国行【送壳+钢化膜】Apple/苹果 iPhone 6s Plus 5.5英寸全网通</h3>
+					<p class="price">￥<b>9.9</b><span>原价￥<i>19</i></span></p>
+					<div class="centBox">
+						已售<span>80%</span>
+						<p><i class="cent"></i></p>
+					</div>
+					<a href="limit.html" class="buy">去抢购</a>
+				</li>
+				<li class="item">
+					<div class="left"><img src="images/index/goods.jpg" alt=""></div>
+					<h3>国行【送壳+钢化膜】Apple/苹果 iPhone 6s Plus 5.5英寸全网通</h3>
+					<p class="price">￥<b>9.9</b><span>原价￥<i>19</i></span></p>
+					<div class="centBox">
+						已售<span>50%</span>
+						<p><i class="cent"></i></p>
+					</div>
+					<a href="limit.html" class="buy">去抢购</a>
+				</li>
+				<li class="item">
+					<div class="left"><img src="images/index/goods.jpg" alt=""></div>
+					<h3>国行【送壳+钢化膜】Apple/苹果 iPhone 6s Plus 5.5英寸全网通</h3>
+					<p class="price">￥<b>9.9</b><span>原价￥<i>19</i></span></p>
+					<div class="centBox">
+						已售<span>40%</span>
+						<p><i class="cent"></i></p>
+					</div>
+					<a href="limit.html" class="buy">去抢购</a>
+				</li>
+			</ul>
+			<div id="pullUp">
+				<span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+			</div>
+		</div>
+	</div>
+</div>
+<ul class="nav">
+	<li id="index"><a href="index.html"><p></p><span>首页</span></a></li>
+	<li id="sale"><a href="sale.html" class="current"><p></p><span>活动</span></a></li>
+	<li id="stock"><a href="stock.html"><p></p><span>进货单</span></a></li>
+	<li id="my"><a href="my.html"><p></p><span>我的</span></a></li>
+</ul>
+</body>
+</html>

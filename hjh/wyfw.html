@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>物业服务</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/family.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+<div class="family_wrap wyfw">
+    <header><span class="village">黄龙康成小区</span></header>
+    <div class="post"><img src="images/index/pic1.png" alt="" /></div>
+    <div class="property">
+    	<h2>物业服务</h2>
+        <ul>
+        	<li><a href="http://218.205.48.244/sm-portal/electricPower/index.do?sticket=&areacode=330100&portaltype=2&columnid=&ext=&version=3&usessionid=&ua=&resourceid=SV330000000153&backurl=http%3A%2F%2Fhangzhou.wxcs.cn%2F')"><img src="images/family/electric.png" alt="" /><br /><span>电费</span></a></li>
+            <li><a href="wybx.html"><img src="images/family/property_fix.png" alt="" /><br /><span>物业报修</span></a></li>
+            <li><a href="wyjf.html"><img src="images/family/payment.png" alt="" /><br /><span>物业缴费</span></a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	(function(){
+		var pg=$(window).height();
+		var imgHeihgt=$('.post').children().height();
+		$('ul').css('height',pg-imgHeihgt-110+'px');
+	})();
+})
+</script>

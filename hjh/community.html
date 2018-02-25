@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>社区</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/community.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript">
+	var loadOver=true;
+	
+	var myScroll,pullUpEl, pullUpOffset;
+	function pullUpAction () {
+		if(!loadOver){
+			return;
+		}
+		if($('.sqt').is(':hidden')){
+			setTimeout(function () {
+				for(var i=0;i<3;i++){
+					var liClone=$('#list1').children().eq(i).clone();
+					$('#list1').append(liClone);
+				}
+				myScroll.refresh();     //数据加载完成后，调用界面更新方法
+			}, 1000); 
+		}else if($('.notice').is(':hidden')){
+			setTimeout(function () {
+				for (i=0; i<2; i++) {
+					var liClone=$('#list2').children().eq(i).clone();
+					$('#list2').append(liClone);
+				}
+				myScroll.refresh();     //数据加载完成后，调用界面更新方法
+			}, 1000); 
+		}
+	}
+	function loaded(){
+		pullUpEl = document.getElementById('pullUp');	
+		pullUpOffset = pullUpEl.offsetHeight;
+		
+		myScroll=new iScroll(
+			"wrapper",
+			{
+				checkDOMChanges: true,
+				scrollbarClass: 'myScrollbar',
+				useTransition: false,
+				onRefresh: function () {
+					if (pullUpEl.className.match('loading') && loadOver) {
+						pullUpEl.className = '';
+						pullUpEl.innerHTML = '上拉加载更多...';
+					}
+				},
+				onScrollMove: function () {
+					if (this.y < (this.maxScrollY - 10) && !pullUpEl.className.match('flip') && loadOver) {
+						pullUpEl.className = 'flip';
+						pullUpEl.innerHTML = '松手开始更新...';
+						this.maxScrollY = this.maxScrollY;
+					} else if (this.y > (this.maxScrollY + 10) && pullUpEl.className.match('flip') && loadOver) {
+						pullUpEl.className = '';
+						pullUpEl.innerHTML = '上拉加载更多...';
+						this.maxScrollY = pullUpOffset;
+					}
+				},
+				onScrollEnd: function () {
+					if (pullUpEl.className.match('flip') && loadOver) {
+						pullUpEl.className = 'loading';
+						pullUpEl.innerHTML = '加载中...';				
+						pullUpAction();	// Execute custom function (ajax call?)
+					}
+				}
+			}
+		);
+		setTimeout(function (){ document.getElementById('wrapper').style.left = '0'; }, 800);
+	}
+	
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	document.addEventListener('DOMContentLoaded', loaded, false); 
+	
+$(function(){
+	function loadContent(){
+		if(!loadOver){
+			$('#pullUp').text('已全部加载');
+		}else{
+			$('#pullUp').text('上拉加载更多...');
+		}
+	}
+	$('.community').addClass('current');   //导航
+	$('#notice').on('click',function(){
+		loadOver=true;
+		$(this).addClass('active').next().removeClass('active');
+		$('.notice').show();
+		$('.sqt').hide();
+		$('.write').hide();
+		loadContent();
+	});
+	$('#sqt').on('click',function(){
+		loadOver=false;
+		$('.wrapper').css('bottom',49);
+		$(this).addClass('active').prev().removeClass('active');
+		$('.sqt').show();
+		$('.write').show();
+		$('.notice').hide();
+		loadContent();
+	});
+})
+</script>
+</head>
+<body>
+<div class="commu_wrap">
+    <header><span class="village">黄龙康成小区</span></header>
+    <div class="top"><span class="active" id="notice">社区公告</span><span id="sqt">社区通</span></div>
+    <div class="wrapper" id="wrapper">
+    	<div id="scroll" style="transition-property: transform; transform-origin: 0px 0px 0px; transform: translate(0px, 0px) translateZ(0px);">
+            <ul class="notice" id="list1">
+                <li class="agent_wy">
+                    <div class="left">物业管理员</div>
+                    <div class="right">
+                        <h3>开会了</h3>
+                        <p class="time"><span class="date">2015-11-06</span><span class="time">09:27</span></p>
+                        <p class="content">马上开会了，请各小组准备！马上开会了，请各小组准备！马上开会了，请各小组准备！</p>
+                    </div>
+                </li>
+                <li class="agent_wy">
+                    <div class="left">物业管理员</div>
+                    <div class="right">
+                        <h3>开会了</h3>
+                        <p class="time"><span class="date">2015-11-06</span><span class="time">09:27</span></p>
+                        <p class="content">马上开会了，请各小组准备！马上开会了，请各小组准备！马上开会了，请各小组准备！</p>
+                    </div>
+                </li>
+                <li class="agent_sq">
+                    <div class="left">社区管理员</div>
+                    <div class="right">
+                        <h3>星期五了</h3>
+                        <p class="time"><span class="date">2015-11-06</span><span class="time">09:27</span></p>
+                        <p class="content">星期五了！星期五了！星期五了！星期五了！星期五了！星期五了！星期五了！星期五了！</p>
+                    </div>
+                </li>
+                <li class="agent_sq">
+                    <div class="left">社区管理员</div>
+                    <div class="right">
+                        <h3>星期五了</h3>
+                        <p class="time"><span class="date">2015-11-06</span><span class="time">09:27</span></p>
+                        <p class="content">星期五了！星期五了！星期五了！星期五了！星期五了！星期五了！星期五了！星期五了！</p>
+                    </div>
+                </li>
+            </ul>
+            <ul class="sqt" id="list2">
+                <li>
+                    <div class="title"><img src="images/yidong.png" alt="" /><span class="name">张三</span><span class="time">18:08</span><span class="date">2015-11-06</span></div>
+                    <p class="content">最近楼下施工太吵了，能不能协商一下，让他们晚上不要施工，下午5点以后就不要再工作了</p>
+                    <div class="process"><p>处理进展：<span>已处理</span></p><a href="noteDetail.html">查看详情</a></div>
+                </li>
+                <li>
+                    <div class="title"><img src="images/yidong.png" alt="" /><span class="name">张三</span><span class="time">18:08</span><span class="date">2015-11-06</span></div>
+                    <p class="content">最近楼下施工太吵了，能不能协商一下，让他们晚上不要施工，下午5点以后就不要再工作了</p>
+                    <div class="process"><p>处理进展：<span>已处理</span></p><a href="noteDetail.html">查看详情</a></div>
+                </li>
+            </ul>
+    		<div id="pullUp">上拉加载更多...</div>
+        </div>
+    </div>
+    <a href="publish.html" class="write"><img src="images/write.png" alt="" /></a>
+    <nav>
+    	<a href="index.html" class="index">首页</a>
+    	<a href="community.html" class="community">社区</a>
+    	<a href="family.html" class="family">家庭</a>
+    	<a href="my.html" class="my">我的</a>
+    </nav>
+</div>
+</body>
+</html>

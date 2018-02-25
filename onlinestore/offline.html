@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>在线商城</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/order.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<style type="text/css">
+    body{background: #fff;}
+</style>
+</head>
+<body>
+<div class="offline">
+    <p class="top"><a href="payMethod.html"><img src="images/back1.png" alt="" /></a>线下支付</p>
+    <div class="content">
+        <h3>请上传支付凭证</h3>
+        <div class="photos">
+            <p class="upload"><input type="file" id="upload" /></p>
+        </div>
+        <p class="tip">图片大小不可大于2M</p>
+    </div>
+    <p class="btn">上传</p>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+    //上传图片
+    $("#upload").change(function(){
+        var value = getObjectURL(this.files[0]);
+        $(this).parent().before('<div><img src="'+value+'" alt="" /><p class="delete"><span></span></p></div>');
+        $(this).val('');
+        var num=$('.photos').children('div').length;
+
+        //删除上传图片
+        $('.photos').children('div').last().children('.delete').bind('click',function(){
+            $(this).parent().remove();
+            if(num>=5){
+                $('.upload').show();
+            }
+        });
+        if(num>=5){
+            $('.upload').hide();
+            return;
+        }
+    });	
+});
+</script>

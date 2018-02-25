@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0;padding:0;font-size:12px;font-family:"Microsoft YaHei",Arial;color:#333;}
+header,div,h1,h2,h3,h4,ul,ol,li,dl,dt,dd,p,form,input,button,select,textarea,label,img,span,strong,a,b,i{margin:0;padding:0;}
+h1,h2,h3,h4{font-weight:normal;}
+ul,ol，li{list-style:none;}
+img,input,button,select{border:none;background:none;vertical-align:middle;}
+input,button,select{font-size:14px;font-family:"Microsoft YaHei",Arial;-moz-appearance:none;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+a{text-decoration:none;color:#333;}
+b,strong{font-weight:normal;}
+i{font-style:normal;}
+header{width:100%;height:40px;line-height:40px;background:#4da1f7;color:#fff;font-size:14px;text-align:center;position:relative;}
+header a{width:20px;line-height:0;text-align:center;display:inline-block;position:absolute;left:10px;top:13px;}
+header a img{width:8px;}
+
+/*登录*/
+
+.login{width:100%;background:#fff;position:fixed;left:0;z-index:999;}
+.login form{width:100%;overflow:hidden;padding-top:5px;}
+.login form .tel{width:94%;margin-left:3%;height:43px;line-height:43px;text-indent:10px;border:1px solid #e2e2e2;border-radius:5px;margin-top:15px;position:relative;left:-1px;}
+.login form div{width:94%;margin-left:3%;height:43px;line-height:43px;border:1px solid #e2e2e2;border-radius:5px;margin-top:15px;position:relative;left:-1px;}
+.login form div input{width:100%;height:43px;line-height:43px;text-indent:10px;}
+.login form div p{width:110px;height:39px;line-height:39px;color:#fff;background:#eaae2d;font-size:14px;border-radius:4px;position:absolute;right:2px;top:2px;z-index:11;text-align:center;}
+.login form a{width:94%;height:45px;line-height:45px;font-size:14px;margin:20px 0 0 3%;;border-radius:5px;background:#006dab;color:#fff;display:inline-block;text-align:center;}
+
+/*会员权益*/
+
+.vip_rights{width:90%;padding:0 5% 20px 5%;overflow:hidden;}
+.vip_rights h2{font-size:15px;color:#4da1f7;line-height:40px;}
+.vip_rights p{font-size:13px;color:#444;padding-left:3%;line-height:18px;}
+.vip_rights img{width:97%;margin:10px 0 0 3%;}
+.vip_rights div{font-size:13px;color:#444;padding-left:3%;line-height:18px;}
+.vip_rights div h3{font-size:13px;line-height:40px;}
+
+/*开通会员*/
+
+.vip{overflow:hidden;padding-bottom:20px;}
+.vip .vip_top{padding:15px 0 25px 60px;margin:0 6%;line-height:21px;color:#555;background:url(../images/girl.png) no-repeat left 18px;background-size:50px auto;font-size:13px;}
+.vip a{width:88%;background:#1c6fc3;color:#fff;height:40px;line-height:40px;text-align:center;border-radius:5px;display:inline-block;font-size:15px;margin-left:6%;}
+.vip .vip_box{width:100%;overflow:hidden;background:url(../images/shadow.png) no-repeat;background-size:100% auto;margin-top:20px;}
+.vip .vip_box p{margin:15px 6% 0;padding:10px 0 10px 60px;line-height:21px;color:#61beee;border-bottom:1px solid #d2d2d2;background:url(../images/huishenhuo.png) no-repeat left center;background-size:auto 50px;}
+.vip .vip_dec{width:88%;padding:0 6%;line-height:21px;color:#aaa;font-size:13px;}
+.vip .vip_dec h3{color:#555;font-size:13px;line-height:24px;padding-top:10px;}
+.vip .vip_dec span{font-size:12px;}
+
+/*电子券需知*/
+
+.notice{width:100%;overflow:hidden;padding-bottom:10px;}
+.notice h3{width:90%;padding:0 5%;line-height:36px;background:#f6f6f6;color:#4da1f7;font-size:15px;}
+.notice p{width:90%;padding:12px 5%;font-size:13px;color:#444;line-height:21px;}
+
+/*优惠码*/
+
+.ticket{width:94%;padding:0 3%;overflow:hidden;}
+.ticket .ticket_top{width:100%;color:#999;font-size:13px;height:40px;line-height:40px;text-align:center;}
+.ticket ul{width:100%;overflow:hidden;}
+.ticket li{width:100%;overflow:hidden;margin-bottom:10px;}
+.ticket li .left{width:65%;height:85px;background:#eb6877;color:#fff;float:left;}
+.ticket li .left p{padding:8px 0 0 10px;font-size:13px;filter:Alpha(opacity=60);opacity:0.6;line-height:20px;}
+.ticket li .left b{width:100%;font-size:20px;text-align:center;display:inline-block;font-weight:bold;margin-top:2px;}
+.ticket li .right{width:35%;height:85px;background:#fff;color:#aaa;float:left;text-align:center;line-height:27px;font-size:14px;}
+.ticket li .right p{line-height:15px;font-size:12px;}
+.ticket li .right b{color:#555;}
+.ticket .used .left{background:#3fbfcf;}
+
+@media (min-width: 640px){
+body{width: 640px; margin-left: auto; margin-right: auto;}
+}

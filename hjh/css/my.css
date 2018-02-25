@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+.portrait{width:68px;height:68px;border:4px solid rgba(255,255,255,0.5);border-radius:100%;text-align:center;position:relative;}
+.portrait img{width:60px;height:60px;border-radius:100%;margin-top:4px;}
+.portrait input{width:60px;height:60px;position:absolute;left:4px;top:4px;opacity:0;}
+
+.my_wrap{width:100%;overflow:hidden;}
+.my_wrap .top{width:100%;height:110px;background:#fa5050;}
+.my_wrap .top .bg{width:100%;position:absolute;left:0;top:0;}
+.my_wrap .portrait{float:left;margin:17px 20px 0 30px;position:relative;z-index:11;}
+.my_wrap .top div{float:left;margin-top:25px;position:relative;z-index:11;}
+.my_wrap .top h3{font-size:16px;color:#fff;line-height:27px;}
+.my_wrap .top .arrow{width:12px;position:absolute;right:10px;top:45px;}
+.my_wrap .mylist{width:100%;overflow:hidden;background:#fff;margin-top:10px;}
+.my_wrap .mylist li{width:100%;height:40px;line-height:38px;border-top:1px solid #ddd;font-size:16px;background:url(../images/arrow.png) no-repeat 97% center;background-size:7px auto;}
+.my_wrap .mylist li:first-child{border:none;}
+.my_wrap .mylist li a{width:100%;height:100%;display:inline-block;text-indent:10px;}
+.my_wrap .mylist li img{width:21px;vertical-align:middle;margin-right:8px;}
+.my_wrap .mylist li span{vertical-align:middle;color:#333;}
+.my_wrap .about{width:100%;height:40px;line-height:38px;text-indent:10px;font-size:16px;color:#333;background:url(../images/arrow.png) no-repeat 97% center #fff;background-size:7px auto;display:inline-block;margin-top:10px;}
+.my_wrap .about img{width:21px;vertical-align:middle;margin-right:8px;}
+.my_wrap .exit{height:40px;line-height:40px;font-size:16px;background:#fa5050;color:#fff;text-align:center;border-radius:5px;display:block;position:fixed;left:10px;bottom:15%;}
+.my_wrap .share{width:100%;overflow:hidden;position:fixed;left:0;top:0;z-index:999;background:rgba(0,0,0,0.9);display:none;}
+.my_wrap .share img{width:240px;float:right;margin:40px 20px 0 0;}
+.my_wrap .share p{text-align:center;color:#fff;clear:both;padding-top:10px;line-height:18px;}
+
+/*我的未登录*/
+.my_wrap .top_not{text-align:center;}
+.my_wrap .top_not div{float:left;margin-top:16px;}
+.my_wrap .top_not h3{font-size:16px;color:#fff;line-height:36px;}
+.my_wrap .top_not a{font-size:15px;color:#fff;padding:0 10px;line-height:30px;border:1px solid #fff;border-radius:5px;display:inline-block;}
+
+/*登录*/
+.login{width:100%;overflow:hidden;}
+.login form{width:80%;margin:50px auto 0;overflow:hidden;}
+.login form input{width:92%;padding-left: 8%;height:44px;border-bottom:1px solid #ccc;line-height:20px;background:url(../images/my/login_icon.png) no-repeat;background-size:18px auto;}
+.login form #tel{background-position:0 12px;}
+.login form #psd{background-position:0 -38px;}
+.login form div{width: 100%;height: 50px;font-size: 14px;color: #f00;}
+.login form .tip{width: 100%;text-align: center;line-height: 60px;display: none;}
+.login form button{width:100%;height:40px;line-height:40px;font-size:16px;background:#fa5050;color:#fff;text-align:center;border-radius:5px;}
+.login p{width:80%;line-height:40px;font-size:15px;margin:0 auto;}
+.login p a{color:#fa5050;}
+.login p a#forget{float:right;}
+
+/*注册*/
+.regist{width:100%;overflow:hidden;}
+.regist ul{width:92%;overflow:hidden;margin:20px auto 0;}
+.regist li{padding-left:10px;height:40px;line-height:40px;color:#333;border-bottom:1px solid #ccc;font-size:15px;position:relative;}
+.regist li input{width:110px;height:40px;line-height:20px;text-indent:5px;}
+.regist li p{width:110px;height:30px;line-height:30px;background:#fa7070;color:#fff;font-size:14px;border-radius:4px;text-align:center;position:absolute;right:3px;top:5px;}
+.regist button{width:90%;height:40px;line-height:40px;font-size:16px;background:#fa5050;color:#fff;text-align:center;border-radius:5px;margin:50px 0 0 5%;}
+
+/*找回密码*/
+.forget button{margin-top:25px;}
+.forget .notice{text-align:center;color:#999;line-height:40px;}
+
+/*个人信息*/
+.inform{width:100%;overflow:hidden;}
+.inform .top{width:100%;overflow:hidden;position:relative;}
+.inform .top .bg{width:100%;}
+.inform .top .portrait{position:absolute;left:50%;top:50%;margin:-38px 0 0 -38px;}
+.inform ul{width:100%;margin-top:10px;overflow:hidden;background:#fff;}
+.inform ul li{width:97%;padding-right:3%;line-height:40px;border-top:1px solid #ddd;font-size:15px;background:url(../images/arrow.png) no-repeat 97% center;background-size:7px auto;}
+.inform ul li:first-child{border:none;}
+.inform ul li a{width:100%;height:100%;display:inline-block;}
+.inform ul li span{color:#333;}
+.inform ul li .left{margin-left:10px;}
+.inform ul li .right{float:right;margin-right:15px;}

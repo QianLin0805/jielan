@@ -1,0 +1,105 @@
+@charset "utf-8";
+/* CSS Document */
+/*首页*/
+.search{position: absolute;left: 10px;right: 10px;top: 8px;height: 32px;line-height: 32px;color: #ccc;padding-left: 30px;border-radius: 5px;background: url(../images/search.png) no-repeat 8px center #f3f3f3;background-size: 16px auto;z-index: 11;font-size: 15px;}
+.swiper-container img{width: 100%;}
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{bottom: 3px;}
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{margin: 0 3px;}
+.swiper-pagination-bullet{background: #fff;}
+
+.index{width: 100%;overflow: hidden;}
+.index .icon{width: 100%;height: 75px;padding: 25px 0;font-size: 13px;line-height: 30px;text-align: center;background: #fff;}
+.index .icon li{width: 25%;float: left;}
+.index .icon a{padding: 0 10px;display: inline-block;}
+.index .icon img{width: 45px;}
+.index .main{width: 100%;overflow: hidden;padding-bottom: 57px;}
+.index .main h2{width: 100%;text-align: center;line-height: 40px;position: relative;font-size: 15px;color: #282828;}
+.index .main h2 p{width: 100%;height: 1px;background: #a7a7a7;position: absolute;left: 0;top: 50%;}
+.index .main h2 span{background: #eee;padding: 0 10px;position: relative;z-index: 11;}
+.index .main ul{width: 100%;overflow: hidden;}
+.index .main li{float: left;background: #fff;margin: 0 1px 4px;}
+.index .main a{width: 100%;height: 100%;overflow: hidden;}
+.index .main img{width: 100%;}
+.index .main h3{font-size: 15px;padding: 0 10px;line-height: 16px;margin-top: 7px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.index .main div{padding: 0 10px 3px;font-size: 12px;line-height: 27px;}
+.index .main div .price{color: #142935;}
+.index .main .price i{color: #dd2727;}
+.index .main .price b{font-size: 15px;}
+.index .main div .volume{color: #666;float: right;}
+
+/*活动专区*/
+.sale{width: 100%;overflow: hidden;position: absolute;left: 0;top: 0;bottom: 0;}
+.sale header{width: 100%;height: 44px;position: relative;}
+.sale header a{display: block;position: absolute;top: 0;height: 42px;line-height: 42px;text-align: center;color: #fff;font-size: 15px;border: 1px solid #414141;background: #373737;}
+.sale header .limit{left: 0;right: 50%;}
+.sale header .area{left: 50%;right: 0;}
+.sale header .active{background: #f15353;border-color: #f15353;}
+.sale header .limit.active{border-right-color: #000;}
+.sale header .area.active{border-left-color: #000;}
+.sale #wrapper{width: 100%;position:absolute;left:0;top:44px;bottom:0;}
+.sale #scroller{width: 100%;position:relative;-webkit-tap-highlight-color:rgba(0,0,0,0);float:left;}
+.sale .list{width: 100%;overflow: hidden;background: #fff;margin: 6px 0 60px;}
+.sale .list li{min-height: 80px;padding: 10px 10px 10px 98px;overflow: hidden;border-bottom: 1px solid #efefef;position: relative;}
+.sale .list .left{position: absolute;left: 10px;top: 10px;width: 78px;height: 78px;border: 1px solid #efefef;}
+.sale .list .left img{width: 78px;height: 78px;}
+.sale .list .left p{position: absolute;left: 0;bottom: 0;width: 100%;height: 24px;line-height: 24px;background: rgba(0,0,0,0.75);color: #fff;text-align: center;}
+.sale .list h3{width: 100%;height: 40px;font-size: 15px;line-height: 20px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.sale .list .price{font-size: 14px;color: red;height: 30px;line-height: 30px;margin-top: 10px;}
+.sale .list .price b{font-size: 18px;}
+.sale .list .price strong{font-size: 15px;}
+.sale .list .price span{font-size: 12px;color: #888;text-decoration: line-through;margin-left: 10px;}
+.sale .list .buy{width: 70px;height: 28px;line-height: 28px;border: 1px solid #fd3636;border-radius: 3px;text-align: center;font-size: 15px;background: #fd3636;color: #fff;position: absolute;right: 10px;top: 60px;}
+.sale .list .end .buy{border-color: #d0d0d0;background: #dcdcdc;}
+.sale .list .centBox{width: 100%;height: 30px;line-height: 30px;font-size: 12px;color: #666;position: relative;}
+.sale .list .centBox p{position: absolute;left: 60px;right: 0;top: 13px;height: 5px;border: 1px solid #fd3636;border-radius: 3px;}
+.sale .list .centBox i{height: 5px;background: #fd3636;display: block;}
+.sale #pullUp{display: none;}
+
+/*进货单*/
+.stock{width: 100%;height: auto;position: relative;}
+.stock .line{width: 100%;height: 3px;display: block;}
+.stock .no{width: 100%;line-height: 24px;font-size: 15px;color: #666;position: fixed;left: 0;top: 35%;text-align: center;display: none;}
+.stock .no a{color: #fd3636;}
+.stock .list{width: 100%;overflow: hidden;margin-bottom: 105px;display: none;}
+.stock .list li{width: 100%;overflow: hidden;margin-top: 10px;background: #fff;}
+.stock .list li:first-child{margin-top: 0;}
+.stock .list h2{padding: 0 10px;height: 45px;line-height: 45px;font-size: 14px;color: #272636;background: url(../images/my/house.png) no-repeat 40px center;background-size: 16px auto;}
+.stock .list h2 input{width: 20px;height: 20px;background: url(../images/radio3.png) no-repeat center center;background-size: 20px auto;margin: 13px 32px 0 0;}
+.stock .list h2 input:checked{background-image: url(../images/radio2.png);}
+.stock .list h2 .destruction{font-size: 12px;height: 14px;line-height: 14px;color: #ff1400;float: right;padding-left: 10px;border-left: 1px solid #bfbfbf;margin-top: 16px;}
+.stock .list .item{width: 100%;background: #f5f5f5;overflow: hidden;border-top: 2px solid #fff;}
+.stock .list .item:first-child{border: none;}
+.stock .list .item a{padding: 5px 10px 0 102px;overflow: hidden;position: relative;display: block;line-height: 20px;}
+.stock .item .select{width: 18px;height: 18px;background: url(../images/radio3.png) no-repeat center center;background-size: 18px auto;position: absolute;left: 11px;top: 26px;}
+.stock .item .select:checked{background-image: url(../images/radio2.png);}
+.stock .item img{width: 54px;height: 54px;border: 1px solid #efefef;position: absolute;left: 38px;top: 7px;}
+.stock .item h3{padding-right: 60px;font-size: 15px;color: #333;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.stock .item p{font-size: 12px;color: #999;width: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.stock .item .price{font-size: 15px;text-align: right;display: inline-block;position: absolute;right: 10px;top: 5px;}
+.stock .item div{padding: 0 10px;height: 24px;margin: 5px 0 10px;text-align: right;}
+.stock .item div p{width: 24px;height: 24px;background: #e5e5e5;color: #919191;display: inline-block;text-align: center;font-size: 21px;line-height: 20px;}
+.stock .item div .minus{font-size: 24px;}
+.stock .item div input{width: 40px;height: 24px;margin: 0 5px;text-align: center;}
+.stock li .count{padding: 0 10px;line-height: 40px;height: 40px;color: #fd3636;font-size: 15px;border-top: 1px solid #e5e5e5;}
+.stock .mask{width: 100%;position: fixed;left: 0;top: 0;bottom: 0;background: rgba(0,0,0,0.5);z-index: 999;display: none;}
+.stock .mask .box{width: 90%;overflow: hidden;position: absolute;left: 5%;top: 45%;background: #fff;border-radius: 6px;margin-top: -70px;}
+.stock .mask h3{padding: 0 10px;line-height: 50px;font-size: 16px;color: #666;border-bottom: 1px solid #ddd;font-weight: bold;}
+.stock .mask h3 img{float: right;width: 24px;opacity: 0.75;margin-top: 13px;}
+.stock .mask ul{width: 100%;overflow: hidden;}
+.stock .mask li{width: 33.3%;float: left;padding: 20px 0;line-height: 24px;color: #666;font-size: 15px;text-align: center;}
+.stockBot{width: 100%;height: 45px;position: fixed;left: 0;bottom: 50px;z-index: 555;background: #333;color: white;display: none;}
+.stockBot label{height: 45px;line-height: 45px;font-size: 15px;float: left;margin: 0 20px 0 10px;}
+.stockBot input{width: 20px;height: 20px;background: url(../images/radio1.png) no-repeat center center;background-size: 20px auto;float: left;margin: 13px 5px 0 0;}
+.stockBot input:checked{background-image: url(../images/radio2.png);}
+.stockBot p{height: 36px;padding: 5px 0 4px;line-height: 18px;font-size: 14px;float: left;}
+.stockBot p span{font-size: 12px;color: #999;}
+.stockBot div{width: 100px;height: 45px;line-height: 45px;float: right;background: #999;text-align: center;font-size: 15px;}
+.stockBot .able{background: #e3393c;}
+
+@media (max-width: 360px){
+.sale1 .list .buy{position: static;float: right;margin-bottom: 10px;}
+}
+@media (min-width: 640px){
+.search{width: 590px;left: 50%;margin-left: -310px;}
+.stock .stockBot,.stock .mask,.sale{width: 640px;left: 50%;margin-left: -320px;}
+}

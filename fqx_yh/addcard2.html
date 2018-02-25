@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>绑定银行卡</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+	body{background:#e1e1e1;}
+</style>
+</head>
+<body>
+    <div class="step step2">
+    	<h2>请输入银行卡的预留手机号</h2>
+        <div>
+        	<p class="first"><span>卡类型</span><b>工商银行卡</b></p>
+            <p><span>预留手机</span>
+            <input type="tel" id="tel" placeholder="银行卡预留手机号" /></p>
+        </div>
+    	<button id="step2" disabled>下一步</button>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function(){
+	var tel=false;
+	$('#tel').on('keyup',function(){
+		var telVal=$(this).val();
+		var ptnTel=/^\d+$/g;
+		var ptnTel1=/^1\d{10}$/g;
+		//限制只能输入数字
+		if(!ptnTel.test(telVal)){
+			$(this).val(telVal.replace(/\D/g,''));
+		}
+		if(telVal.length>11){
+			$(this).val($(this).val().substr(0,11));
+		}
+		//下一步背景
+		if(telVal==''){
+			$('#step2').css({
+				background:'#fff',
+				color:'#ccc'
+			}).attr('disabled',true);
+		}else{
+			$('#step2').css({
+				background:'#06bf04',
+				color:'#fff'
+			}).attr('disabled',false);
+		}
+		//验证手机号
+		if(!ptnTel1.test(telVal)){
+			return tel=false;
+		}
+		tel=true;
+	});
+	$('#step2').on('click',function(){
+		if(tel){
+			window.location.href='addcard3.html';
+		}
+	});
+});
+</script>

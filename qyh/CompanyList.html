@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>会员风采</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<style type="text/css">
+	body{ background-color: #fff;}
+	ul{ color: #333; font-size: 15px;}
+	ul li.list{ line-height: 40px; border-bottom: 1px solid #f0f0f0;}
+	ul li span{ display: block; padding-left: 10px;}
+	ol{ display: none; background-color: #f0f0f0;}
+	ol a{ display: block; padding-left: 10px;text-indent: 2em;}
+</style>
+</head>
+<body>
+<p class="tip">数据加载中...</p>
+<ul class="wrap" ng-app="myApp" ng-controller="companyList">
+	<li class="list" ng-repeat="x in data" ng-click="skip()">
+		<span onClick="loadMore(this)">{{ x.company }}</span>
+		<ol>
+			<li ng-repeat="y in  x.firmNames">
+				<a href="mien.html?sCorpID={{sCorpID}}&index1={{$parent.$index}}&index2={{$index}}">{{ y.firmName }}</a>
+			</li>
+		</ol>
+	</li>
+</ul>
+<p class="tishi"></p>
+</body>
+</html>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+var sCorpID=getQueryString('state');
+
+angular.module('myApp',[]).filter('companyList', function ($sce) {
+        return function (input) {
+            return $sce.trustAsHtml(input);
+        }
+    }).controller('companyList',function($scope,$http){
+    $scope.sCorpID = sCorpID;
+	$http({
+		url: link+"vipMienList.do",
+		data: {
+			"sCorpID": sCorpID
+		},
+	    method: 'POST',
+	    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+	    transformRequest: function(obj) {
+	        var str = [];
+	        for(var p in obj)
+	        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	        return str.join("&");
+	    }
+	}).success(function(response){
+		if(response.resultCode!=200){
+			$('.tishi').text('加载失败').show();
+			tishi();
+			$('.tip').hide();
+			return;
+		}
+		$('.tip').hide();
+		$('.wrap').show();
+		$scope.data = response.resultContent;
+	});
+	$scope.skip = function(){
+		//alert($index);
+	}
+});
+function loadMore(This){
+	if($(This).next().css("display") == "none"){
+		$(This).next().slideDown();
+	}else{
+		$(This).next().slideUp();
+	}
+	
+};
+</script>

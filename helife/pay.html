@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>浙江移动和生活</title>
+<link rel="stylesheet" href="css/style2.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+	<header>微信抢购<a href="javascript:history.go(-1);"><img src="images/arrow3.png" alt="" /></a></header>
+    <div class="pay">
+    	<div class="vip">
+            您还不是惠生活会员！<a href="vip.html">点击开通</a>会员<br />
+            惠生活会员单个购买该产品可以<span>再省3元</span>。
+        </div>
+        <p class="dec">“惠生活”是浙江移动推出的，旨在为浙江移动用户提供吃、喝、玩、乐等生活服务的优惠券业务</p>
+        <ul>
+            <li class="pay_first">哈根达斯单球冰激凌</li>
+            <li>单价：<span>33元 / 2739积分</span></li>
+            <li><b class="num">数量：</b>
+                <div>
+                    <span style="font-size:24px;line-height:23px;">-</span>
+                    <input type="text" readonly value="1">
+                    <span style="font-size:21px;line-height:21px;">+</span>
+                </div>
+            </li>
+            <li>总价：<span style="color:#ff9b2b;">33元 / 2739积分</span></li>
+        </ul>
+        <div class="pay_way">
+        	<h2>推荐支付方式：</h2>
+        	<div>
+                <img src="images/select.png" alt="" />
+                <p>移动积分</p>
+                <span>将扣除您<b>830</b>分(抵<i>10</i>元)</span>
+            </div>
+        	<div>
+                <img src="images/select.png" alt="" />
+                <p>电子券</p>
+                <span>将扣除您<b>8</b>元</span>
+            </div>
+        	<div style="border:none;">
+                <img src="images/select.png" alt="" />
+                <p>微信支付</p>
+                <span>已减免<b>10</b>元，还需支付<i>5</i>元</span>
+                
+            </div>
+            <div class="last">微信支付立减10元，每月限一笔</div>
+        </div>
+        <a href="sure.html" class="buy">立即支付</a>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('input').prev().bind('click',function(){
+		var num=parseInt($('input').val());
+		if(num>1){
+			$('input').val(num-1);
+		}
+	});
+	$('input').next().bind('click',function(){
+		var num=parseInt($('input').val());
+		$('input').val(num+1);
+	});
+})
+</script>

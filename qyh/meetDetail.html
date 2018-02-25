@@ -1,0 +1,343 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>会议详情</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/meetDetail.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+</head>
+<body>
+<p class="tip">数据加载中...</p>
+<div class="wrap" ng-app="myApp" ng-controller="dataCtrl">
+	<ul class="info">
+		<li class="name">
+			<p><i>发起</i>人：</p>
+			<div>管理员</div>
+		</li>
+		<li>
+			<p>会议主题：</p>
+			<div>{{data.title}}</div>
+		</li>
+		<li>
+			<p>开始时间：</p>
+			<div>{{data.startTime}}</div>
+		</li>
+		<li>
+			<p>结束时间：</p>
+			<div>{{data.endTime}}</div>
+		</li>
+		<li class="address">
+			<p>会议地点：</p>
+			<div>{{data.addr}}</div>
+			<a class="navigation" ng-click="nav()">导航</a>
+		</li>
+		<li style="padding-bottom:10px" ng-if="data.content!=''">
+			<p>会议内容：</p>
+			<div class="content">{{content}}</div>
+			<span id="detail" ng-if="full" ng-click="detail()">详情</span>
+		</li>
+		<li class="file">
+			<p><i>附</i>件：</p>
+			<div ng-if="!data.files">无</div>
+			<div ng-if="data.files&&!data.surveyUrl">共{{data.files.length}}个</div>
+			<div ng-if="data.files&&data.surveyUrl">共{{data.files.length + 1}}个</div>
+			<ol>
+				<li ng-repeat="x in data.files">
+					{{$index+1}}.{{ x.fileName }} 
+					<a href={{x.fileUrl}} class="download" download="{{x.fileName}}">查看</a>
+				</li>
+				<li style="color:#f14545;" ng-if="data.surveyUrl">
+					{{data.files.length+1}}.{{ data.surveyTitle }} 
+					<a href={{data.surveyUrl}} class="download" download="{{x.fileName}}">查看</a>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<h4 class="all">查看全部参会人员({{data.meetingUsers.length}})</h4>
+		</li>
+	</ul>
+	<div class="mask4" ng-show="show">
+		<p class="content1">{{content1}}</p>
+		<img src="images/close.png" class="close" ng-click="hide()" alt="" />
+	</div>
+	<div class="start">
+		<div class="btn"><p class="sure">确认参加</p><p class="leave">请假不来</p><p class="others">他人代我参加</p></div>
+		<div class="mask mask1">
+			<div class="box">
+				<h3>是否确认参加此项会议</h3>
+				<p id="actSure">确认</p>
+				<p id="actCancel">取消</p>
+			</div>
+		</div>
+		<div class="mask mask2">
+			<div class="box">
+				<h3>此项会议您确认要请假吗</h3>
+				<p id="leaveSure">确认</p>
+				<p id="leaveCancel">取消</p>
+			</div>
+		</div>
+		<div class="mask mask3">
+			<div class="box">
+				<div><textarea name="" placeholder="请填写代您参加的人员姓名、职位、联系方式" maxlength="72"></textarea></div>
+				<p id="tips"><span>请输入内容</span></p>
+				<p id="send">发送</p>
+				<p id="cancelSend">取消</p>
+			</div>
+		</div>
+	</div>
+	<div class="end">
+		<div class="btn"><a id="lookSummary">查看会议纪要</a></div>	
+	</div>
+</div>
+<p class="tishi"></p>
+</body>
+</html>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+var id = getQueryString('id');
+var type = getQueryString('type');
+var userId = getQueryString('userId');
+var address;
+if(type==1){
+	$('.end').hide();
+}else if(type==2){
+	$('.start').hide();
+}
+
+var lng;
+var lat;
+function showLocation(data){
+	lng = data.result.location.lng;
+	lat = data.result.location.lat;
+}
+
+angular.module('myApp',[]).filter('replaceHtml', function () {
+        return function (input) {
+        	if(input){
+            	return input.replace(/<[^>]+>/g,'').replace(/&nbsp;/g,'');
+            }else{
+            	return '';
+            }
+        }
+    }).controller('dataCtrl',function($scope,$http){
+	$http({
+		url: link+"meetingDetails.do",
+		data: {
+			"id": id,
+			"userId": userId
+		},
+	    method: 'POST',
+	    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+	    transformRequest: function(obj) {
+	        var str = [];
+	        for(var p in obj)
+	        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	        return str.join("&");
+	    }
+	}).success(function(response){
+		if(response.resultCode!=200){
+			$('.tishi').text('加载失败').show();
+			tishi();
+			return;
+		}
+		$('.tip').hide();
+		$('.wrap').show();
+		$scope.data = response.resultContent;
+		$scope.type = type;
+		address=$scope.data.addr;                    //地址
+		var content = response.resultContent.content.replace(/<[^>]+>/g,'').replace(/&nbsp;/g,'');
+		$scope.content1 = content;
+		if(content.length>40){
+			$scope.content = content.substring(0,40)+'...';
+			$scope.full = true;
+		}else{
+			$scope.content = content;
+		}
+		if(response.resultContent.minuteNum<=0){
+			$('.end').hide();
+		}
+
+		for(var i=0;i<response.resultContent.meetingUsers.length;i++){
+			if(userId==response.resultContent.meetingUsers[i].userId&&response.resultContent.meetingUsers[i].state>0&&response.resultContent.meetingUsers[i].state<5){
+				$('.start .btn').children('p').css('background','#ccc').unbind('click');
+			}
+		}
+		$.ajax({
+			type:'POST',
+			async:true,
+			url:link+'shareUser.do',
+			data:{"url":location.href.split('#')[0]},
+			datatype:'json',
+			success:function(msg){
+				wx.config({
+				    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+				    appId: msg.appId, // 必填，公众号的唯一标识
+				    timestamp: msg.timestamp, // 必填，生成签名的时间戳
+				    nonceStr: msg.nonceStr, // 必填，生成签名的随机串
+				    signature: msg.signature,// 必填，签名，见附录1
+				    jsApiList: ['openLocation'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+				});
+				wx.error(function(res){
+					$.ajax({
+						type:'POST',
+						async:true,
+						url:link+'shareUser.do',
+						data:{"url":location.href.split('#')[0],"errMsg":res['errMsg']},
+						datatype:'json',
+						success:function(msg){
+							wx.config({
+							    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+							    appId: msg.appId, // 必填，公众号的唯一标识
+							    timestamp: msg.timestamp, // 必填，生成签名的时间戳
+							    nonceStr: msg.nonceStr, // 必填，生成签名的随机串
+							    signature: msg.signature,// 必填，签名，见附录1
+							    jsApiList: ['openLocation'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+							});
+						}
+					});
+				    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+				});
+			}
+		});
+		$scope.nav = function(){
+			wx.openLocation({
+			    latitude: lat, // 纬度，浮点数，范围为90 ~ -90
+			    longitude: lng, // 经度，浮点数，范围为180 ~ -180。
+			    name: address, // 位置名
+			    address: address, // 地址详情说明
+			    scale: 28, // 地图缩放级别,整形值,范围从1~28。默认为最大
+			    infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+			});
+		}
+		var url = "http://apis.map.qq.com/ws/geocoder/v1?address="+address+"&output=jsonp&key=WY6BZ-NFIHV-HLWPD-U4BIP-5GR4T-Z4FR6&callback=showLocation";
+		$http.jsonp(url).success(function(){
+	        
+		});
+	}).error(function(response,status){
+		$('.tip').text('请求异常');
+	});
+	
+	$scope.detail = function(){
+		$scope.show = true;
+	}
+	$scope.hide = function(){
+		$scope.show = false;
+	}
+});
+
+document.onreadystatechange = function(){
+	if(document.readyState == "complete"){
+		var state;
+		function sureMeet(){
+			$.ajax({
+				type:"POST",
+				url:link+"affirmMeeting.do",
+				async:true,
+				data:{
+					"meetId":id,
+					"userId":userId,
+					"state":state
+				},
+				success:function(response){
+					if(response.resultCode!=200){
+						$('.tishi').text('提交失败').show();
+						tishi();
+						return;
+					}
+					$('.start .btn').children('p').css('background','#ccc').unbind('click');
+					$('.mask1,.mask2').hide();
+					$('.tishi').text("提交成功").show();
+					tishi();
+				},
+				error:function(){
+					$('.tishi').text("提交失败").show();
+					tishi();
+				}
+			});
+		}
+		//所有成员
+		$('.all').on('click',function(){
+			window.location.href='allActor.html?id='+id;
+		});
+		//确认参加
+		$('.sure').on('click',function(){
+			state=1;
+			$('.mask1').show();
+			$('#actSure').bind('click',function(){
+				sureMeet();
+			});
+			$('#actCancel').bind('click',function(){
+				$('.mask1').hide();
+			});
+		});
+		//请假
+		$('.leave').on('click',function(){
+			state=2;
+			$('.mask2').show();
+			$('#leaveSure').bind('click',function(){
+				sureMeet();
+			});
+			$('#leaveCancel').bind('click',function(){
+				$('.mask2').hide();
+			});
+		});
+		//找人代替
+		$('.others').on('click',function(){
+			state=3;
+			$('.mask3').show();
+			$('#cancelSend').bind('click',function(){
+				$('textarea').val('');
+				$('.mask3').hide();
+			});
+			$('#send').bind('click',function(){
+				var explain=$('textarea').val();
+				$.ajax({
+					type:"POST",
+					url:link+"affirmMeeting.do",
+					async:true,
+					data:{
+						"meetId":id,
+						"userId":userId,
+						"state":state,
+						"explain":explain
+					},
+					success:function(response){
+						if(explain==''){
+							$('#tips span').show();
+							setTimeout(function(){
+								$('#tips span').hide();
+							},1000)
+							return;
+						}
+						if(response.resultCode!=200){
+							$('.tishi').text('提交失败').show();
+							tishi();
+							return;
+						}
+						$('textarea').val('');
+						$('.start .btn').children('p').css('background','#ccc').unbind('click');
+						$('.mask3').hide();
+						$('.tishi').text("提交成功").show();
+						tishi();
+					},
+					error:function(){
+						$('.tishi').text('提交失败').show();
+						tishi();
+					}
+				});
+			});
+		});
+		//查看会议纪要
+		$('#lookSummary').on('click',function(){
+			window.location.href='summaryDetail.html?meetingId='+id;
+		});
+	}
+}
+</script>

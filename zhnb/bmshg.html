@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>便民生活馆</title>
+<link rel="stylesheet" href="css/css1.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	function buju(){
+		var pingkuan=$(window).width();
+		var pinggao=$(window).height();
+		var bili1=pingkuan/720;
+		var bili2=pinggao/1280;
+		$('.game').css({
+			left:'18.2%',
+			top:bili1*171+'px'
+		});
+		$('.shop').css({
+			left:'49.4%',
+			top:bili1*271+'px'
+		});
+		$('.lottery').css({
+			left:'79.4%',
+			top:bili1*402+'px'
+		});
+		$('.coal').css({
+			left:'7.9%',
+			top:bili1*460+'px'
+		});
+		$('.film').css({
+			left:'36.5%',
+			top:bili1*588+'px'
+		});
+		$('.book').css({
+			left:'78.1%',
+			top:bili1*626+'px'
+		});
+		$('.sight').css({
+			left:'14%',
+			top:bili1*746+'px'
+		});
+		$('.music').css({
+			left:'57.6%',
+			top:bili1*800+'px'
+		});
+		$('.life').css({
+			left:'12.4%',
+			top:bili1*924+'px'
+		});
+		$('.cartoon').css({
+			left:'58.3%',
+			top:bili1*1018+'px'
+		});
+	};
+	$(window).load(function(){
+		buju();
+	});
+})
+</script>
+</head>
+<body>
+    <div class="head bmsh_head">
+        <a href="city.html"><img src="images/arrow.png" alt="" />
+        <h1>便民生活馆</h1></a>
+    </div>
+    <div class="city_warn">消息提醒栏消息提醒栏消息提醒栏消息提醒栏</div>
+    <div class="main bmsh_main">
+        <img src="images/city/bmsh_bg.jpg" alt="" class="bmsh_bg" />
+        <a href=""><img src="images/city/game.png" alt="" class="game" /></a>
+        <a href="http://www.kjb2c.com/portal/app!query.do">
+        <img src="images/city/shop.png" alt="" class="shop" /></a>
+        <a href=""><img src="images/city/lottery.png" alt="" class="lottery" /></a>
+        <a href=""><img src="images/city/coal.png" alt="" class="coal" /></a>
+        <a href=""><img src="images/city/film.png" alt="" class="film" /></a>
+        <a href=""><img src="images/city/book.png" alt="" class="book" /></a>
+        <a href=""><img src="images/city/sight.png" alt="" class="sight" /></a>
+        <a href=""><img src="images/city/music.png" alt="" class="music" /></a>
+        <a href=""><img src="images/city/life.png" alt="" class="life" /></a>
+        <a href=""><img src="images/city/cartoon.png" alt="" class="cartoon" /></a>
+    </div>
+</body>
+</html>

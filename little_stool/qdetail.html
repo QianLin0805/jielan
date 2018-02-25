@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>老槐树</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/lhs.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/lhs.js"></script>
+</head>
+<body>
+	<div class="qdetail">
+        <div class="question">
+            <h1>午夜讲诡故事的特效问题</h1>
+            <p class="pub_time">发布时间 <b>2015.08.23</b><span>回答 <i id="replyNum"></i></span></p>
+            <div>一名没有多少人气的夜间电台节目主持人张震，发现自己平时像患了老年痴呆症一样的爷爷竟然是道士。在一个夜晚，张震的人生被彻底改变，短暂清醒的爷爷重新打开了张震原本出生后的就拥有的先天阴阳眼，并且将“祖传圣物”内的道家传承全部授予张震一幕幕精彩的剧情由此展开：父亲失踪背后隐藏着怎样的惊天秘密，上一辈...</div>
+        </div>
+        <div class="comment_wrap">
+            <h2>评论</h2>
+            <div class="item">
+                <h3>
+                	<b>卡布奇诺</b>
+                    <span class="cent">0分</span>
+                    <span class="reply_count"></span>
+                    <span class="praise_count">36</span>
+                </h3>
+                <p class="message">羡慕珍妮，不管他多么叛逆，落魄，堕落，永远有阿甘在等他回来</p>
+                <div class="comment_more">
+                    <span>1小时</span>前
+                    <div class="reply_pic"><img src="images/reply.png" alt="" /></div>
+                    <div class="comment_box">
+                    	<p class="praise"><img src="images/hart.png" alt="" /><i>赞</i></p>
+                        <p class="comment"><img src="images/comment1.png" alt="" /><i>评论</i></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <h3>
+                	<b>卡布奇诺</b>
+                    <span class="cent">0分</span>
+                    <span class="reply_count"></span>
+                    <span class="praise_count">32</span>
+                </h3>
+                <p class="message">羡慕珍妮，不管他多么叛逆，落魄，堕落，永远有阿甘在等他回来</p>
+                <div class="comment_more">
+                    <span>1小时</span>前
+                    <div class="reply_pic"><img src="images/reply.png" alt="" /></div>
+                    <div class="comment_box">
+                    	<p class="praise"><img src="images/hart.png" alt="" /><i>赞</i></p>
+                        <p class="comment"><img src="images/comment1.png" alt="" /><i>评论</i></p>
+                    </div>
+                </div>
+                <div class="reply">
+        			<img src="images/delta1.png" alt="" />
+                    <p><span>金兰</span>：<i>剧本蛮好的</i></p>
+                    <p><span>金兰</span>：<i>剧本蛮好的</i></p>
+                    <p>
+                        <span>卡布奇诺</span> 回复 <span>金兰</span>：<i>今天带着小孩子去西湖边逛了一圈!</i>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="publish publish1">
+            <input type="text" placeholder="说说你的意见" class="leave_message" id="leave_message1" />
+            <p class="send send1">发送</p>
+        </div>
+        <div class="publish publish2">
+            <input type="text" placeholder="评论：" class="leave_message" id="leave_message2" />
+            <p class="send send2">发送</p>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function(){
+	var pingkuan=$(window).width();
+	function buju(){
+		$('.publish').css({
+			width:pingkuan-24+'px'
+		});
+		$('.leave_message').css({
+			width:pingkuan-92+'px'
+		});
+	}
+	buju();
+});
+</script>

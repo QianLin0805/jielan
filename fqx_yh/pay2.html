@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>信用卡全额付</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#ebebeb;}
+</style>
+</head>
+<body>
+	<div class="pay">
+    	<div class="top">
+        	<h3>信用卡全额付款只需四步</h3>
+            <div class="pay_step">
+            	<p></p>
+                <div style="left:-20px;">
+                    <span class="after"></span><br />
+                    <i>1.收款人</i>
+            	</div>
+                <div style="left:33.3%;margin-left:-32px;">
+                    <span class="write"></span><br />
+                    <i>2.付款人</i>
+                </div>
+                <div style="left:66.6%;margin-left:-32px;">
+                	<span></span><br />
+                    <i>3.确认</i>
+                </div>
+                <div style="right:-20px;">
+                	<span></span><br />
+                    <i>4.验证</i>
+                </div>
+            </div>
+        </div>
+        <ul>
+        	<li><span>姓名</span><p>易发强</p></li>
+        	<li><span>手机</span><p>15157187051</p></li>
+        	<a href="mycard.html"><li style="border:none;background:url(images/arrow3.png) no-repeat 98% center;background-size:10px auto;">
+            	<img src="images/zsyh.png" alt="" /><i>招商银行</i><i>储蓄卡</i>
+            </li></a>
+        </ul>
+        <ul>
+        	<li style="border:none;"><span>金额</span><input type="tel" placeholder="付款金额" id="money" /></li>
+        </ul>
+        <ul>
+        	<li><span>用途</span><input type="text" placeholder="例:租房     最多不超过10个字" id="use" /></li>
+        	<li class="photo">
+            	<span>合同照片</span>
+                <div><input type="file" /></div>
+                <div><input type="file" /></div>
+                <div><input type="file" /></div>
+            </li>
+        </ul>
+        <a class="next" style="margin:20px auto;">下一步</a>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function(){
+	var money=false;
+	var use=false;
+	//验证金额
+	$('#money').on('keyup',function(e){
+		var moneyVal=$(this).val();
+		var ptnMoney=/^\d{1,5}(\.\d{0,2})?$/g;
+		//限制只能输入数字和小数点
+		if(!ptnMoney.test(moneyVal)){
+			$(this).val(moneyVal.replace(/[^\d\.]/g,''));
+			return money=false;
+		}
+		//限制金额
+		if(moneyVal==0||moneyVal>10000){
+			return money=false;
+		}
+		money=true;
+	});
+	$('#money').keydown(function(event){
+		var moneyVal=$(this).val();
+		var ptnMoney=/^\d{1,5}\.\d{2}$/g;
+		//限制只能输入1个小数点
+		if(moneyVal.indexOf('.')!==-1 && event.keyCode==190){
+			return false;
+		}
+		//第一位不能输入小数点
+		if(moneyVal.length==0 && event.keyCode==190){
+			return false;
+		}
+		//小数点点后只能输入两位字符
+		if(ptnMoney.test(moneyVal)&&event.keyCode!=8){
+			return false;
+		}
+	})
+	//用途不能为空
+	$('#use').on('keyup',function(){
+		var useVal=$(this).val();
+		if(useVal==''){
+			return use=false;
+		}
+		use=true;
+	});
+	//限制10个字
+	$('#use').keydown(function(){
+		if($(this).val().length==10){
+			return false;
+		}
+	})
+	$('.next').bind('click',function(){
+		if(money&&use){
+			window.location.href='pay3.html';
+		}
+	});
+});
+</script>

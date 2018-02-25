@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>会员风采</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<style type="text/css">
+.wrap{width: 100%;overflow: hidden;display: none;}
+h3{width: 80%;margin: 20px auto 0;font-size: 16px;color: #333;line-height: 20px;text-align: center;}
+.time{color: #808080;font-size: 13px;line-height: 40px;text-indent: 10px;}
+.time span{margin-left: 10px;}
+.content{padding: 0 10px 20px;color: #666;line-height: 22px;text-indent: 2em;text-align: justify;}
+</style>
+</head>
+<body>
+<p class="tip">数据加载中...</p>
+<div class="wrap" ng-app="myApp" ng-controller="dataCtrl">
+	<h3>{{data.title}}</h3>
+	<p class="time">{{data.creTime}}<span>{{data.promulgator}}</span></p>
+	<div class="content">
+		<p ng-bind-html="data.content|trustHtml"></p>
+	</div>
+</div>
+<p class="tishi"></p>
+</body>
+</html>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+var id = getQueryString('id');
+angular.module('myApp',[]).filter('trustHtml', function ($sce) {
+        return function (input) {
+            return $sce.trustAsHtml(input);
+        }
+    }).controller('dataCtrl',function($scope,$http){
+	$http({
+		url: link+"vipMienDetails.do",
+		data: {
+			"id":id
+		},
+	    method: 'POST',
+	    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+	    transformRequest: function(obj) {
+	        var str = [];
+	        for(var p in obj)
+	        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	        return str.join("&");
+	    }
+	}).success(function(response){
+		if(response.resultCode!=200){
+			$('.tishi').text('加载失败').show();
+			tishi();
+			return;
+		}
+		$('.tip').hide();
+		$('.wrap').show();
+		$scope.data = response.resultContent;
+	});
+});
+</script>

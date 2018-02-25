@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>添加银行卡</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/bank.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="js/limit.js"></script>
+</head>
+<body>
+<div class="addCard addCard3">
+	<p class="top"><a href="addCard2.html"><img src="images/back1.png" alt="" /></a>添加银行卡</p>
+    <h3>已发送短信效验码到手机<span class="tel"></span></h3>
+    <div><input type="tel" id="code" placeholder="请输入验证码" /><p id="getCode">剩余<span id="time">59</span>s</p></div>
+    <span class="btn">确定绑卡</span>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	var tel=getString('tel');
+	var replaceStr=tel.slice(3,tel.length-2);
+	$('.tel').text(tel.replace(replaceStr,'******'));
+	function btnColor(){
+		if($('#code').val()!=''){
+			$('.btn').css({background:'#06bf04',borderColor:'#06bf04'});
+		}else{
+			$('.btn').css({background:'#ccc',borderColor:'#ccc'});
+		}
+	}
+	btnColor();
+	$('#code').on('keyup',function(){
+		btnColor();
+	});
+	$('.btn').on('click',function(){
+		if($('#code').val()!=''){
+			window.location.href='myCard.html';
+		}
+	});
+	
+	//发送验证码
+	function sendcode(){
+		$('#getCode').unbind('click')
+		var timer=setInterval(function(){
+			var i=59;
+			if(i>0){
+				var time=parseInt($('#time').text());
+				$('#time').text(time-1);
+				i--;
+			}
+		},1000);
+		setTimeout(function(){
+			clearInterval(timer);
+			$('#getCode').css('color','#111').html('重新获取');
+			$('#getCode').bind('click',function(){
+				$(this).css('color','#ccc').html('剩余<span id="time">59</span>s');
+				sendcode();
+			});
+		},59000);
+	}
+	sendcode();
+})
+</script>

@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>treehouse</title>
+<link rel="stylesheet" href="css/css.css" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+</head>
+<body>
+	<div class="nav">
+    	<a href="index.html"><div class="logo">TREEHOUSE</div></a>
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">ABOUT</a></li>
+          <li><a href="#">BLOG</a></li>
+          <li><a href="#">PORTFOLIO</a></li>
+          <li><a href="#">CONTACT</a></li>
+        </ul>
+    </div>
+	<div class="banner">
+    	<img src="images/banner.jpg" />
+        <p>Proin iaculis purus consequat sem cure</p>
+    	<a href="#"><div>VIEW PORTFOLIO</div></a>
+    </div>
+    <div class="icon">
+    	<h1>Professional Services</h1>
+        <div class="icon_top">Proin iaculis purus consequat sem cure</div>
+        <ul>
+            <li class="icon_left">
+            	<div></div>
+              	<a href="#"><h3>BEAUTIFUL DESIGNS</h3></a>
+              	<p>
+                    Proin iaculis purus consequat sem cure<br />
+                    digni ssim. Donec porttitora entum suscipit<br />
+                    aenean rhoncus posuere odio in tincidunt.
+              	</p>
+          	</li>
+          	<li class="icon_mid">
+            	<div></div>
+              	<a href="#"><h3>RESPONSIVE WEB</h3></a>
+                <p>
+                    Proin iaculis purus consequat sem cure<br />
+                    digni ssim. Donec porttitora entum suscipit<br />
+                    aenean rhoncus posuere odio in tincidunt.
+              	</p>
+          	</li>
+          	<li class="icon_right">
+            	<div></div>
+            	<a href="#"><h3>MARKETING TOOLS</h3></a>
+                <p>
+                    Proin iaculis purus consequat sem cure<br />
+                    digni ssim. Donec porttitora entum suscipit<br />
+                    aenean rhoncus posuere odio in tincidunt.
+              	</p>
+            </li>
+        </ul>
+    </div>
+    <div class="relax">
+    	<img src="images/relax_pic1.png" />
+        <p>
+        	Proin iaculis purus consequat sem cure  digni ssim. Donec<br />
+			porttitora entum suscipit  aenean rhoncus posuere odio in tincidunt.
+        </p>
+        <ul>
+          <li>Initial Setup &amp; Customizations</li>
+          <li id="relax_mid">Regular Updates</li>
+          <li>Round The Clock Support</li>
+        </ul>
+    	<a href="#"><div>LEARN MORE</div></a>
+    </div>
+    <div class="pro">
+    	<h1>latest project</h1>
+        <div id="pro_h1">Proin iaculis purus consequat sem cure</div>
+        <h2>DEVELOPING A FRAMEWORK</h2>
+        <p id="pro_h2">
+        	Proin iaculis purus consequat sem cure  digni ssim<br />
+			donec porttitora entum suscipit  aenean rhoncus posuere<br />
+			odio in tincidunt.
+        </p>
+        <ul>
+          	<li id="pro_1">
+                <h3><a href="">E-COMMERCE READY</a></h3>
+                <p>Proin iaculis purus consequat sem cure  digni ssim.</p>
+          	</li>
+          	<li id="pro_2">
+                <h3><a href="">POWERFUL SEO FEATURES</a></h3>
+                <p>Proin iaculis purus consequat sem cure.</p>
+          	</li>
+          	<li id="pro_3">
+                <h3><a href="">SECURE ENCRYPTION</a></h3>
+                <p>Proin iaculis purus consequat sem cure iaculis purus.</p>
+          	</li>
+        </ul>
+        <p id="ul">
+            Proin iaculis purus consequat sem cure  digni ssim donec<br />
+    		porttitora entum suscipit  aenean rhoncus posuere odio in.
+        </p>
+        <div id="detail">VIEW DETAILS</div>
+        <img src="images/pro_pic2.png" />
+    </div>
+    <div class="value">
+    	<div class="v_box">
+            <h1>culture & Values</h1>
+            <div id="val_h1">Proin iaculis purus consequat cure</div>
+            <ul>
+              <li class="val_left">
+                  <a href=""><h3>WORK-LIFE BALANCE</h3></a>
+                  <p>
+                      Proin iaculis purus consequat sem cure<br />
+                      digni ssim. Donec porttitora entum suscipit<br />
+                      aenean rhoncus posuere odio in tincidunt.
+                  </p>
+              </li>
+              <li class="val_mid">
+                  <a href=""><h3>QUALITY OVER QUANTITY</h3></a>
+                  <p>
+                      Proin iaculis purus consequat sem cure<br />
+                      digni ssim. Donec porttitora entum suscipit<br />
+                      aenean rhoncus posuere odio in tincidunt.
+                  </p>
+              </li>
+              <li class="val_right">
+                  <a href=""><h3>DELIVER EXCELLENCE</h3></a>
+                  <p>
+                      Proin iaculis purus consequat sem cure<br />
+                      digni ssim. Donec porttitora entum suscipit<br />
+                      aenean rhoncus posuere odio in tincidunt.
+                  </p>
+              </li>
+            </ul>
+            <div id="line1"></div>
+            <div id="line2"></div>
+        </div>
+    </div>
+    <div class="client">
+    	<h1>our awesome clients</h1>
+        <p id="cli_h1">Proin iaculis purus consequat cure</p>
+        <div id="cli_left">
+        	¡°Proin iaculis purus consequat sem cure digni ssim<br />
+			donec porttitora entum suscipit aenean rhoncus.¡±<br />
+            <span>- Jamie Richardson, Founder of Cocoa Media</span>
+        </div>
+        <div id="cli_right">
+        	¡°Proin iaculis purus consequat sem cure digni ssim<br />
+			donec porttitora entum suscipit aenean rhoncus.¡±<br />
+            <span>- Kim Thompson, Founder of Rainel</span>
+        </div>
+    </div>
+    <div class="ready">
+    	<div class="r_box">
+            <h1>ready to talk about your next project?</h1>
+            <a href="#"><div>CONTACT US</div></a>
+        </div>
+    </div>
+    <div class="friend">
+    	<a href=""><img src="images/fri_pic1.jpg" /></a>
+        <a href=""><img src="images/fri_pic2.jpg" /></a>
+        <a href=""><img src="images/fri_pic3.jpg" /></a>
+        <a href=""><img src="images/fri_pic4.jpg" /></a>
+    </div>
+    <div class="footer">
+    	<div class="f_box">
+        	<ul>
+        	  <li class="foot_left">
+        	    <h2><a href="">CONTACT US</a></h2>
+        	    <p>
+                	<img src="images/foot_pic1.jpg" />
+                	<a href="">
+                	55 Main St.<br />
+                    Toronto, ON<br />
+                    M1H 3A5
+                	</a>
+                </p>
+        	    <p>
+                	<img src="images/foot_pic2.jpg" />
+                    <a href="" id="f_l_2">(416) 555-5252</a>
+                </p>
+        	    <p>
+                	<img src="images/foot_pic3.jpg" />
+                    <a href="">hello@treehouse.com</a>
+                </p>
+        	  </li>
+        	  <li class="foot_mid">
+        	    <h2><a href="">LATEST POSTS</a></h2>
+        	    <p>
+                	<img src="images/foot_pic4.jpg" />
+                	<a href="">Made With Love In Toronto</a>
+                </p>
+        	    <p>
+                	<img src="images/foot_pic5.jpg" />
+                	<a href="">Startup News & Emerging Tech</a>
+                </p>
+        	    <p>
+                	<img src="images/foot_pic4.jpg" />
+                	<a href="">Bitcoin Will Soon Rule The World</a>
+                </p>
+                <p>
+                	<img src="images/foot_pic4.jpg" />
+                    <a href="">Wearable Technology On The Rise</a>
+                </p>
+                <p>
+                	<img src="images/foot_pic6.jpg" />
+                    <a href="">Wearable Technology On The Rise</a>
+                </p>
+        	  </li>
+        	  <li class="foot_right">
+        	    <h2><a href="">LATEST TWEETS</a></h2>
+        	    <p class="f_r">
+                    <img src="images/foot_pic7.jpg" />
+                    <a href="">
+                        Confucius: Life is really simple,<br /> 
+                        but we insist on making it<br />
+                        complicated.<br />
+                        <strong>#famousquotes</strong><br />
+                        <span>8 mins ago</span>
+                    </a>
+                </p>
+        	    <p class="f_r">
+                    <img src="images/foot_pic7.jpg" />
+                    <a href="">
+                        Grab the Free Treehouse web<br />
+                        template at FreebiesXpress!<br />
+                        <strong>#freebies #templates</strong><br />
+                        <span>2 days ago</span>
+                    </a>
+                </p>
+        	  </li>
+        	</ul>
+        </div>
+    </div>
+    <div class="bottom">
+    	<p>&copy; Copyright 2014 FreebiesXpress.com</p>
+        <a href="" id="bot_1"></a>
+        <a href="" id="bot_2"></a>
+        <a href="" id="bot_3"></a>
+        <a href="" id="bot_4"></a>
+    </div>
+</body>
+</html>

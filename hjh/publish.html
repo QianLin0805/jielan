@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>我的帖子</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/community.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+<div class="publish">
+    <textarea name="" id=""></textarea>
+    <div>
+    	<p class="pics"><img src="images/family/pic.jpg" class="pics" alt="" /><img src="images/family/delete.png" alt="" class="delete" /></p>
+        <p class="addPic"><input type="file" /></p>
+    </div>
+    <span id="publish">发布</span>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	(function(){
+		var pk=$(window).width();
+		$('textarea').css('width',pk-22+'px')
+	})();
+	$('textarea').on('keyup',function(){
+		if($(this).val()!=''){
+			$('#publish').css('background','#fa5050');
+		}else{
+			$('#publish').css('background','#ccc');
+		}
+	});
+	//删除图片
+	$('.delete').on('click',function(){
+		$(this).parent().remove();
+	});
+})
+</script>

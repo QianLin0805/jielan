@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>微信群聊</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#ececec;}
+.chat{width:100%;overflow:hidden;margin-top:10px;}
+.chat p{padding-left:12px;height:45px;line-height:45px;border-top:1px solid #dcdcdc;font-size:16px;background:#fff;}
+.chat p b{width:50%;height:45px;margin-right:5px;text-align:right;float:right;}
+.chat p .full{color:#f00;}
+.hide{display:none;}
+.chat p img{width:16px;float:right;margin:15px 12px 0 0;}
+.chat .current img{transform:rotate(90deg);-webkit-transform:rotate(90deg);}
+.chat p .down{animation:animate1 ease 0.2s;-webkit-animation:animate1 ease 0.2s;}
+.chat p .right{animation:animate2 ease 0.2s;-webkit-animation:animate2 ease 0.2s;}
+.wx_code{width:250px;height:250px;margin:20px auto;background:#fff;text-align:center;position:relative;display:none;}
+.wx_code .delta{width:26px;position:absolute;left:50%;top:-12px;margin-left:-13px;}
+.wx_code .code{width:184px;margin-top:33px;}
+@keyframes animate1{
+from{transform:rotate(0);}
+to{transform:rotate(90deg);}
+}
+@-webkit-keyframes animate1{
+from{-webkit-transform:rotate(0);}
+to{-webkit-transform:rotate(90deg);}
+}
+@keyframes animate2{
+from{transform:rotate(90deg);}
+to{transform:rotate(0);}
+}
+@-webkit-keyframes animate2{
+from{-webkit-transform:rotate(90deg);}
+to{-webkit-transform:rotate(0);}
+}
+</style>
+</head>
+<body>
+	<div class="chat">
+    	<p><span>微信1群</span><img src="images/arrow1.png" alt="" /><b class="full">已满</b></p>
+        <div class="wx_code">
+            <img src="images/delta.png" alt="" class="delta" />
+            <img src="images/code.png" alt="" class="code" />
+        </div>
+    	<p><span>微信2群</span><img src="images/arrow1.png" alt="" /><b class="full">已满</b></p>
+        <div class="wx_code">
+            <img src="images/delta.png" alt="" class="delta" />
+            <img src="images/code.png" alt="" class="code" />
+        </div>
+    	<p class="current"><span>微信3群</span><img src="images/arrow1.png" alt="" /><b><i>150</i>/500</b></p>
+        <div class="wx_code" style="display:block;">
+            <img src="images/delta.png" alt="" class="delta" />
+            <img src="images/code.png" alt="" class="code" />
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('p').bind('click',function(){
+		var index=$(this).index();
+		if(!$(this).is('.current')){
+			$(this).children('img').addClass('down').removeClass('right');
+			$(this).next().slideDown(450);
+			setTimeout(function(){
+				$('.chat').children().eq(index).addClass('current');
+			},150);
+			$('.current').children('img').addClass('right').removeClass('down');
+			$('.current').next().slideUp(450);
+			setTimeout(function(){
+				$('.current').removeClass('current');
+			},100);
+		}
+	});
+})
+</script>

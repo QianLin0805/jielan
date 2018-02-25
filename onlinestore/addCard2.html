@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>添加银行卡</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/bank.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="js/limit.js"></script>
+</head>
+<body>
+<div class="addCard addCard2">
+	<p class="top"><a href="addCard1.html"><img src="images/back1.png" alt="" /></a>添加银行卡</p>
+	<h3>请填写持卡人信息</h3>
+    <ul>
+    	<li><span>卡类型</span><input type="text" id="type" value="工商银行卡 储蓄卡" readonly /></li>
+    	<li><span>预留手机</span><input type="tel" id="tel" placeholder="银行卡预留手机号" maxlength="11" /></li>
+    </ul>
+    <span class="btn">下一步</span>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	function btnColor(){
+		if($('#tel').val()!=''){
+			$('.btn').css({background:'#06bf04',borderColor:'#06bf04'});
+		}else{
+			$('.btn').css({background:'#ccc',borderColor:'#ccc'});
+		}
+	}
+	btnColor();
+	$('#tel').on('keyup',function(){
+		btnColor();
+	});
+	$('.btn').on('click',function(){
+		if($('#tel').val()!=''){
+			var tel=$('#tel').val();
+			window.location.href='addCard3.html?tel='+tel;
+		}
+	});
+})
+</script>

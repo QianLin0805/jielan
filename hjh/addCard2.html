@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>银联支付</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/bank.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+<div class="addCard addCard2">
+    <ul>
+    	<li><span>卡类型：</span><input type="text" id="type" value="中国银行借记卡" readonly /></li>
+    	<li><span>手机号：</span><input type="tel" id="tel" placeholder="银行预留手机号" /></li>
+    </ul>
+    <span class="next">下一步</span>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	(function(){
+		var pk=$(window).width();
+		for(var i=0;i<$('input').length;i++){
+			var spanWidth=$('input').eq(i).prev().innerWidth();
+			$('input').eq(i).css({
+				width:pk-spanWidth-35+'px'
+			});
+		}
+	})();
+	var tel=false;
+	$('#tel').on('keyup',function(){
+		var telVal=$(this).val();
+		var ptnTel=/^\d+$/g;
+		var ptnTel1=/^1\d{10}$/g;
+		if($(this).val()!=''){
+			$('.next').css('background','#fa5050');
+		}else{
+			$('.next').css('background','#ccc');
+		}
+		if($(this).val().length>11&&event.keyCode!=8){
+			$(this).val($(this).val().substr(0,11));
+		}
+		//限制只能输入数字
+		if(!ptnTel.test(telVal)){
+			$(this).val(telVal.replace(/\D/g,''));
+		}
+		if(!ptnTel1.test(telVal)){
+			return tel=false;
+		}
+		tel=true;
+	});
+	$('.next').on('click',function(){
+		if(tel){
+			window.location.href='addCard3.html';
+		}
+	});
+})
+</script>

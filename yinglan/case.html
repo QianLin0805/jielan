@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>案例分享</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/product.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+</head>
+<body>
+<div class="nav">
+	<div class="nav_box">
+        <img src="images/logo.png" alt="" />
+        <p><a href="index.html">首页</a>|<a href="about.html">关于盈澜</a>|<a href="news.html">盈澜新闻</a>|<a href="product.html" class="current">产品信息</a>|<a href="join.html">加入盈澜</a>|<a href="contact.html">联系我们</a></p>
+    </div>
+</div>
+<div class="ban_wrap">
+    <div class="banner">
+        <ul class="ban_slide">
+            <li><img src="images/banner1.jpg" alt="" /></li>
+            <li><img src="images/banner2.jpg" alt="" /></li>
+            <li><img src="images/banner1.jpg" alt="" /></li>
+            <li><img src="images/banner2.jpg" alt="" /></li>
+        </ul>
+        <div class="ban_dot"></div>
+    </div>
+</div>
+<div class="case main">
+	<div class="title">
+    	<img src="images/case.png" alt="" class="case_pic">
+        <h2>CASE</h2>
+        <span>产品档案</span>
+    </div>
+    <div ng-app="myApp" ng-controller="dataCtrl">
+        <ul class="case_list">
+            <li class="liItem" ng-repeat="x in data"><a href={{x.href}}>
+                <img src={{x.src}} alt="" />
+                <div class="shadow">
+                    <h2 class="case_title">{{x.title}}</h2>
+                    <p class="time">{{x.time}}</p>
+                </div>
+            </a></li>
+        </ul>
+        <div class="page">
+            <span class="first" ng-click="skit($event)">首页</span><span class="prev" ng-click="skit($event)">上一页</span><i class="pages current" ng-click="skit($event)">{{firstNumber}}</i><i class="pages" ng-click="skit($event)">{{firstNumber+1}}</i><i class="pages" ng-click="skit($event)">{{firstNumber+2}}</i><i class="pages" ng-click="skit($event)">{{firstNumber+3}}</i><i class="pages" ng-click="skit($event)">{{firstNumber+4}}</i><span class="next" ng-click="skit($event)">下一页</span><span class="last" ng-click="skit($event)">尾页</span>
+        </div>
+    </div>
+</div>
+<p class="post"><img src="images/pic.jpg" alt="" /></p>
+<div class="foot">
+    <img src="images/logo.png" alt="" /><br />
+    <span>Copyright @ 2006 - 2014 All Right Reserved</span><br />
+    <span>版权所有@浙江盈澜信息科技有限公司（增值电信业务许可证编号 浙B2-2009.157）</span>
+    <div></div>
+</div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/case.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>合作伙伴</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/product.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+</head>
+<body>
+<div class="nav">
+	<div class="nav_box">
+        <img src="images/logo.png" alt="" />
+        <p><a href="index.html">首页</a>|<a href="about.html">关于盈澜</a>|<a href="news.html">盈澜新闻</a>|<a href="product.html" class="current">产品信息</a>|<a href="join.html">加入盈澜</a>|<a href="contact.html">联系我们</a></p>
+    </div>
+</div>
+<div class="ban_wrap">
+    <div class="banner">
+        <ul class="ban_slide">
+            <li><img src="images/banner1.jpg" alt="" /></li>
+            <li><img src="images/banner2.jpg" alt="" /></li>
+            <li><img src="images/banner1.jpg" alt="" /></li>
+            <li><img src="images/banner2.jpg" alt="" /></li>
+        </ul>
+        <div class="ban_dot"></div>
+    </div>
+</div>
+<div class="friend main">
+	<div class="title">
+    	<img src="images/friend.png" alt="" id="friend" />
+        <h2>COOPERATION</h2>
+        <span>合作伙伴</span>
+    </div>
+    <ul class="bank">
+        <li><a href=""><img src="images/bank/bank1.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank2.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank3.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank4.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank5.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank6.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank7.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank8.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank9.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank10.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank11.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank12.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank13.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank14.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank15.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank16.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank17.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank18.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank19.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank20.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank21.jpg" alt="" /></a></li>
+        <li><a href=""><img src="images/bank/bank22.jpg" alt="" /></a></li>
+    </ul>
+</div>
+<p class="post"><img src="images/pic.jpg" alt="" /></p>
+<div class="foot">
+    <img src="images/logo.png" alt="" /><br />
+    <span>Copyright @ 2006 - 2014 All Right Reserved</span><br />
+    <span>版权所有@浙江盈澜信息科技有限公司（增值电信业务许可证编号 浙B2-2009.157）</span>
+    <div></div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('#friend').on('click',function(){
+		var bankTop=$('.bank').offset().top;
+		$('html,body').animate({'scrollTop':bankTop},'fast');
+	});
+})
+</script>

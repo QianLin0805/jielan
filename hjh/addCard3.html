@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>银联支付</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/bank.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+<div class="addCard addCard3">
+    <h4>验证码已发送到手机<span id="tel">18723211576</span></h4>
+    <div><input type="tel" id="code" placeholder="请输入验证码" /><p id="getCode"><span id="time">60</span>s后重新获取</p></div>
+    <span class="sure">确定</span>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	(function(){
+		var tel=$('#tel').text();
+		var replaceStr=tel.slice(3,tel.length-2);
+		$('#tel').text(tel.replace(replaceStr,'******'));
+	})();
+	$('#code').on('keyup',function(){
+		if($(this).val().length>6&&event.keyCode!=8){
+			$(this).val($(this).val().substr(0,6));
+		}
+		if($(this).val()!=''){
+			$('.sure').css('background','#fa5050');
+		}else{
+			$('.sure').css('background','#ccc');
+		}
+	});
+	$('.sure').on('click',function(){
+		window.location.href='myCard.html';
+	});
+	//发送验证码
+	function code(){
+		$('#getCode').unbind('click')
+		var timer=setInterval(function(){
+			var i=60;
+			if(i>0){
+				var time=parseInt($('#time').text());
+				$('#time').text(time-1);
+				i--;
+			}
+		},1000);
+		setTimeout(function(){
+			clearInterval(timer);
+			$('#getCode').css('background','#fa5050').html('重新获取');
+			$('#getCode').bind('click',function(){
+				$(this).css('background','#ccc').html('<span id="time">5</span>s后再次获取');
+				code();
+			});
+		},60000);
+	}
+	code();
+})
+</script>

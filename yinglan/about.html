@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>关于赢澜</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/css.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+<div class="nav">
+	<div class="nav_box">
+        <img src="images/logo.png" alt="" />
+        <p><a href="index.html">首页</a>|<a href="about.html" class="current">关于盈澜</a>|<a href="news.html">盈澜新闻</a>|<a href="product.html">产品信息</a>|<a href="join.html">加入盈澜</a>|<a href="contact.html">联系我们</a></p>
+    </div>
+</div>
+<div class="about main">
+	<ul class="icon">
+    	<li>
+        	<img src="images/company.png" alt="" id="company" />
+        	<p>Company</p>
+        </li>
+    	<li>
+        	<img src="images/qualificate.png" alt="" id="qualificate" />
+        	<p>Qualification</p>
+        </li>
+    </ul>
+    <div class="content">
+    	<div class="unit unit1">
+            <h1>YING LAN CHINA</h1>
+            <h4><span>盈澜科技</span></h4>
+            <p>浙江盈澜信息科技有限公司经由杭州捷蓝信息技术有限公司与中警科技（江苏）开发有限公司进行技术融合和渠道嫁接，现开始全面运维专业化警用装备，为现代警务提供创新式服务和解决方案。<br />公司本着为建设现代警务和构建和谐社会的服务宗旨，不断推出“公安便民亭”，“安防信息化（高清天网系统+SOS远程报警系统+北斗卫星组网+APP）”， “智慧城市互动终端”， “智慧社区服务厅”， “骨传导特种通讯系统”等项目。其中第三代“公安便民亭”已在多个地区建置投入使用，同时公司正在积极开发第四代高清天网“公安便民亭”，对中大型城市后期可拓展智慧城市互动终端工程、智慧社区服务站等，“公安便民亭”项目将积极配合各地政府的平安建设和智慧建设。</p>
+        </div>
+        <div class="unit unit2">
+            <h1>INVESTOR</h1>
+            <h4><span>盈澜科技投资方</span></h4>
+            <h3>杭州捷蓝</h3>
+            <p>杭州捷蓝信息技术有限公司是清华长三角研究院在浙江地区重点培育孵化的高新技术企业。公司通过多年的探索和发展，已逐渐成长为一家服务于通讯、金融、零售、医疗、食品等行业的移动互联网O2O服务运营商。目前公司已开始进行全球化战略布局，搭建B2B、B2C平台构建5亿用户和500多万零售商的线上线下闭环的创新体系——捷蓝系平台，同时引流国际创新类科技产品，开始展望国际巅峰视野及顶尖技术，步入全球市场。</p>
+            <h3>中警科技</h3>
+            <p>中警科技(CPST)是中保安防研究所下属的专业化警用装备开发公司，公司在政府、军队和公安部门的大力关注下逐步成长，主要集研发、技术引进、生产、销售于一体，现公司诸多产品均属于军警领域的排头兵。公司现与诸多专业机构和院校拥有长期研发合作关系，成立课题组进行创新开发，并在高等学府设立专题实验室，同时亦是公安院校的实践基地。</p>
+        </div>
+        <div class="unit unit3">
+            <h1>ENETRPRISE QUALIFICATION</h1>
+            <h4><span>企业资质</span></h4>
+            <p><img src="images/qualificate1.jpg" alt="" /><img src="images/qualificate2.jpg" alt="" /><img src="images/qualificate3.jpg" alt="" /><img src="images/qualificate4.jpg" alt="" /></p>
+        </div>
+    </div>
+</div>
+<p class="post"><img src="images/pic.jpg" alt="" /></p>
+<div class="foot">
+    <img src="images/logo.png" alt="" /><br />
+    <span>Copyright @ 2006 - 2014 All Right Reserved</span><br />
+    <span>版权所有@浙江盈澜信息科技有限公司（增值电信业务许可证编号 浙B2-2009.157）</span>
+    <div></div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$('#company').on('click',function(){
+		var companyTop=$('.unit1').offset().top;
+		$('html,body').animate({'scrollTop':companyTop},'fast');
+	});
+	$('#qualificate').on('click',function(){
+		var qualificateTop=$('.unit3').offset().top;
+		$('html,body').animate({'scrollTop':qualificateTop},'fast');
+	});
+})
+</script>

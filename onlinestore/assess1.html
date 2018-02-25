@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>在线商城</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/goods.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="plug-in/iscroll.js"></script>
+<script type="text/javascript" src="js/upload.js"></script>
+<script type="text/javascript">
+var loadover;
+function pullUpAction () {
+	if(loadover) return;
+	//loadover = true;         每次加载后判断是否全部加载完
+	$('.pullUpIcon img').hide().next().show();
+	setTimeout(function () {
+		for(var i=0;i<3;i++){
+			//假数据
+			var appendItem=$('.list').children().eq(0).clone();
+			$('.list').append(appendItem);
+
+			//ajax添加数据
+			/*$.ajax({
+				type:"POST",
+				url:"",
+				async:false,
+				data:"",
+				success:function(){
+
+				}
+			});*/
+			$('#pullUp img').show().removeClass('active');
+		}
+		myScroll.refresh();     //数据加载完成后，调用界面更新方法
+		$('.pullUpIcon img').show().next().hide();
+		if(loadover){
+			$('.pullUpIcon,.pullUpLabel').hide();
+			$('.loadover2').show();
+		}
+	}, 1000);
+}
+$(function(){
+	if($('#scroller').height()<=$('#wrapper').height()){
+		loadover = true;        //控制是否已全部加载
+		$('.loadover').show();
+		$('#pullUp').hide();
+	}else{
+		loadover = false;
+		$('.loadover').hide()
+		$('#pullUp').show();
+	}
+	if(loadover){
+		$('.pullUpIcon,.pullUpLabel').hide();
+		$('.loadover2').show();
+	}
+	$('.top li a').on('click',function(){
+		if($(this).is('.current')){
+			event.preventDefault();
+		}
+	});
+});
+</script>
+</head>
+<body>
+<div class="assess">
+	<ul class="top">
+		<li><a href="assess.html">全部评价<br /><span>(<i>1523</i>)</span></a></li>
+		<li><a href="assess1.html" class="current">好评<br /><span>(<i>800</i>)</span></a></li>
+		<li><a href="assess2.html">中评<br /><span>(<i>650</i>)</span></a></li>
+		<li><a href="assess3.html">差评<br /><span>(<i>73</i>)</span></a></li>
+	</ul>
+	<img src="images/line.jpg" alt="" class="line" />
+	<div id="wrapper">
+		<div id="scroller">
+			<ul class="list">
+				<li>
+					<div class="left"><img src="images/index/portrait1.png" alt="" /><span class="name">y***6</span></div>
+					<div class="right">
+						<p class="arrow"></p>
+						<h3>好评<span>2016-01-13 10:15:49</span></h3>
+						<p class="content">还可以吧</p>
+						<div class="pics"><img src="images/index/phone.jpg" alt="" /><img src="images/index/phone.jpg" alt="" /><img src="images/index/phone.jpg" alt="" /></div>
+					</div>
+				</li>
+				<li>
+					<div class="left"><img src="images/index/portrait2.png" alt="" /><span class="name">匿名</span></div>
+					<div class="right">
+						<p class="arrow"></p>
+						<h3>中评<span>2016-01-13 10:15:49</span></h3>
+						<p class="content">机子很好，反应快，电池续航很长，赠品在网上查了下都是正品，很超值。</p>
+					</div>
+				</li>
+				<li>
+					<div class="left"><img src="images/index/portrait3.png" alt="" /><span class="name">yi****56</span></div>
+					<div class="right">
+						<p class="arrow"></p>
+						<h3>差评<span>2016-01-13 10:15:49</span></h3>
+						<p class="content">机子很好，反应快，电池续航很长，赠品在网上查了下都是正品，很超值。</p>
+					</div>
+				</li>
+			</ul>
+			<div id="pullUp"><div class="pullUpIcon"><img src="images/pullUp.png" alt="" /><p id="load"><span class="disc1"></span><span class="disc2"></span><span class="disc3"></span><span class="disc4"></span><span class="disc5"></span><span class="disc6"></span><span class="disc7"></span><span class="disc8"></span></p></div><span class="pullUpLabel">上拉加载更多...</span><span class="loadover2">已全部加载</span></div>
+		</div>
+	</div>
+	<p class="loadover">已全部加载</p>
+</div>
+</body>
+</html>

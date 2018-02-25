@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>在线商城</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/bank.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<style type="text/css">
+body{background: #01453f;}
+</style>
+</head>
+<body>
+<div class="myCard">
+	<div class="top"><a href="my.html"><img src="images/back.png" alt="" /></a>银行卡管理</div>
+    <ul class="main">
+        <li class="item">
+        	<img src="images/my/logo1.png" alt="" class="logos" />
+            <h3>招商银行</h3>
+            <p class="type">借记卡</p>
+            <p class="num">6227002022070568519</p>
+        </li>
+        <li class="item">
+        	<img src="images/my/logo2.png" alt="" class="logos" />
+            <h3>农业银行</h3>
+            <p class="type">借记卡</p>
+            <p class="num">6227002022070568519</p>
+        </li>
+    </ul>
+    <a href="addCard1.html" id="addCard">添加银行卡<img src="images/arrow.png" alt=""></a>
+    <div class="mask">
+        <ul>
+            <li id="relieve">解除绑定</li>
+            <li id="cancel1">取消</li>
+        </ul>
+        <div class="box">
+            <h3>是否确认解除绑定尾号为<span></span>的银行卡？</h3>
+            <p id="sure">解除绑定</p>
+            <p id="cancel2">取消</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	for(var i=0;i<$('.num').length;i++){
+		var bankNum=$('.num').eq(i).text();
+		var replaceStr=bankNum.slice(0,bankNum.length-4);
+		$('.num').eq(i).text(bankNum.replace(replaceStr,' **** **** **** '));
+	}
+    //从不同的地址进入页面
+    if(getString('order')){                //带回到支付页面
+        var order=getString('order');
+        $('.item').on('click',function(){
+            window.location.href='';
+        });
+    }else{                                 //解除绑定银行卡
+        $('.item').on('click',function(){
+            var that=$(this);
+            $('.mask').show();
+            $('.mask ul').animate({bottom:'5px'},150,'linear',function(){
+                $('#relieve').on('click',function(){
+                    $('.mask ul').animate({bottom:'-100px'},100,'linear',function(){
+                        $('.box').show();
+                    });
+                });
+                $('#cancel1').on('click',function(){
+                    $('.mask ul').animate({bottom:'-100px'},150,'linear',function(){
+                        $('.mask').hide();
+                    });
+                });
+            });
+            $('#sure').on('click',function(){
+                $(this).hide();
+                $('.mask').hide();
+                that.remove();
+            });
+            $('#cancel2').on('click',function(){
+                $(this).hide();
+                $('.mask').hide();
+            });
+        });
+    }
+})
+</script>

@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>我的订单</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/order.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript">
+	var loadOver=true;
+	
+	var myScroll,pullUpEl, pullUpOffset;
+	function pullUpAction () {
+		if(!loadOver){
+			return;
+		}
+		if($('.list2').is(':hidden')){
+			setTimeout(function () {
+				for(var i=0;i<3;i++){
+					var liClone=$('.list1').children().eq(i).clone();
+					$('.list1').append(liClone);
+				}
+				myScroll.refresh();     //数据加载完成后，调用界面更新方法
+			}, 1000); 
+		}else if($('.list1').is(':hidden')){
+			setTimeout(function () {
+				for (i=0; i<2; i++) {
+					var liClone=$('.list2').children().eq(i).clone();
+					$('.list2').append(liClone);
+				}
+				myScroll.refresh();     //数据加载完成后，调用界面更新方法
+			}, 1000); 
+		}
+	}
+	function loaded(){
+		pullUpEl = document.getElementById('pullUp');	
+		pullUpOffset = pullUpEl.offsetHeight;
+		
+		myScroll=new iScroll(
+			"wrapper",
+			{
+				checkDOMChanges: true,
+				scrollbarClass: 'myScrollbar',
+				useTransition: false,
+				onRefresh: function () {
+					if (pullUpEl.className.match('loading') && loadOver) {
+						pullUpEl.className = '';
+						pullUpEl.innerHTML = '上拉加载更多...';
+					}
+				},
+				onScrollMove: function () {
+					if (this.y < (this.maxScrollY - 10) && !pullUpEl.className.match('flip') && loadOver) {
+						pullUpEl.className = 'flip';
+						pullUpEl.innerHTML = '松手开始更新...';
+						this.maxScrollY = this.maxScrollY;
+					} else if (this.y > (this.maxScrollY + 10) && pullUpEl.className.match('flip') && loadOver) {
+						pullUpEl.className = '';
+						pullUpEl.innerHTML = '上拉加载更多...';
+						this.maxScrollY = pullUpOffset;
+					}
+				},
+				onScrollEnd: function () {
+					if (pullUpEl.className.match('flip') && loadOver) {
+						pullUpEl.className = 'loading';
+						pullUpEl.innerHTML = '加载中...';				
+						pullUpAction();	// Execute custom function (ajax call?)
+					}
+				}
+			}
+		);
+		setTimeout(function (){ document.getElementById('wrapper').style.left = '0'; }, 800);
+	}
+	
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	document.addEventListener('DOMContentLoaded', loaded, false); 
+$(function(){
+	function loadContent(){
+		if(loadOver==false){
+			$('#pullUp').text('已全部加载');
+		}else{
+			$('#pullUp').text('上拉加载更多...');
+		}
+	}
+	var j=0;
+	$('.jz_order').on('click',function(){
+		j=0;
+		loadOver=true;
+		loadContent();
+		$(this).addClass('current').next().removeClass('current');
+		$('.jz_select').show().next().hide().removeClass('active');
+		$('.list1').show().next().hide();
+	});
+	$('.wy_order').on('click',function(){
+		j=0;
+		loadOver=false;
+		loadContent();
+		$(this).addClass('current').prev().removeClass('current');
+		$('.wy_select').show().prev().hide().removeClass('active');
+		$('.list2').show().prev().hide();
+	});
+	$('.title').on('click',function(){
+		console.log(j)
+		$(this).parent().children('li:gt(0)').unbind('click');
+		if(j%2==0){
+			$(this).parent().addClass('active');
+			$('.shadow').show();
+			j++;
+		}else{
+			$(this).parent().removeClass('active');
+			$('.shadow').hide();
+			j++;
+		}
+		$(this).parent().children('li:gt(0)').bind('click',function(){
+			$(this).parent().removeClass('active');
+			$('.shadow').hide();
+			j++;
+		});
+	});
+	$('.shadow').on('touchstart',function(){
+		$(this).hide();
+		$('.jz_select,.wy_select').removeClass('active');
+		j++;
+	});
+	$('.delete').on('click',function(){
+		var that=$(this).parent().parent();
+		$('#sure,#cancel').unbind('click');
+		$('.del_wrap').show();
+		$('#sure').bind('click',function(){
+			that.remove();
+			$('.del_wrap').hide();
+		});
+		$('#cancel').bind('click',function(){
+			$('.del_wrap').hide();
+		});
+	});
+})
+</script>
+</head>
+<body>
+<div class="order">
+	<div class="top">
+    	<p class="jz_order current">家政订单</p><p class="wy_order">物业订单</p>
+        <ul class="jz_select">
+        	<li class="title">类型<img src="images/my/arrow4.png" alt="" /></li>
+            <li>月嫂</li>
+            <li>保洁</li>
+            <li>保姆</li>
+            <li>维修</li>
+        </ul>
+        <ul class="wy_select">
+        	<li class="title">类型<img src="images/my/arrow4.png" alt="" /></li>
+        	<li>物业报修</li>
+            <li>物业缴费</li>
+        </ul>
+    </div>
+    <div class="wrapper" id="wrapper">
+    	<div id="scroll" style="transition-property: transform; transform-origin: 0px 0px 0px; transform: translate(0px, 0px) translateZ(0px);">
+        	<ul class="list1">
+            	<li class="yueshao">
+                	<h2>月嫂<span>提交成功</span></h2>
+                    <div class="content">
+                    	<img src="images/my/pic.jpg" alt="" />
+                        <h3>预约月嫂黄文凭</h3>
+                        <p>电话：<a href="tel:18754512245" class="tel">18754512245</a></p>
+                    </div>
+                    <p class="bottom">提交日期：<span class="date">2015-11-12</span><span class="delete">删除订单</span></p>
+                </li>
+            	<li class="clean">
+                	<h2>保洁<span>提交成功</span></h2>
+                    <div class="content">
+                    	<img src="images/my/pic.jpg" alt="" />
+                        <h3>预约保洁黄文凭</h3>
+                        <p>电话：<a href="tel:18754512245" class="tel">18754512245</a></p>
+                    </div>
+                    <p class="bottom">提交日期：<span class="date">2015-11-12</span><span class="delete">删除订单</span></p>
+                </li>
+            	<li class="nurse">
+                	<h2>保姆<span>提交成功</span></h2>
+                    <div class="content">
+                    	<img src="images/my/pic.jpg" alt="" />
+                        <h3>预约保姆黄文凭</h3>
+                        <p>电话：<a href="tel:18754512245" class="tel">18754512245</a></p>
+                    </div>
+                    <p class="bottom">提交日期：<span class="date">2015-11-12</span><span class="delete">删除订单</span></p>
+                </li>
+            	<li class="fix">
+                	<h2>维修<span>提交成功</span></h2>
+                    <div class="content">
+                    	<img src="images/my/fix.jpg" alt="" />
+                        <h3>预约维修黄文凭</h3>
+                        <p>电话：<a href="tel:18754512245" class="tel">18754512245</a></p>
+                    </div>
+                    <p class="bottom">提交日期：<span class="date">2015-11-12</span><span class="delete">删除订单</span></p>
+                </li>
+            </ul>
+            <ul class="list2">
+            	<li class="wybx">
+                	<h2>物业报修<span>提交成功</span></h2>
+                    <div class="content">
+                        <h3>电视机报修</h3>
+                        <p class="address">寰宇天下 A区2栋202</p>
+                        <p class="contact"><span class="name">张三</span>电话：<a href="tel:18754512245" class="tel">18754512245</a></p>
+                    </div>
+                    <p class="bottom">提交日期：<span class="date">2015-11-12</span><span class="delete">删除订单</span></p>
+                </li>
+            	<li class="wyjf">
+                	<h2>物业缴费<span>提交成功</span></h2>
+                    <div class="content">
+                        <h3>物业费：200元</h3>
+                        <p class="address">寰宇天下 A区2栋202</p>
+                        <p class="contact"><span class="name">张三</span>电话：<a href="tel:18754512245" class="tel">18754512245</a></p>
+                    </div>
+                    <p class="bottom">提交日期：<span class="date">2015-11-12</span><span class="delete">删除订单</span></p>
+                </li>
+            	<li class="wybx">
+                	<h2>物业报修<span>提交成功</span></h2>
+                    <div class="content">
+                        <h3>电视机报修</h3>
+                        <p class="address">寰宇天下 A区2栋202</p>
+                        <p class="contact"><span class="name">张三</span>电话：<a href="tel:18754512245" class="tel">18754512245</a></p>
+                    </div>
+                    <p class="bottom">提交日期：<span class="date">2015-11-12</span><span class="delete">删除订单</span></p>
+                </li>
+            	<li class="wyjf">
+                	<h2>物业缴费<span>提交成功</span></h2>
+                    <div class="content">
+                        <h3>物业费：200元</h3>
+                        <p class="address">寰宇天下 A区2栋202</p>
+                        <p class="contact"><span class="name">张三</span>电话：<span class="tel">18754512245</span></p>
+                    </div>
+                    <p class="bottom">提交日期：<span class="date">2015-11-12</span><span class="delete">删除订单</span></p>
+                </li>
+            </ul>
+            <p id="pullUp">上拉加载更多...</p>
+        </div>
+    </div>
+    <div class="shadow"></div>
+    <div class="del_wrap">
+    	<div class="del_box">
+    		<h4>提示</h4>
+			<p>确定要删除这条订单吗</p>
+			<div><span id="sure" style="margin-right:10px;">确定</span><span id="cancel">取消</span></div>
+    	</div>
+    </div>
+</div>
+</body>
+</html>

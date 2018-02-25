@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>在线商城</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/address.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <p class="top"><a href="my.html"><img src="images/back1.png" alt="" /></a>管理收货地址</p>
+	<ul>
+        <li class="current">
+            <h3><span class="name">张三</span><span class="tel">18579965288</span><span class="default">默认地址</span></h3>
+            <p class="address">浙江省杭州市滨江区江南大道恒鑫大厦21层</p>
+            <div class="control">
+                <label for="1"><input type="radio" checked name="default" id="1" />设为默认</label>
+                <p class="delete"><img src="images/delete.png" alt="" />删除</p>
+                <a href="addressModify.html" class="edit"><img src="images/edit.png" alt="" />编辑</a>
+            </div>
+        </li>
+        <li>
+            <h3><span class="name">张三</span><span class="tel">18579965288</span><span class="default">默认地址</span></h3>
+            <p class="address">浙江省杭州市滨江区江南大道恒鑫大厦21层</p>
+            <div class="control">
+                <label for="2"><input type="radio" name="default" id="2" />设为默认</label>
+                <p class="delete"><img src="images/delete.png" alt="" />删除</p>
+                <a href="addressModify.html" class="edit"><img src="images/edit.png" alt="" />编辑</a>
+            </div>
+        </li>
+    </ul>
+    <a href="addAddress.html" class="addAddress">新增收货地址</a>
+    <a href="addAddress.html" class="empty">新增收货地址<img src="images/add2.png" alt="" /></a>
+    <div class="mask">
+        <div class="box">
+            <h3>确认要删除此收货地址吗!</h3>
+            <p id="cancel">取消</p><p id="sure">确定</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	if($('li').length>0){
+        $('.addAddress').css('display','block');
+    }else{
+        $('.empty').css('display','block');
+    }
+    $('label').on('click',function(){
+        if(!$(this).children('input').is(':checked')){
+            $(this).parent().parent().addClass('current').siblings().removeClass('current');
+        }
+    });
+    $('.delete').on('click',function(){
+        var that=$(this);
+        $('.mask').show();
+        $('#cancel').on('click',function(){
+            $('.mask').hide();
+        });
+        $('#sure').on('click',function(){
+            that.parent().parent().remove();
+            $('.mask').hide();
+        });
+    });
+});
+</script>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>楚门的世界</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+h1{line-height:40px;padding:10px 0 5px;color:#282828;font-size:16px;text-indent:12px;font-weight:bold;}
+div{padding:0 12px;overflow:hidden;}
+video{width:100%;}
+</style>
+</head>
+<body>
+	<h1>楚门的世界经典视频</h1>
+    <div>
+        <video controls preload="auto" poster="images/post.jpg">
+            <source src="video/zebra.webm" type="video/webm" />
+            <source src="video/zebra.mp4" type="video/mp4" />
+        </video>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+$(window).load(function(){
+	var pingkuan=$(window).width();
+	var bili=pingkuan/1280;
+	function buju(){
+		$('video').css({
+			height:bili*720
+		});
+	}
+	buju();
+})
+</script>

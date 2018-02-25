@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>移动业务馆</title>
+<link rel="stylesheet" href="css/css1.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	function buju(){
+		var pingkuan=$(window).width();
+		var bili=pingkuan/720;
+		$('.main').children('a').css({
+			top:bili*1060+'px'
+		});
+	};
+	$(window).load(function(){
+		buju();
+	});
+})
+</script>
+<style type="text/css">
+.main{position:relative;padding:0;}
+.main img{width:100%;}
+.main a{width:120px;height:38px;line-height:36px;border:1px solid #ed5645;border-radius:5px;position:absolute;left:50%;margin-left:-61px;font-size:16px;display:block;text-align:center;color:#ed5645;z-index:3;}
+</style>
+</head>
+<body>
+    <div class="main">
+        <img src="images/city/ydyw_bg.jpg" alt="" />
+        <a href="">立即进入</a>
+    </div>
+</body>
+</html>

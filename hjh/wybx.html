@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>物业报修</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/family.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/family.js"></script>
+</head>
+<body>
+<div class="wy">
+    <ul class="inform">
+    	<li><span>小区:</span><input class="informs" id="village" value="" readonly /></li>
+    	<li><a href="addressModify1.html"><span>详细地址:</span><input class="informs" id="address" value="" placeholder="请选择详细地址" readonly /></a></li>
+    	<li><span>联系人:</span><input class="informs" type="text" id="name" placeholder="请输入联系人" /></li>
+    	<li><span>联系电话:</span><input class="informs" type="tel" id="tel" placeholder="请输入电话" /></li>
+    </ul>
+    <div class="pic">
+        <p><img src="images/family/pic.jpg" class="pics" alt="" /><img src="images/family/delete.png" alt="" class="delete" /></p>
+        <div id="addPic"><input type="file" /></div>
+    </div>
+    <div class="describe">
+    	<h3>描述<span>楼梯灯泡坏了</span></h3>
+        <textarea name="" id="" placeholder="请输入报修理由"></textarea>
+        <p class="length"><span id="length">0</span>/100</p>
+    </div>
+    <a href="" class="submit">提交</a>
+    <div class="choose">
+    	<ul class="choose_box">
+        	<li class="villages">上陡门小区</li>
+        	<li class="villages">下吕浦小区</li>
+        	<li class="villages">大自然小区</li>
+        	<li class="villages">新田园小区</li>
+        	<li class="villages">黄龙康城小区</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	(function(){
+		var pk=$(window).width();
+		var pg=$(window).height();
+		for(var i=0;i<$('.inform').children().length;i++){
+			var spanWidth=$('.informs').eq(i).prev().innerWidth();
+			$('.informs').eq(i).css({
+				width:pk-spanWidth-24+'px'
+			});
+		}
+		$('.pic ul').css({
+			width:pk-52+'px'
+		});
+		$('.choose').css({
+			width:pk+220+'px',
+			height:pg
+		});
+		$('textarea').css({
+			width:pk-20+'px'
+		});
+	})();
+	//选择小区
+	$('#village').on('click',function(){
+		$('.villages').unbind('click');
+		$('.choose_box').show();
+		show();
+		$('.villages').bind('click',function(event){
+			var villName=$(this).text();
+			hide();
+			$('#village').val(villName);
+		});
+	});
+	$('.choose').on('touchstart',function(event){
+		if($(event.target).closest('.choose_box').length==0){
+			hide();
+		}
+	});
+	
+	//删除图片
+	$('.delete').on('click',function(){
+		$(this).parent().remove();
+	});
+	
+	//描述
+	$('textarea').on('focus',function(){
+		if(navigator.platform!='iPhone'){return;}
+		var offsetTop=$(this).offset().top+102;
+		setTimeout(function(){
+			var viewHeight=window.innerHeight;
+			$(window).scrollTop(offsetTop-viewHeight);
+		},400);
+	});
+	//限制字数
+	$('textarea').on('keyup',function(){
+		var size=$(this).val().length;
+		if(size<=100){
+			$('#length').text(size);
+		}else{
+			$(this).val($(this).val().substring(0,100));
+		}
+	});
+	
+	//验证手机号
+	var tel=false;
+	$('#tel').on('keyup',function(){
+		var telVal=$(this).val();
+		var ptnTel=/^\d+$/g;
+		var ptnTel1=/^1\d{10}$/g;
+		//限制只能输入数字
+		if(!ptnTel.test(telVal)){
+			$(this).val(telVal.replace(/\D/g,''));
+		}
+		if(!ptnTel1.test(telVal)){
+			return tel=false;
+		}
+		tel=true;
+	});
+	$('#tel').on('keydown',function(event){
+		if($(this).val().length>=11&&event.keyCode!=8){
+			return false;
+		}
+	});
+})
+</script>

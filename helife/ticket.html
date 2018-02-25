@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>浙江移动和生活</title>
+<link rel="stylesheet" href="css/css.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#f0f0f0;}
+</style>
+<script type="text/javascript">
+$(window).load(function(){
+	var num=$('ul').children('.used').length;
+	$('.ticket_top').children().text(num);
+})
+</script>
+</head>
+<body>
+	<header>优惠码详情<a href="javascript:history.go(-1);"><img src="images/arrow3.png" alt="" /></a></header>
+    <div class="ticket">
+    	<div class="ticket_top">您有<span></span>张未使用的优惠码</div>
+        <ul>
+        	<li>
+            	<div class="left">
+                	<p>哈根达斯单球冰淇淋<br />买一送一</p>
+                    <b>6487 5487 960</b>
+                </div>
+                <div class="right">
+                	使用期限
+                    <p>02.13 00:00<br />03.24 00:00</p>
+                    <b>未使用</b>
+                </div>
+            </li>
+        	<li class="used">
+            	<div class="left">
+                	<p>新发现<br />满100减50</p>
+                    <b>6487 5488 960</b>
+                </div>
+                <div class="right">
+                	使用期限
+                    <p>02.13 00:00<br />03.24 00:00</p>
+                    <b>已使用</b>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

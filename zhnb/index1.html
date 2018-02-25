@@ -1,0 +1,261 @@
+<!doctype html>
+<html><head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link rel="stylesheet" href="css/index.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/index1.js"></script>
+<title>首页</title>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.index').addClass('nav_current');
+	function buju(){
+		var pingkuan=$(window).width();
+		var pinggao=$(window).height();
+		var circleWidth=$('.circle').width();
+		var bili=pingkuan/720;
+		if(pingkuan<360){
+			$('.phonecard').css({
+				backgroundImage:'none'
+			});
+			$('.phonehall').css({
+				backgroundPosition:'90% center'
+			});
+		}else{
+			$('body').css({
+				fontSize:'13px'
+			});
+		}
+		$('.slider').css({
+			width:pingkuan,
+			height:bili*169+'px'
+		});
+		$('.choose').css({
+			height:pinggao,
+			left:'-84%'
+		});
+		$('.setline').css({
+			height:pinggao
+		});
+		$('.cho_area').css({
+			height:pinggao-126
+		});
+		$('.cho_topic').css({
+			height:pinggao-126
+		});
+		$('.slider .banner').children().css({
+			width:pingkuan
+		});
+		$('.circle').css({
+			marginLeft:-circleWidth/2
+		});
+		$('.search').css({
+			height:pinggao,
+			top:-pinggao
+		});
+		$('.index_ul2').children().css({
+			width:0.9*pingkuan,
+			marginRight:0.05*pingkuan
+		});
+	};
+	$(window).load(function(){
+		buju();
+	});
+})
+</script>
+</head>
+<body>
+<div class="box">
+<div class="wrap">
+    <div class="head">
+        <a>智慧<b>·</b><span>宁海</span></a>
+        <p>
+            <i style="left:0;"></i>
+            <input type="text" readonly value="公交到站提醒" />
+            <i style="right:0;"></i>
+        </p>
+        <div class="weather"><b>22℃</b><img src="images/index/cloud.png" alt="" /></div>
+    </div>
+    <div class="slider">
+    	<ul class="banner">
+        	<li><img src="images/index/banner1.jpg" alt="" /></li>
+        	<li><img src="images/index/banner2.jpg" alt="" /></li>
+        	<li><img src="images/index/banner3.jpg" alt="" /></li>
+        </ul>
+        <ul class="circle">
+        	<li class="ban_current"></li>
+        	<li></li>
+        	<li></li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="public">
+            <h2>公交报站<a href="line.html"><img src="images/index/tool.png" alt="" /></a></h2>
+            <div>
+                <strong>1</strong><br />
+                <img src="images/index/start.png" alt="" /><span>公交庄市站</span>
+                <img src="images/index/round.png" alt="" class="arrow" />
+                <img src="images/index/end.png" alt="" /><span>宁波火车站</span><br />
+                <p>
+                    还有<b>3</b>站到达<b class="village">外滩</b>
+                </p>
+            </div>
+            <span class="pub_next">请设置</span>
+        </div>
+        <div class="rulepay">
+            <h2>违章缴费</h2>
+            <a href="http://218.205.48.244/traffic/index.do"><div>我的罚单<br /><span>进入待办事项>></span></div></a>
+        </div>
+        <div class="notewarn">
+            <h2>记事提醒</h2>
+            <a href=""><div><p>高血压药一颗</p>
+            <img src="images/index/clock.png" alt="" /> <b>12：00</b> <span>每天提醒</span></div></a>
+        </div>
+        <div class="yhwarn">
+            <h2>优惠提醒</h2>
+            <a href="" class="credit"><div>您有<b>0</b>张洗车券<br /><span>去商场逛逛吧！</span></div></a>
+            <a href="" class="video">路况视频</a>
+        </div>
+        <div class="xxgg">
+            <h2>限行公告</h2>
+            <div>
+            	<span>7月9日 07:30-20:00</span>
+                <p>江厦桥<b>单</b>号限行 灵桥<b>双</b>号限行</p>
+                <a href="map.html">点击查看地图</a>
+            </div>
+        </div>
+        <div class="phonecard">
+            <a href=""><h3>手机市民卡</h3>
+            <ul>
+              <li>刷地铁</li>
+              <li>刷公交</li>
+              <li>手机钱包</li>
+            </ul></a>
+        </div>
+        <div class="phonehall">
+            <a href=""><h3>手机营业厅</h3></a>
+        </div>
+        <ul class="index_ul1">
+            <li style="left:-1px;"><a href=""><img src="images/index/icon3.png" alt="" /><br />公共交通</a></li>
+            <li><a href="">
+                <img src="images/index/icon4.png" alt="" /><br />交通罚款</a>
+            </li>
+            <li style="left:1px;">
+                <a href=""><img src="images/index/icon5.png" alt="" /><br />路况视频</a>
+            </li>
+            <li style="left:2px;">
+            	<a href="" class="index_li_last"><img src="images/index/icon6.png" alt="" /><br />铁路购票</a>
+            </li>
+        </ul>
+        <div class="ul2_box">
+            <ul class="index_ul2">
+              <li>
+                  <a href=""><img src="images/index/icon7.png" alt="" /><br />医院挂号</a>
+                  <a href=""><img src="images/index/icon8.png" alt="" /><br />手机彩票</a>
+                  <a href=""><img src="images/index/icon9.png" alt="" /><br />航班服务</a>
+                  <a href=""><img src="images/index/icon10.png" alt="" /><br />高速出行</a>
+              </li>
+              <li>
+                  <a href=""><img src="images/index/icon11.png" alt="" /><br />客运购票</a>
+                  <a href=""><img src="images/index/icon12.png" alt="" /><br />高校在线</a>
+                  <a href=""><img src="images/index/icon7.png" alt="" /><br />医院挂号</a>
+                  <a href=""><img src="images/index/icon8.png" alt="" /><br />手机彩票</a>
+              </li>
+              <li>
+                  <a href=""><img src="images/index/icon9.png" alt="" /><br />航班服务</a>
+                  <a href=""><img src="images/index/icon10.png" alt="" /><br />高速出行</a>
+                  <a href=""><img src="images/index/icon11.png" alt="" /><br />客运购票</a>
+                  <a href=""><img src="images/index/icon12.png" alt="" /><br />高校在线</a>
+              </li>
+            </ul>
+            <p id="left" style="left:10px;"><img src="images/index/left.png" alt="" /></p>
+            <p id="right" style="right:10px;"><img src="images/index/right.png" alt="" /></p>
+        </div>
+    </div>
+    <ul class="nav">
+        <li>
+            <a href="index.html" class="index">首页</a>
+        </li>
+        <li>
+            <a href="city.html" class="city">城市</a>
+        </li>
+        <li>
+            <a href="topic.html" class="topic">主题</a>
+        </li>
+        <li>
+            <a href="my.html" class="my">我的</a>
+        </li>
+    </ul>
+</div>
+<div class="choose">
+	<div class="cho_wrap">
+        <h1><a><img src="images/arrow.png" alt="" /><span>选择</span></a></h1>
+        <!--<div class="cho_slide">
+        	<p class="cho_cur">区域</p>
+        	<p>主题</p>
+        </div>-->
+        <div class="cho_area">
+            <div class="now_area">您现在的区域<span>江北区</span></div>
+            <div class="county">
+                <span>县市区</span>
+                <select name="" id="">
+                	<option value="江北">江北区</option>
+                	<option value="江东">江东区</option>
+                	<option value="镇海">镇海区</option>
+                </select>
+            </div>
+            <div class="street">
+                <span>街道</span>
+                <select value="江北区" id="">
+                	<option value="">洪塘街道</option>
+                	<option value="">孔浦街道</option>
+                </select>
+                <select value="江东区" id="" class="str_hide">
+                	<option value="">庄桥街道</option>
+                	<option value="">中马街道</option>
+                </select>
+                <select value="镇海区" id="" class="str_hide">
+                	<option value="">孔浦街道</option>
+                	<option value="">文教街道</option>
+                </select>
+            </div>
+        </div>
+        <div class="cho_topic">
+        	<div class="now_topic">您选择的主题 <span>万达购物</span></div>
+            <h3>热门主题</h3>
+            <ul>
+              <li>银泰百货（江东店）</li>
+              <li>天一广厂</li>
+              <li>城隍庙</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="search">
+	<div class="search_head">
+    	<img src="images/arrow.png" alt="" />
+        <div>
+        	<i style="left:0;"></i>
+            <input type="text" x-webkit-speech>
+            <i style="right:0;"></i>
+            <p>公交到站提醒</p>
+        </div>
+        <a href="search.html"><button></button></a>
+    </div>
+    <h2>热门搜索</h2>
+    <ul>
+    	<li><a href="">地铁站</a></li>
+    	<li><a href="">餐馆</a></li>
+    	<li class="edge"><a href="">加油站</a></li>
+    	<li><a href="">KTV</a></li>
+    	<li><a href="">银行</a></li>
+    	<li class="edge"><a href="">超市</a></li>
+    	<li><a href="">电影院</a></li>
+    	<li><a href="">健身中心</a></li>
+    </ul>
+</div>
+</div>
+</body>
+</html>

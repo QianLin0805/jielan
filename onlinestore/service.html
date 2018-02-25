@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name = "format-detection" content = "telephone=no">
+<title>售后服务</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/my.css" />
+<script type="text/javascript" src="plug-in/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+</head>
+<body>
+<div class="service">
+	<div class="main">
+		<div class="content">
+			<textarea name="" id="" placeholder="请细描述您遇到的问题，我们将尽快回复您！" maxlength="500"></textarea>
+			<p><span id="size">0</span>/500</p>
+		</div>
+		<div class="photos">
+			<p class="upload"><input type="file" id="upload" /></p>
+		</div>
+	</div>
+	<ul>
+		<li><input type="tel" maxlength="11" placeholder="请输入您的手机号" /></li>
+		<li><input type="text" placeholder="请输入您的姓名" /></li>
+	</ul>
+	<a id="sub">提交</a>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	//上传图片
+	$("#upload").change(function(){
+		var value = getObjectURL(this.files[0]);
+		$(this).parent().before('<div><img src="'+value+'" alt="" /><p class="delete"><span></span></p></div>');
+		$(this).val('');
+		var num=$('.photos').children('div').length;
+
+		//删除上传图片
+		$('.photos').children('div').last().children('.delete').bind('click',function(){
+			$(this).parent().remove();
+			if(num>=5){
+				$('.upload').show();
+			}
+		});
+		if(num>=5){
+			$('.upload').hide();
+			return;
+		}
+	});
+
+	//还剩的字数
+	$('textarea').on('keyup',function(){
+		var num=$(this).val().length;
+		$('#size').text(num);
+	});
+	
+});
+</script>

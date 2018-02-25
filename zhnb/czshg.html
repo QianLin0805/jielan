@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>车主生活馆</title>
+<link rel="stylesheet" href="css/css1.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	function buju(){
+		var pingkuan=$(window).width();
+		var pinggao=$(window).height();
+		var bili1=pingkuan/720;
+		var bili2=pinggao/1280;
+		$('.speed').css({
+			left:'4.3%',
+			top:bili1*177+'px'
+		});
+		$('.wz_pay').css({
+			left:'62.9%',
+			top:bili1*221+'px'
+		});
+		$('.video').css({
+			left:'37.9%',
+			top:bili1*531+'px'
+		});
+		/*$('.zd_warn').css({
+			left:'5.4%',
+			top:bili1*687+'px'
+		});*/
+		$('.car_wash').css({
+			left:'78.9%',
+			top:bili1*772+'px'
+		});
+		$('.xxxx').css({
+			left:'23.9%',
+			top:bili1*930+'px'
+		});
+		$('.njyy').css({
+			left:'50.3%',
+			top:bili1*965+'px'
+		});
+	};
+	$(window).load(function(){
+		buju();
+	});
+})
+</script>
+</head>
+<body>
+    <div class="head czsh_head">
+        <a href="city.html"><img src="images/arrow.png" alt="" />
+        <h1>车主生活馆</h1></a>
+    </div>
+    <div class="city_warn">消息提醒栏消息提醒栏消息提醒栏消息提醒栏</div>
+    <div class="main czsh_main">
+        <img src="images/city/czsh_bg.jpg" alt="" class="czsh_bg" />
+        <a href=""><img src="images/city/speed.png" alt="" class="speed" /></a>
+        <a href="http://218.205.48.244/traffic/index.do">
+        <img src="images/city/wz_pay.png" alt="" class="wz_pay" /></a>
+        <a href=""><img src="images/city/video.png" alt="" class="video" /></a>
+        <!--<a href="http://www.zhnb.net/police/police2.html">
+        <img src="images/city/zd_warn.png" alt="" class="zd_warn" /></a>-->
+        <a href=""><img src="images/city/car_wash.png" alt="" class="car_wash" /></a>
+        <a href=""><img src="images/city/xxxx.png" alt="" class="xxxx" /></a>
+        <a href=""><img src="images/city/njyy.png" alt="" class="njyy" /></a>
+    </div>
+</body>
+</html>

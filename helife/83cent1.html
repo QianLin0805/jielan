@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>主页</title>
+<link rel="stylesheet" href="css/index.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#555;}
+</style>
+</head>
+<body>
+<div class="wrap">
+    <header>
+    	浙江移动电子券/积分兑换商城
+        <select name="" id="">
+        	<option value="">杭州</option>
+        	<option value="">嘉兴</option>
+        	<option value="">宁波</option>
+        </select>
+    </header>
+	<div class="banner">
+    	<img src="images/index/pic.jpg" alt="" class="bg" />
+        <div>
+            <img src="images/index/circle.png" alt="" /><br />
+            <img src="images/index/person.png" alt="" class="person" />
+            <span>182****5580</span>
+        </div>
+    </div>
+    <div class="vip">
+    	<p><span>vip</span>用户享受优惠活动，<a href="vip_rights.html">会员权益</a>详情</p>
+    	<a href="notice.html"><p class="notice"><img src="images/index/doubt.png" alt="" /><i>积分电子券须知</i></p></a>
+    </div>
+    <ul>
+    	<li class="logged"><a>
+        <div><img src="images/index/icon4.png" alt="" /><br /><span>20000</span></div>
+        我的积分
+        </a></li>
+    	<li class="logged"><a>
+        <div><img src="images/index/icon5.png" alt="" /><br /><span>200</span></div>
+        我的电子券
+        </a></li>
+    	<li class="logged"><a>
+        <div><img src="images/index/icon6.png" alt="" /><br /><span>100</span></div>
+        我的优惠码
+        </a></li>
+    </ul>
+    <div class="recom">
+    	<h1><p class="line"></p><span>最优惠</span><p class="dot"></p></h1>
+        <div class="cent_box">
+            <div class="item">
+                <img src="images/index/item1.png" alt="" class="recom_bg" />
+                <div>
+                    <img src="images/index/pic7.png" alt="" />
+                    <p>仅需<br />83积分</p>
+                </div>
+            </div>
+            <p class="buy">还剩<b>100</b>份<span><b>83</b>积分<i>33元</i></span>
+            <a href="privil_detail.html">立即抢购</a></p>
+        </div>
+        <div class="cent_box">
+            <div class="item">
+                <img src="images/index/item2.png" alt="" class="recom_bg" />
+                <div>
+                    <img src="images/index/pic7.png" alt="" />
+                    <p>仅需<br />83积分</p>
+                </div>
+            </div>
+        	<p class="buy">还剩<b>100</b>份<span><b>83</b>积分<i>33元</i></span>
+            <a href="privil_detail.html">立即抢购</a></p>
+        </div>
+        <div class="cent_box">
+            <div class="item">
+                <img src="images/index/item3.png" alt="" class="recom_bg" />
+                <div>
+                    <img src="images/index/pic7.png" alt="" />
+                    <p>仅需<br />83积分</p>
+                </div>
+            </div>
+            <p class="buy">还剩<b>100</b>份<span><b>83</b>积分<i>33元</i></span>
+            <a href="privil_detail.html">立即抢购</a></p>
+        </div>
+        <div class="pullUp">上拉显示更多...</div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function(){
+	var startY;
+	var y;
+	$('.wrap').on('touchstart',function(){
+		startY=event.touches[0].pageY;
+	});
+	$('.wrap').on('touchmove',function(){
+		var winHeight=$(window).height();
+		var docTop=$(document).scrollTop();
+		var docHeight=$(document).height();
+		y=event.changedTouches[0].pageY-startY;
+		if((winHeight+docTop)>=docHeight&&y<0){
+			$('.wrap').css('bottom',-y);
+			$('.pullUp').text('松手开始更新...');
+			event.preventDefault();
+		}
+	});
+	$('.wrap').on('touchend',function(){
+		var items=$('.cent_box:lt(3)').clone();
+		//alert(items)
+		var Num=parseInt($('ul').children().last().children('span').text());
+		y=event.changedTouches[0].pageY-startY;
+		if(y<-50){
+			$('.pullUp').text('正在加载...');
+			$('.wrap').animate({bottom:0},100)
+			setTimeout(function(){
+				$('.pullUp').text('上拉显示更多...').before(items);
+			},1000)
+		}
+	});
+});
+</script>

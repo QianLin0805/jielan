@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>登录</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/my.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+</head>
+<body>
+<div class="login">
+	<header><img src="images/back.png" alt="" style="width:24px;position:absolute;left:10px;top:8px;" />登录</header>
+	<form action="">
+    	<input type="tel" id="tel" placeholder="请输入手机号" />
+        <input type="password" id="psd" placeholder="请输入密码" />
+        <div><p class="tip"><span></span>不能为空</p></div>
+        <button type="submit" id="login_sub">登录</button>
+    </form>
+    <p><a href="regist.html" id="regist">注册</a><a href="psdModify.html" id="forget">忘记密码</a></p>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	$('button').on('click',function(event){
+		event.preventDefault();
+		if($('#tel').val()==''){
+			$('.tip span').text('手机号');
+			$('.tip').show();
+			setTimeout(function(){
+				$('.tip').hide();
+			},1000);
+		}else if($('#psd').val()==''){
+			$('.tip span').text('密码');
+			$('.tip').show();
+			setTimeout(function(){
+				$('.tip').hide();
+			},1000);
+		}
+	});
+</script>

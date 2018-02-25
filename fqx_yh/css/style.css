@@ -1,0 +1,79 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0;padding:0;font:14px "Microsoft YaHei",Arial;background:#fff;color:#000;-webkit-text-size-adjust:100%;overflow-y:auto;}
+header,div,h1,h2,h3,ul,li,p,form,input,button,select,textarea,label,img,span,a,b,i{margin:0;padding:0;}
+h1,h2,h3{font-weight:normal;}
+ul,li{list-style:none;}
+img,input,button,select,label{border:none;background:none;vertical-align:middle;}
+input,button,select,textarea{font:16px "Microsoft YaHei",Arial;-moz-appearance:none;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+p{word-wrap:break-word;}
+a{text-decoration:none;color:#000;}
+strong,b{font-weight:normal;}
+i{font-style:normal;}
+
+.step{width:100%;overflow:hidden;padding-top:5px;}
+.step h2{font-size:16px;line-height:50px;color:#666;text-indent:5%;}
+.step div{width:90%;padding:0 5%;background:#fff;overflow:hidden;position:relative;}
+.step p{width:100%;height:50px;line-height:50px;font-size:15px;}
+.step p.first{border-bottom:1px solid #dcdcdc;color:#111;}
+.step p span{width:72px;display:inline-block;text-indent:5px;float:left;}
+.step p input{width:70%;height:50px;line-height:20px;vertical-align:top;float:left;}
+.step button{width:90%;height:45px;line-height:45px;text-align:center;font-size:16px;color:#ccc;background:#fff;display:block;margin:30px auto 0;border-radius:5px;}
+.step2 p span{width:85px;}
+.step2 p b{font-size:16px;color:#062772;}
+.step2 p input{width:70%;}
+.step3 div input{width:50%;height:50px;line-height:20px;vertical-align:top;}
+.step3 div i{width:125px;line-height:30px;color:#111;text-align:center;border-left:1px solid #666;display:inline-block;position:absolute;right:0;top:10px;}
+
+.detail{width:100%;overflow:hidden;}
+.detail h1{width:94%;padding-left:6%;height:104px;line-height:104px;font-size:36px;background:#fff;}
+.detail .bank{width:100%;overflow:hidden;background:#fff;}
+.detail .bank p{width:94%;height:50px;line-height:50px;margin:0 3%;border-top:1px solid #d4d4d4;font-size:15px;}
+.bank p img{width:50px;vertical-align:top;}
+.bank p span{margin-right:10px;}
+.detail .process{width:100%;height:120px;background:#fff;margin-top:20px;}
+.process .bar{width:70%;height:30px;position:relative;margin:0 auto;padding-top:20px;}
+.process .bar div{width:50%;float:left;height:4px;margin-top:13px;background:#22ac38;}
+.process .bar p{width:12px;height:12px;background:#22ac38;border-radius:50%;padding:0;position:absolute;top:29px;z-index:1;}
+.process .bar img{width:30px;position:absolute;top:20px;z-index:2;}
+.process span{width:30%;line-height:18px;color:#22ac38;display:inline-block;text-align:center;float:left;margin-top:10px;}
+.process span i{font-size:13px;color:#999;}
+.detail ul{width:90%;padding:0 5%;background:#fff;margin-bottom:20px;}
+.detail ul li{width:100%;height:40px;line-height:40px;border-top:1px solid #d4d4d4;color:#666;}
+.detail li span{width:25%;display:inline-block;float:left;text-indent:2px;}
+.detail li p{width:75%;float:left;}
+
+.pay{width:100%;overflow:hidden;}
+.pay .top{width:100%;height:110px;background:#626262;}
+.pay .top h3{font-size:15px;text-indent:10px;line-height:40px;color:#333;}
+.pay .pay_step{width:84%;height:17px;padding:13px 0 30px;margin:5px auto 0;position:relative;}
+.pay_step p{width:100%;height:3px;background:#959595;float:left;}
+.pay_step div{width:64px;height:60px;position:absolute;top:0;text-align:center;}
+.pay_step div span{width:30px;height:30px;line-height:30px;border-radius:15px;background:no-repeat center center #c5c5c5;background-size:16px auto;display:inline-block;}
+.pay_step div .write{background-image:url(../images/pen.png);}
+.pay_step div .after{background-image:url(../images/right2.png);background-color:#06bf04;}
+.pay_step div i{font-size:14px;line-height:21px;color:#999;display:inline-block;}
+
+.pay ul{width:94%;padding:0 3%;margin-top:10px;background:#fff;overflow:hidden;}
+.pay ul li{width:100%;height:50px;line-height:50px;border-bottom:1px solid #ccc;font-size:16px;}
+.pay ul li span{width:20%;text-indent:5px;display:inline-block;float:left;}
+.pay ul li input{width:75%;height:50px;line-height:18px;vertical-align:top;}
+.pay .next{width:92%;height:40px;line-height:40px;border:1px solid #199c18;border-radius:5px;display:block;background:#06bf04;color:#fff;margin:30px auto 0;text-align:center;font-size:16px;}
+.pay ul li p{float:right;margin-right:2%;}
+.pay ul li img{width:50px;vertical-align:top;}
+.pay ul li i{font-size:15px;margin:0 5px;}
+.pay .photo{height:100px;line-height:100px;border:none;}
+.pay .photo span{width:27%;}
+.pay .photo div{width:64px;height:64px;background:#ebebeb;float:left;margin:18px 8px 0 0;overflow:hidden;}
+.pay .photo div input{width:62px;height:62px;opacity:0;filter:Alpha(opacity=0);}
+.pay h2{font-size:16px;line-height:18px;color:#666;padding-top:15px;text-indent:4%;}
+.pay .sure li span{color:#666;}
+.pay4 h2{font-size:16px;line-height:50px;color:#666;text-indent:5%;padding-top:0;}
+.pay4 .code{width:90%;padding:0 5%;background:#fff;overflow:hidden;position:relative;}
+.pay4 .code input{width:50%;height:50px;line-height:20px;vertical-align:top;}
+.pay4 .code i{width:125px;line-height:30px;color:#111;text-align:center;border-left:1px solid #666;display:inline-block;position:absolute;right:0;top:10px;}
+.pay4 a{width:92%;height:40px;line-height:40px;border:1px solid #199c18;border-radius:5px;display:block;background:#06bf04;color:#fff;margin:30px auto 0;text-align:center;font-size:16px;}
+
+@media (min-width: 640px){
+body{width: 640px; margin-left: auto; margin-right: auto;}
+}

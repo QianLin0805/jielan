@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>搜索结果</title>
+<link rel="stylesheet" href="css/css1.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+body{background:#efefef;}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	var pingkuan=$(window).width();
+	var pinggao=$(window).height();
+	function buju(){
+		$('.apply li').css({
+			width:(0.47)*pingkuan-5
+		});
+		$('.privilege li').css({
+			width:(0.47)*pingkuan-5
+		});
+	}
+	$(window).load(function(){
+		buju();
+	});
+	$('.head div').children('input').bind('focus',function(){
+		$(this).css('backgroundImage','none').next().hide();
+	});
+	$('.head div').children('input').bind('keyup',function(){
+		$(this).next().next().show();
+	});
+	$('.head div').children('input').bind('blur',function(){
+		var searchText=$(this).val();
+		if(searchText==''){
+			$(this).css('backgroundImage','url(images/index/search.png)').next().show().next().hide();
+		}
+	});
+	$('.head div').children('img').on('click',function(){
+		$(this).hide().prev().prev().val('');
+		$(this).prev().prev().trigger('focus');
+	});
+})
+</script>
+</head>
+<body>
+    <div class="head search_head">
+        <a href="index.html"><img src="images/arrow1.png" alt="" /></a>
+    	<div><input type="text"><p>出行</p><img src="images/index/x.png" alt="" /></div>
+        <button>搜索</button>
+    </div>
+    <div class="main search_main">
+        <h2><img src="images/index/tool.png" alt="" /><span>应用</span></h2>
+        <ul class="apply">
+            <a href=""><li><img src="images/index/search_icon2.png" alt="" /><span>公共交通</span></li></a>
+            <a href=""><li class="apply_right"><img src="images/index/search_icon1.png" alt="" /><span>铁路购票</span></li></a>
+            <a href=""><li><img src="images/index/search_icon2.png" alt="" /><span>公共交通</span></li></a>
+            <a href=""><li class="apply_right"><img src="images/index/search_icon1.png" alt="" /><span>铁路购票</span></li></a>
+        </ul>
+        <h2><img src="images/index/gift.png" alt="" /><span>优惠</span></h2>
+        <ul class="privilege">
+            <a href=""><li><img src="images/index/search_pic.png" alt="" /><p>优惠名称</p></li></a>
+            <a href=""><li class="priv_right">
+            <img src="images/index/search_pic.png" alt="" /><p>优惠名称</p></li></a>
+            <a href=""><li><img src="images/index/search_pic.png" alt="" /><p>优惠名称</p></li></a>
+            <a href=""><li class="priv_right">
+            <img src="images/index/search_pic.png" alt="" /><p>优惠名称</p></li></a>
+            <a href=""><li><img src="images/index/search_pic.png" alt="" /><p>优惠名称</p></li></a>
+            <a href=""><li class="priv_right">
+            <img src="images/index/search_pic.png" alt="" /><p>优惠名称</p></li></a>
+        </ul>
+    </div>
+</body>
+</html>
